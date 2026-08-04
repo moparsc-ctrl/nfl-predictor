@@ -1,5 +1,0 @@
-nflreadpy
-pandas
-numpy
-scipy
-Pillow
