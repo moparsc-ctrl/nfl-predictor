@@ -1,0 +1,15 @@
+[project]
+name = "nfl-predictor"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "nflreadpy",
+    "pandas",
+    "numpy",
+    "scipy",
+    "Pillow",
+    "pyarrow",
+]
+
+[tool.vercel]
+entrypoint = "api.predict:handler"
