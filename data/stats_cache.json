@@ -1,298 +1,5268 @@
 {
-  "league_avg_pts": 22.62923976608187,
+  "league_avg_pts": 22.993859649122808,
   "updated_years": [
-    2023,
     2024,
-    2025
+    2025,
+    2026
   ],
   "teams": {
     "KC": {
-      "pts_for_avg": 22.277741228070177,
-      "pts_against_avg": 19.215241228070177,
-      "n_partidos": 58.0,
-      "off_strength": 0.9844670637792021,
-      "def_strength": 0.8491333083522846,
-      "off_strength_epa": 1.0335803046060228,
-      "def_strength_epa": 0.8095476060837504
-    },
-    "DET": {
-      "pts_for_avg": 28.832384239286743,
-      "pts_against_avg": 23.127466206499857,
-      "n_partidos": 55.0,
-      "off_strength": 1.2741207631067897,
-      "def_strength": 1.0220169323215516,
-      "off_strength_epa": 1.4214096831911722,
-      "def_strength_epa": 0.9724303910168877
-    },
-    "ATL": {
-      "pts_for_avg": 21.03114804555248,
-      "pts_against_avg": 23.382025238534936,
-      "n_partidos": 51.0,
-      "off_strength": 0.929379345614398,
-      "def_strength": 1.0332660522507429,
-      "off_strength_epa": 0.9068120464873242,
-      "def_strength_epa": 1.0414773599053626
-    },
-    "CAR": {
-      "pts_for_avg": 18.185783424077435,
-      "pts_against_avg": 25.858197217180884,
-      "n_partidos": 52.0,
-      "off_strength": 0.8036409358893016,
-      "def_strength": 1.1426896123986798,
-      "off_strength_epa": 0.7308083781752026,
-      "def_strength_epa": 1.3278112252846557
+      "pts_for_avg": 22.37123623011016,
+      "pts_against_avg": 20.34798041615667,
+      "n_partidos": 37.0,
+      "off_strength": 0.9729221875529539,
+      "def_strength": 0.8849310523182621,
+      "off_strength_epa": 1.0159368182536073,
+      "def_strength_epa": 0.8711420835861468
     },
     "BAL": {
-      "pts_for_avg": 27.17664653436871,
-      "pts_against_avg": 20.37336784584412,
-      "n_partidos": 55.0,
-      "off_strength": 1.2009526972754418,
-      "def_strength": 0.9003116347010917,
-      "off_strength_epa": 1.3427777017347373,
-      "def_strength_epa": 0.8149625815841123
-    },
-    "HOU": {
-      "pts_for_avg": 22.790086326928435,
-      "pts_against_avg": 20.202784739626846,
-      "n_partidos": 57.0,
-      "off_strength": 1.0071079082863248,
-      "def_strength": 0.8927734624964314,
-      "off_strength_epa": 0.9813259209657833,
-      "def_strength_epa": 0.779291443785346
-    },
-    "CLE": {
-      "pts_for_avg": 18.668542044767086,
-      "pts_against_avg": 23.392679975801574,
-      "n_partidos": 52.0,
-      "off_strength": 0.8249743357595545,
-      "def_strength": 1.0337368916327447,
-      "off_strength_epa": 0.6831970373887511,
-      "def_strength_epa": 0.8853324606230082
-    },
-    "CIN": {
-      "pts_for_avg": 24.34693751923669,
-      "pts_against_avg": 25.364481378885813,
-      "n_partidos": 51.0,
-      "off_strength": 1.0759061184074514,
-      "def_strength": 1.120872006354526,
-      "off_strength_epa": 1.1097884426675453,
-      "def_strength_epa": 1.2621352197793718
-    },
-    "IND": {
-      "pts_for_avg": 24.118867343798094,
-      "pts_against_avg": 24.382025238534936,
-      "n_partidos": 51.0,
-      "off_strength": 1.0658275573158658,
-      "def_strength": 1.0774566662676954,
-      "off_strength_epa": 1.0635153270933537,
-      "def_strength_epa": 1.0827969561728243
-    },
-    "JAX": {
-      "pts_for_avg": 22.94440411373261,
-      "pts_against_avg": 22.49612825166364,
-      "n_partidos": 52.0,
-      "off_strength": 1.0139273060389384,
-      "def_strength": 0.994117720445132,
-      "off_strength_epa": 0.9983496584491682,
-      "def_strength_epa": 1.00163135259779
-    },
-    "MIN": {
-      "pts_for_avg": 21.80647307924985,
-      "pts_against_avg": 20.513369630973987,
-      "n_partidos": 52.0,
-      "off_strength": 0.9636414349161994,
-      "def_strength": 0.9064983995494501,
-      "off_strength_epa": 0.9245814783633559,
-      "def_strength_epa": 0.8086346930582922
-    },
-    "TB": {
-      "pts_for_avg": 24.01292397660819,
-      "pts_against_avg": 21.996257309941523,
-      "n_partidos": 54.0,
-      "off_strength": 1.0611458548687205,
-      "def_strength": 0.9720281166011993,
-      "off_strength_epa": 1.1074141129681314,
-      "def_strength_epa": 0.9834654862442956
-    },
-    "NO": {
-      "pts_for_avg": 20.73290243151739,
-      "pts_against_avg": 21.820621729763005,
-      "n_partidos": 51.0,
-      "off_strength": 0.9161996888023243,
-      "def_strength": 0.9642666724698868,
-      "off_strength_epa": 0.8716363497599607,
-      "def_strength_epa": 0.9117605344736659
-    },
-    "TEN": {
-      "pts_for_avg": 18.17149892274546,
-      "pts_against_avg": 25.2767620806402,
-      "n_partidos": 51.0,
-      "off_strength": 0.8030096950045157,
-      "def_strength": 1.1169956367039162,
-      "off_strength_epa": 0.717337406553692,
-      "def_strength_epa": 1.2151936801197694
-    },
-    "PIT": {
-      "pts_for_avg": 20.89625730994152,
-      "pts_against_avg": 21.379590643274856,
-      "n_partidos": 54.0,
-      "off_strength": 0.9234184411825512,
-      "def_strength": 0.9447772379574118,
-      "off_strength_epa": 0.9016445551560637,
-      "def_strength_epa": 0.921115303176541
-    },
-    "SF": {
-      "pts_for_avg": 25.189926428975667,
-      "pts_against_avg": 22.222184493491795,
-      "n_partidos": 56.0,
-      "off_strength": 1.1131583159382983,
-      "def_strength": 0.9820119775654066,
-      "off_strength_epa": 1.2468953094869228,
-      "def_strength_epa": 1.0080002625801847
-    },
-    "WAS": {
-      "pts_for_avg": 23.279590643274855,
-      "pts_against_avg": 26.696257309941522,
-      "n_partidos": 54.0,
-      "off_strength": 1.0287394045896217,
-      "def_strength": 1.1797240024808768,
-      "off_strength_epa": 1.0503958281372825,
-      "def_strength_epa": 1.3574213366582346
-    },
-    "ARI": {
-      "pts_for_avg": 21.41711295783318,
-      "pts_against_avg": 25.575007694675286,
-      "n_partidos": 51.0,
-      "off_strength": 0.9464353720770813,
-      "def_strength": 1.1301752935159899,
-      "off_strength_epa": 0.9436687698168609,
-      "def_strength_epa": 1.292678359971598
-    },
-    "CHI": {
-      "pts_for_avg": 21.945346416889684,
-      "pts_against_avg": 22.826702349093072,
-      "n_partidos": 53.0,
-      "off_strength": 0.9697783329770872,
-      "def_strength": 1.0087259927886385,
-      "off_strength_epa": 0.959105903181768,
-      "def_strength_epa": 1.008101383910445
-    },
-    "GB": {
-      "pts_for_avg": 24.19303997699166,
-      "pts_against_avg": 21.19303997699166,
-      "n_partidos": 55.0,
-      "off_strength": 1.0691052915199437,
-      "def_strength": 0.9365334494690857,
-      "off_strength_epa": 1.1708422575684567,
-      "def_strength_epa": 0.9323848373968878
-    },
-    "DEN": {
-      "pts_for_avg": 22.76292397660819,
-      "pts_against_avg": 20.696257309941522,
-      "n_partidos": 54.0,
-      "off_strength": 1.0059075873475296,
-      "def_strength": 0.9145803183791608,
-      "off_strength_epa": 1.0174434665431786,
-      "def_strength_epa": 0.8239697469838391
-    },
-    "LV": {
-      "pts_for_avg": 17.855709449061248,
-      "pts_against_avg": 23.382025238534936,
-      "n_partidos": 51.0,
-      "off_strength": 0.78905476426232,
-      "def_strength": 1.0332660522507429,
-      "off_strength_epa": 0.6699775511132188,
-      "def_strength_epa": 1.0334855624776476
-    },
-    "LAC": {
-      "pts_for_avg": 21.47077014570324,
-      "pts_against_avg": 20.725007433838837,
-      "n_partidos": 53.0,
-      "off_strength": 0.9488065161554824,
-      "def_strength": 0.9158508040072465,
-      "off_strength_epa": 0.9328684162085008,
-      "def_strength_epa": 0.8579550433212179
-    },
-    "MIA": {
-      "pts_for_avg": 22.94440411373261,
-      "pts_against_avg": 23.116817906836058,
-      "n_partidos": 52.0,
-      "off_strength": 1.0139273060389384,
-      "def_strength": 1.0215463774211717,
-      "off_strength_epa": 1.0349321989593592,
-      "def_strength_epa": 1.0474469314511252
-    },
-    "NE": {
-      "pts_for_avg": 19.96353178027035,
-      "pts_against_avg": 21.209433419614612,
-      "n_partidos": 55.0,
-      "off_strength": 0.8822007273170949,
-      "def_strength": 0.9372578857644457,
-      "off_strength_epa": 0.8519388438187094,
-      "def_strength_epa": 0.9303027138321751
+      "pts_for_avg": 26.97531328320802,
+      "pts_against_avg": 22.332456140350878,
+      "n_partidos": 36.0,
+      "off_strength": 1.1731529066820716,
+      "def_strength": 0.9712356464349751,
+      "off_strength_epa": 1.3141052886557492,
+      "def_strength_epa": 0.9446271488123297
     },
     "PHI": {
-      "pts_for_avg": 25.139292676134783,
-      "pts_against_avg": 21.012308549150656,
-      "n_partidos": 57.0,
-      "off_strength": 1.110920779310277,
-      "def_strength": 0.9285468167006312,
-      "off_strength_epa": 1.1938246506485501,
-      "def_strength_epa": 0.8721000655087235
+      "pts_for_avg": 25.42140350877193,
+      "pts_against_avg": 19.24362573099415,
+      "n_partidos": 39.0,
+      "off_strength": 1.1055735703658491,
+      "def_strength": 0.836902809038772,
+      "off_strength_epa": 1.1755314488350388,
+      "def_strength_epa": 0.7329988961906779
     },
-    "SEA": {
-      "pts_for_avg": 24.31292397660819,
-      "pts_against_avg": 20.729590643274854,
-      "n_partidos": 54.0,
-      "off_strength": 1.0744030390738062,
-      "def_strength": 0.9160533388463924,
-      "off_strength_epa": 1.0877180190080633,
-      "def_strength_epa": 0.8862480823739802
+    "GB": {
+      "pts_for_avg": 24.427694235588973,
+      "pts_against_avg": 21.16578947368421,
+      "n_partidos": 36.0,
+      "off_strength": 1.0623572818285365,
+      "def_strength": 0.9204974630908328,
+      "off_strength_epa": 1.155334536988563,
+      "def_strength_epa": 0.891824769389971
     },
-    "LA": {
-      "pts_for_avg": 25.044054580896688,
-      "pts_against_avg": 21.980562517404625,
-      "n_partidos": 57.0,
-      "off_strength": 1.1067121494039007,
-      "def_strength": 0.971334554082125,
-      "off_strength_epa": 1.1895722280617194,
-      "def_strength_epa": 0.96600040651389
+    "ATL": {
+      "pts_for_avg": 21.99907894736842,
+      "pts_against_avg": 24.04907894736842,
+      "n_partidos": 34.0,
+      "off_strength": 0.9567371151718612,
+      "def_strength": 1.0458913516194255,
+      "off_strength_epa": 0.9560096943096847,
+      "def_strength_epa": 1.0742823975254232
     },
-    "NYG": {
-      "pts_for_avg": 18.52237611572792,
-      "pts_against_avg": 24.504832256078796,
-      "n_partidos": 51.0,
-      "off_strength": 0.8185151736069554,
-      "def_strength": 1.0828835837785493,
-      "off_strength_epa": 0.7477838295409246,
-      "def_strength_epa": 1.1747171699715069
-    },
-    "DAL": {
-      "pts_for_avg": 25.823714458560197,
-      "pts_against_avg": 25.4788868723533,
-      "n_partidos": 52.0,
-      "off_strength": 1.1411657981222332,
-      "def_strength": 1.1259276553577668,
-      "off_strength_epa": 1.1856731879650215,
-      "def_strength_epa": 1.2290293702897208
-    },
-    "NYJ": {
-      "pts_for_avg": 18.2767620806402,
-      "pts_against_avg": 24.52237611572792,
-      "n_partidos": 51.0,
-      "off_strength": 0.8076613385852477,
-      "def_strength": 1.0836588577086712,
-      "off_strength_epa": 0.7014406409710262,
-      "def_strength_epa": 1.125406737465076
+    "PIT": {
+      "pts_for_avg": 22.261027568922305,
+      "pts_against_avg": 22.141979949874685,
+      "n_partidos": 36.0,
+      "off_strength": 0.9681292270465581,
+      "def_strength": 0.9629518613991965,
+      "off_strength_epa": 0.9551096178201256,
+      "def_strength_epa": 0.9536570160895141
     },
     "BUF": {
-      "pts_for_avg": 27.996491228070177,
-      "pts_against_avg": 21.012116228070177,
-      "n_partidos": 58.0,
-      "off_strength": 1.23718213768865,
-      "def_strength": 0.9285383179139964,
-      "off_strength_epa": 1.4290766181784207,
-      "def_strength_epa": 0.8840826303323541
+      "pts_for_avg": 28.62140350877193,
+      "pts_against_avg": 22.04362573099415,
+      "n_partidos": 39.0,
+      "off_strength": 1.2447411589669248,
+      "def_strength": 0.9586744490647133,
+      "off_strength_epa": 1.4327725326456409,
+      "def_strength_epa": 0.9337540294667717
+    },
+    "ARI": {
+      "pts_for_avg": 22.32407894736842,
+      "pts_against_avg": 25.12407894736842,
+      "n_partidos": 34.0,
+      "off_strength": 0.970871323389158,
+      "def_strength": 1.0926429634150994,
+      "off_strength_epa": 0.9859038338332159,
+      "def_strength_epa": 1.1837816851177745
+    },
+    "CHI": {
+      "pts_for_avg": 22.308646616541353,
+      "pts_against_avg": 23.094360902255637,
+      "n_partidos": 36.0,
+      "off_strength": 0.9702001733055027,
+      "def_strength": 1.0043707865780882,
+      "off_strength_epa": 0.9630334614245127,
+      "def_strength_epa": 1.0097842008106885
+    },
+    "TEN": {
+      "pts_for_avg": 18.32407894736842,
+      "pts_against_avg": 26.899078947368423,
+      "n_partidos": 34.0,
+      "off_strength": 0.7969118376378133,
+      "def_strength": 1.1698374852172586,
+      "off_strength_epa": 0.6831027483066885,
+      "def_strength_epa": 1.2565418388947889
+    },
+    "CIN": {
+      "pts_for_avg": 25.59907894736842,
+      "pts_against_avg": 26.599078947368422,
+      "n_partidos": 34.0,
+      "off_strength": 1.1133006523480715,
+      "def_strength": 1.1567905237859077,
+      "off_strength_epa": 1.1501563583582448,
+      "def_strength_epa": 1.2689768608827379
+    },
+    "NE": {
+      "pts_for_avg": 22.3627990430622,
+      "pts_against_avg": 21.135526315789473,
+      "n_partidos": 38.0,
+      "off_strength": 0.9725552553729412,
+      "def_strength": 0.9191813222446877,
+      "off_strength_epa": 1.0008612446079814,
+      "def_strength_epa": 0.9264965116395668
+    },
+    "IND": {
+      "pts_for_avg": 24.52407894736842,
+      "pts_against_avg": 24.42407894736842,
+      "n_partidos": 34.0,
+      "off_strength": 1.0665490405523976,
+      "def_strength": 1.062200053408614,
+      "off_strength_epa": 1.0657596723184024,
+      "def_strength_epa": 1.057315043269112
+    },
+    "HOU": {
+      "pts_for_avg": 22.8627990430622,
+      "pts_against_avg": 19.8627990430622,
+      "n_partidos": 38.0,
+      "off_strength": 0.9943001910918593,
+      "def_strength": 0.8638305767783507,
+      "off_strength_epa": 0.956254975496268,
+      "def_strength_epa": 0.7463145580590237
+    },
+    "MIA": {
+      "pts_for_avg": 20.74907894736842,
+      "pts_against_avg": 23.14907894736842,
+      "n_partidos": 34.0,
+      "off_strength": 0.902374775874566,
+      "def_strength": 1.0067504673253729,
+      "off_strength_epa": 0.8701705377144962,
+      "def_strength_epa": 1.040302464279786
+    },
+    "JAX": {
+      "pts_for_avg": 23.31617458279846,
+      "pts_against_avg": 22.82836970474968,
+      "n_partidos": 35.0,
+      "off_strength": 1.0140174350280489,
+      "def_strength": 0.992802863594958,
+      "off_strength_epa": 1.012534593303892,
+      "def_strength_epa": 1.003578450000757
+    },
+    "NO": {
+      "pts_for_avg": 19.54907894736842,
+      "pts_against_avg": 22.97407894736842,
+      "n_partidos": 34.0,
+      "off_strength": 0.8501869301491627,
+      "def_strength": 0.9991397398237515,
+      "off_strength_epa": 0.7829298213938541,
+      "def_strength_epa": 0.9814883971572229
+    },
+    "CAR": {
+      "pts_for_avg": 20.023491655969192,
+      "pts_against_avg": 26.486906290115535,
+      "n_partidos": 35.0,
+      "off_strength": 0.8708190778546858,
+      "def_strength": 1.1519121493431392,
+      "off_strength_epa": 0.8246770563031112,
+      "def_strength_epa": 1.3139780961231504
+    },
+    "NYG": {
+      "pts_for_avg": 19.79907894736842,
+      "pts_against_avg": 24.79907894736842,
+      "n_partidos": 34.0,
+      "off_strength": 0.8610593980086216,
+      "def_strength": 1.0785087551978025,
+      "off_strength_epa": 0.8150878025766972,
+      "def_strength_epa": 1.1726948088077642
+    },
+    "MIN": {
+      "pts_for_avg": 22.511296534017973,
+      "pts_against_avg": 20.243003851091142,
+      "n_partidos": 35.0,
+      "off_strength": 0.979013392163449,
+      "def_strength": 0.8803656349995767,
+      "off_strength_epa": 0.9266479294627886,
+      "def_strength_epa": 0.7657100307395607
+    },
+    "LAC": {
+      "pts_for_avg": 21.97531328320802,
+      "pts_against_avg": 19.689598997493732,
+      "n_partidos": 36.0,
+      "off_strength": 0.9557035494928906,
+      "def_strength": 0.8562981290635507,
+      "off_strength_epa": 0.9548089494409382,
+      "def_strength_epa": 0.76820568342246
+    },
+    "LV": {
+      "pts_for_avg": 17.19907894736842,
+      "pts_against_avg": 25.09907894736842,
+      "n_partidos": 34.0,
+      "off_strength": 0.7479857322702476,
+      "def_strength": 1.0915557166291534,
+      "off_strength_epa": 0.6121190665490688,
+      "def_strength_epa": 1.112784711899178
+    },
+    "SEA": {
+      "pts_for_avg": 25.51077111383109,
+      "pts_against_avg": 19.62705018359853,
+      "n_partidos": 37.0,
+      "off_strength": 1.1094601560205792,
+      "def_strength": 0.8535778891886592,
+      "off_strength_epa": 1.102340173924436,
+      "def_strength_epa": 0.7733400417742904
+    },
+    "DEN": {
+      "pts_for_avg": 23.510771113831087,
+      "pts_against_avg": 19.324724602203183,
+      "n_partidos": 37.0,
+      "off_strength": 1.0224804131449066,
+      "def_strength": 0.8404297885214065,
+      "off_strength_epa": 1.0502290368932676,
+      "def_strength_epa": 0.7197512799132975
+    },
+    "CLE": {
+      "pts_for_avg": 16.87407894736842,
+      "pts_against_avg": 23.79907894736842,
+      "n_partidos": 34.0,
+      "off_strength": 0.7338515240529508,
+      "def_strength": 1.0350188837599665,
+      "off_strength_epa": 0.5935928269762022,
+      "def_strength_epa": 0.972575347790637
+    },
+    "DAL": {
+      "pts_for_avg": 23.97407894736842,
+      "pts_against_avg": 27.92407894736842,
+      "n_partidos": 34.0,
+      "off_strength": 1.0426296112615876,
+      "def_strength": 1.2144146034410408,
+      "off_strength_epa": 1.0287563404162081,
+      "def_strength_epa": 1.3990548231585436
+    },
+    "TB": {
+      "pts_for_avg": 25.36495507060334,
+      "pts_against_avg": 23.3405648267009,
+      "n_partidos": 35.0,
+      "off_strength": 1.1031186350470303,
+      "def_strength": 1.0150781635997033,
+      "off_strength_epa": 1.161232024068831,
+      "def_strength_epa": 1.0235896209580149
+    },
+    "WAS": {
+      "pts_for_avg": 24.882864137086905,
+      "pts_against_avg": 25.25495716034272,
+      "n_partidos": 37.0,
+      "off_strength": 1.0821525623270543,
+      "def_strength": 1.0983348400713653,
+      "off_strength_epa": 1.1548746793083138,
+      "def_strength_epa": 1.1985224717367766
+    },
+    "DET": {
+      "pts_for_avg": 29.60885750962773,
+      "pts_against_avg": 22.877150192554556,
+      "n_partidos": 35.0,
+      "off_strength": 1.2876854065149204,
+      "def_strength": 0.994924320738267,
+      "off_strength_epa": 1.4382584287090074,
+      "def_strength_epa": 0.9390531178164452
+    },
+    "LA": {
+      "pts_for_avg": 25.62140350877193,
+      "pts_against_avg": 21.910292397660818,
+      "n_partidos": 39.0,
+      "off_strength": 1.1142715446534162,
+      "def_strength": 0.9528757995396686,
+      "off_strength_epa": 1.19384140351726,
+      "def_strength_epa": 0.9324661865223293
+    },
+    "SF": {
+      "pts_for_avg": 23.641979949874685,
+      "pts_against_avg": 23.927694235588973,
+      "n_partidos": 36.0,
+      "off_strength": 1.0281866685559509,
+      "def_strength": 1.0406123461096184,
+      "off_strength_epa": 1.0999070661879786,
+      "def_strength_epa": 1.1053040215656365
+    },
+    "NYJ": {
+      "pts_for_avg": 19.39907894736842,
+      "pts_against_avg": 26.124078947368425,
+      "n_partidos": 34.0,
+      "off_strength": 0.8436634494334871,
+      "def_strength": 1.1361328348529356,
+      "off_strength_epa": 0.7794909344607248,
+      "def_strength_epa": 1.250178937218188
     }
-  }
+  },
+  "market_lines": [
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "KC",
+      "away_team": "BAL",
+      "spread_line": 3.0,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "PHI",
+      "away_team": "GB",
+      "spread_line": 2.0,
+      "total_line": 49.5
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "ATL",
+      "away_team": "PIT",
+      "spread_line": 4.0,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "BUF",
+      "away_team": "ARI",
+      "spread_line": 6.5,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "CHI",
+      "away_team": "TEN",
+      "spread_line": 4.0,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "CIN",
+      "away_team": "NE",
+      "spread_line": 8.0,
+      "total_line": 40.5
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "IND",
+      "away_team": "HOU",
+      "spread_line": -3.0,
+      "total_line": 49.0
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "MIA",
+      "away_team": "JAX",
+      "spread_line": 3.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "NO",
+      "away_team": "CAR",
+      "spread_line": 3.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "NYG",
+      "away_team": "MIN",
+      "spread_line": -1.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "LAC",
+      "away_team": "LV",
+      "spread_line": 3.0,
+      "total_line": 41.0
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "SEA",
+      "away_team": "DEN",
+      "spread_line": 6.5,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "CLE",
+      "away_team": "DAL",
+      "spread_line": 2.5,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "TB",
+      "away_team": "WAS",
+      "spread_line": 4.0,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "DET",
+      "away_team": "LA",
+      "spread_line": 5.0,
+      "total_line": 54.0
+    },
+    {
+      "season": 2024,
+      "week": 1,
+      "home_team": "SF",
+      "away_team": "NYJ",
+      "spread_line": 3.5,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "MIA",
+      "away_team": "BUF",
+      "spread_line": 2.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "BAL",
+      "away_team": "LV",
+      "spread_line": 9.0,
+      "total_line": 41.0
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "CAR",
+      "away_team": "LAC",
+      "spread_line": -5.0,
+      "total_line": 39.0
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "DAL",
+      "away_team": "NO",
+      "spread_line": 6.5,
+      "total_line": 47.0
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "DET",
+      "away_team": "TB",
+      "spread_line": 7.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "GB",
+      "away_team": "IND",
+      "spread_line": -3.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "JAX",
+      "away_team": "CLE",
+      "spread_line": 3.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "MIN",
+      "away_team": "SF",
+      "spread_line": -4.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "NE",
+      "away_team": "SEA",
+      "spread_line": -3.5,
+      "total_line": 39.0
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "TEN",
+      "away_team": "NYJ",
+      "spread_line": -3.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "WAS",
+      "away_team": "NYG",
+      "spread_line": 1.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "ARI",
+      "away_team": "LA",
+      "spread_line": -1.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "DEN",
+      "away_team": "PIT",
+      "spread_line": -3.0,
+      "total_line": 36.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "KC",
+      "away_team": "CIN",
+      "spread_line": 6.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "HOU",
+      "away_team": "CHI",
+      "spread_line": 6.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2024,
+      "week": 2,
+      "home_team": "PHI",
+      "away_team": "ATL",
+      "spread_line": 5.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "NYJ",
+      "away_team": "NE",
+      "spread_line": 6.5,
+      "total_line": 39.0
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "CLE",
+      "away_team": "NYG",
+      "spread_line": 6.5,
+      "total_line": 38.0
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "IND",
+      "away_team": "CHI",
+      "spread_line": 1.5,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "MIN",
+      "away_team": "HOU",
+      "spread_line": -2.0,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "NO",
+      "away_team": "PHI",
+      "spread_line": 2.5,
+      "total_line": 49.0
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "PIT",
+      "away_team": "LAC",
+      "spread_line": 3.0,
+      "total_line": 36.0
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "TB",
+      "away_team": "DEN",
+      "spread_line": 6.0,
+      "total_line": 40.5
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "TEN",
+      "away_team": "GB",
+      "spread_line": 3.0,
+      "total_line": 37.0
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "LV",
+      "away_team": "CAR",
+      "spread_line": 5.5,
+      "total_line": 40.0
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "SEA",
+      "away_team": "MIA",
+      "spread_line": 4.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "ARI",
+      "away_team": "DET",
+      "spread_line": -3.0,
+      "total_line": 51.5
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "DAL",
+      "away_team": "BAL",
+      "spread_line": -1.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "LA",
+      "away_team": "SF",
+      "spread_line": -6.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "ATL",
+      "away_team": "KC",
+      "spread_line": -3.0,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "BUF",
+      "away_team": "JAX",
+      "spread_line": 4.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 3,
+      "home_team": "CIN",
+      "away_team": "WAS",
+      "spread_line": 7.5,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "NYG",
+      "away_team": "DAL",
+      "spread_line": -5.5,
+      "total_line": 45.0
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "ATL",
+      "away_team": "NO",
+      "spread_line": 2.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "CAR",
+      "away_team": "CIN",
+      "spread_line": -4.5,
+      "total_line": 47.0
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "CHI",
+      "away_team": "LA",
+      "spread_line": 3.0,
+      "total_line": 40.0
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "GB",
+      "away_team": "MIN",
+      "spread_line": 2.5,
+      "total_line": 44.0
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "HOU",
+      "away_team": "JAX",
+      "spread_line": 5.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "IND",
+      "away_team": "PIT",
+      "spread_line": -2.5,
+      "total_line": 40.0
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "NYJ",
+      "away_team": "DEN",
+      "spread_line": 7.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "TB",
+      "away_team": "PHI",
+      "spread_line": -1.0,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "ARI",
+      "away_team": "WAS",
+      "spread_line": 3.5,
+      "total_line": 49.0
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "SF",
+      "away_team": "NE",
+      "spread_line": 10.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "LAC",
+      "away_team": "KC",
+      "spread_line": -7.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "LV",
+      "away_team": "CLE",
+      "spread_line": -2.5,
+      "total_line": 36.5
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "BAL",
+      "away_team": "BUF",
+      "spread_line": 2.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "MIA",
+      "away_team": "TEN",
+      "spread_line": 2.5,
+      "total_line": 37.0
+    },
+    {
+      "season": 2024,
+      "week": 4,
+      "home_team": "DET",
+      "away_team": "SEA",
+      "spread_line": 3.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "ATL",
+      "away_team": "TB",
+      "spread_line": 2.5,
+      "total_line": 44.0
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "MIN",
+      "away_team": "NYJ",
+      "spread_line": 2.5,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "CHI",
+      "away_team": "CAR",
+      "spread_line": 4.0,
+      "total_line": 40.0
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "CIN",
+      "away_team": "BAL",
+      "spread_line": -2.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "HOU",
+      "away_team": "BUF",
+      "spread_line": 1.0,
+      "total_line": 48.0
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "JAX",
+      "away_team": "IND",
+      "spread_line": 3.5,
+      "total_line": 45.0
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "NE",
+      "away_team": "MIA",
+      "spread_line": -2.0,
+      "total_line": 37.0
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "WAS",
+      "away_team": "CLE",
+      "spread_line": 3.0,
+      "total_line": 44.0
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "DEN",
+      "away_team": "LV",
+      "spread_line": 3.0,
+      "total_line": 36.0
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "SF",
+      "away_team": "ARI",
+      "spread_line": 7.0,
+      "total_line": 48.5
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "LA",
+      "away_team": "GB",
+      "spread_line": -3.0,
+      "total_line": 49.5
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "SEA",
+      "away_team": "NYG",
+      "spread_line": 7.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "PIT",
+      "away_team": "DAL",
+      "spread_line": 2.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 5,
+      "home_team": "KC",
+      "away_team": "NO",
+      "spread_line": 5.5,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "SEA",
+      "away_team": "SF",
+      "spread_line": -3.5,
+      "total_line": 49.0
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "CHI",
+      "away_team": "JAX",
+      "spread_line": -1.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "BAL",
+      "away_team": "WAS",
+      "spread_line": 6.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "GB",
+      "away_team": "ARI",
+      "spread_line": 5.5,
+      "total_line": 47.0
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "NE",
+      "away_team": "HOU",
+      "spread_line": -6.5,
+      "total_line": 38.5
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "NO",
+      "away_team": "TB",
+      "spread_line": -3.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "PHI",
+      "away_team": "CLE",
+      "spread_line": 8.0,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "TEN",
+      "away_team": "IND",
+      "spread_line": 2.5,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "DEN",
+      "away_team": "LAC",
+      "spread_line": -3.0,
+      "total_line": 37.0
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "LV",
+      "away_team": "PIT",
+      "spread_line": -3.5,
+      "total_line": 36.5
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "CAR",
+      "away_team": "ATL",
+      "spread_line": -6.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "DAL",
+      "away_team": "DET",
+      "spread_line": -3.5,
+      "total_line": 52.5
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "NYG",
+      "away_team": "CIN",
+      "spread_line": -4.5,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 6,
+      "home_team": "NYJ",
+      "away_team": "BUF",
+      "spread_line": -1.0,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "NO",
+      "away_team": "DEN",
+      "spread_line": -2.5,
+      "total_line": 37.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "JAX",
+      "away_team": "NE",
+      "spread_line": 6.5,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "ATL",
+      "away_team": "SEA",
+      "spread_line": 3.0,
+      "total_line": 51.5
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "BUF",
+      "away_team": "TEN",
+      "spread_line": 9.5,
+      "total_line": 41.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "CLE",
+      "away_team": "CIN",
+      "spread_line": -5.5,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "GB",
+      "away_team": "HOU",
+      "spread_line": 3.0,
+      "total_line": 48.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "IND",
+      "away_team": "MIA",
+      "spread_line": 3.0,
+      "total_line": 44.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "MIN",
+      "away_team": "DET",
+      "spread_line": 1.0,
+      "total_line": 50.5
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "NYG",
+      "away_team": "PHI",
+      "spread_line": -3.0,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "LA",
+      "away_team": "LV",
+      "spread_line": 7.0,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "WAS",
+      "away_team": "CAR",
+      "spread_line": 10.0,
+      "total_line": 51.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "SF",
+      "away_team": "KC",
+      "spread_line": 2.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "PIT",
+      "away_team": "NYJ",
+      "spread_line": -3.0,
+      "total_line": 40.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "TB",
+      "away_team": "BAL",
+      "spread_line": -4.5,
+      "total_line": 51.0
+    },
+    {
+      "season": 2024,
+      "week": 7,
+      "home_team": "ARI",
+      "away_team": "LAC",
+      "spread_line": -1.0,
+      "total_line": 44.0
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "LA",
+      "away_team": "MIN",
+      "spread_line": -3.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "CIN",
+      "away_team": "PHI",
+      "spread_line": 2.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "CLE",
+      "away_team": "BAL",
+      "spread_line": -7.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "DET",
+      "away_team": "TEN",
+      "spread_line": 12.5,
+      "total_line": 45.0
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "HOU",
+      "away_team": "IND",
+      "spread_line": 5.0,
+      "total_line": 45.0
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "JAX",
+      "away_team": "GB",
+      "spread_line": -3.5,
+      "total_line": 49.0
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "MIA",
+      "away_team": "ARI",
+      "spread_line": 4.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "NE",
+      "away_team": "NYJ",
+      "spread_line": -7.0,
+      "total_line": 41.0
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "TB",
+      "away_team": "ATL",
+      "spread_line": -1.5,
+      "total_line": 47.0
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "LAC",
+      "away_team": "NO",
+      "spread_line": 7.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "SEA",
+      "away_team": "BUF",
+      "spread_line": -3.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "DEN",
+      "away_team": "CAR",
+      "spread_line": 13.0,
+      "total_line": 40.5
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "LV",
+      "away_team": "KC",
+      "spread_line": -9.0,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "WAS",
+      "away_team": "CHI",
+      "spread_line": 1.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "SF",
+      "away_team": "DAL",
+      "spread_line": 5.5,
+      "total_line": 48.0
+    },
+    {
+      "season": 2024,
+      "week": 8,
+      "home_team": "PIT",
+      "away_team": "NYG",
+      "spread_line": 6.0,
+      "total_line": 37.5
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "NYJ",
+      "away_team": "HOU",
+      "spread_line": 2.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "ATL",
+      "away_team": "DAL",
+      "spread_line": 3.0,
+      "total_line": 52.0
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "BAL",
+      "away_team": "DEN",
+      "spread_line": 9.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "BUF",
+      "away_team": "MIA",
+      "spread_line": 6.5,
+      "total_line": 49.0
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "CAR",
+      "away_team": "NO",
+      "spread_line": -7.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "CIN",
+      "away_team": "LV",
+      "spread_line": 8.0,
+      "total_line": 45.0
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "CLE",
+      "away_team": "LAC",
+      "spread_line": -2.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "NYG",
+      "away_team": "WAS",
+      "spread_line": -4.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "TEN",
+      "away_team": "NE",
+      "spread_line": 3.0,
+      "total_line": 38.5
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "ARI",
+      "away_team": "CHI",
+      "spread_line": 1.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "PHI",
+      "away_team": "JAX",
+      "spread_line": 7.5,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "GB",
+      "away_team": "DET",
+      "spread_line": -2.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "SEA",
+      "away_team": "LA",
+      "spread_line": -1.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "MIN",
+      "away_team": "IND",
+      "spread_line": 6.5,
+      "total_line": 47.0
+    },
+    {
+      "season": 2024,
+      "week": 9,
+      "home_team": "KC",
+      "away_team": "TB",
+      "spread_line": 9.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "BAL",
+      "away_team": "CIN",
+      "spread_line": 6.0,
+      "total_line": 53.0
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "CAR",
+      "away_team": "NYG",
+      "spread_line": -6.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "CHI",
+      "away_team": "NE",
+      "spread_line": 6.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "IND",
+      "away_team": "BUF",
+      "spread_line": -4.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "JAX",
+      "away_team": "MIN",
+      "spread_line": -7.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "KC",
+      "away_team": "DEN",
+      "spread_line": 7.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "NO",
+      "away_team": "ATL",
+      "spread_line": -3.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "TB",
+      "away_team": "SF",
+      "spread_line": -6.5,
+      "total_line": 50.5
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "WAS",
+      "away_team": "PIT",
+      "spread_line": 1.5,
+      "total_line": 45.0
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "LAC",
+      "away_team": "TEN",
+      "spread_line": 8.0,
+      "total_line": 40.0
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "ARI",
+      "away_team": "NYJ",
+      "spread_line": -2.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "DAL",
+      "away_team": "PHI",
+      "spread_line": -7.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "HOU",
+      "away_team": "DET",
+      "spread_line": -4.5,
+      "total_line": 49.0
+    },
+    {
+      "season": 2024,
+      "week": 10,
+      "home_team": "LA",
+      "away_team": "MIA",
+      "spread_line": 2.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "PHI",
+      "away_team": "WAS",
+      "spread_line": 4.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "CHI",
+      "away_team": "GB",
+      "spread_line": -6.0,
+      "total_line": 41.0
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "DET",
+      "away_team": "JAX",
+      "spread_line": 14.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "MIA",
+      "away_team": "LV",
+      "spread_line": 8.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "NE",
+      "away_team": "LA",
+      "spread_line": -4.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "NO",
+      "away_team": "CLE",
+      "spread_line": -1.0,
+      "total_line": 44.0
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "NYJ",
+      "away_team": "IND",
+      "spread_line": 4.0,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "PIT",
+      "away_team": "BAL",
+      "spread_line": -3.0,
+      "total_line": 48.0
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "TEN",
+      "away_team": "MIN",
+      "spread_line": -6.0,
+      "total_line": 40.0
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "DEN",
+      "away_team": "ATL",
+      "spread_line": 2.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "SF",
+      "away_team": "SEA",
+      "spread_line": 6.0,
+      "total_line": 49.0
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "BUF",
+      "away_team": "KC",
+      "spread_line": 2.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "LAC",
+      "away_team": "CIN",
+      "spread_line": 1.0,
+      "total_line": 48.0
+    },
+    {
+      "season": 2024,
+      "week": 11,
+      "home_team": "DAL",
+      "away_team": "HOU",
+      "spread_line": -7.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "CLE",
+      "away_team": "PIT",
+      "spread_line": -3.5,
+      "total_line": 36.5
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "CAR",
+      "away_team": "KC",
+      "spread_line": -11.0,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "CHI",
+      "away_team": "MIN",
+      "spread_line": -3.0,
+      "total_line": 39.5
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "HOU",
+      "away_team": "TEN",
+      "spread_line": 8.0,
+      "total_line": 40.5
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "IND",
+      "away_team": "DET",
+      "spread_line": -7.0,
+      "total_line": 50.5
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "MIA",
+      "away_team": "NE",
+      "spread_line": 7.5,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "NYG",
+      "away_team": "TB",
+      "spread_line": -6.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "WAS",
+      "away_team": "DAL",
+      "spread_line": 10.5,
+      "total_line": 45.0
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "LV",
+      "away_team": "DEN",
+      "spread_line": -6.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "GB",
+      "away_team": "SF",
+      "spread_line": 6.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "SEA",
+      "away_team": "ARI",
+      "spread_line": -1.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "LA",
+      "away_team": "PHI",
+      "spread_line": -3.0,
+      "total_line": 49.0
+    },
+    {
+      "season": 2024,
+      "week": 12,
+      "home_team": "LAC",
+      "away_team": "BAL",
+      "spread_line": -3.0,
+      "total_line": 51.0
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "DET",
+      "away_team": "CHI",
+      "spread_line": 9.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "DAL",
+      "away_team": "NYG",
+      "spread_line": 4.5,
+      "total_line": 39.0
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "GB",
+      "away_team": "MIA",
+      "spread_line": 3.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "KC",
+      "away_team": "LV",
+      "spread_line": 13.5,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "ATL",
+      "away_team": "LAC",
+      "spread_line": -1.0,
+      "total_line": 47.0
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "CIN",
+      "away_team": "PIT",
+      "spread_line": 3.0,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "JAX",
+      "away_team": "HOU",
+      "spread_line": -3.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "MIN",
+      "away_team": "ARI",
+      "spread_line": 3.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "NE",
+      "away_team": "IND",
+      "spread_line": -2.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "NYJ",
+      "away_team": "SEA",
+      "spread_line": 1.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "WAS",
+      "away_team": "TEN",
+      "spread_line": 6.0,
+      "total_line": 45.0
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "CAR",
+      "away_team": "TB",
+      "spread_line": -6.5,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "NO",
+      "away_team": "LA",
+      "spread_line": -2.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "BAL",
+      "away_team": "PHI",
+      "spread_line": 3.0,
+      "total_line": 50.0
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "BUF",
+      "away_team": "SF",
+      "spread_line": 6.5,
+      "total_line": 45.0
+    },
+    {
+      "season": 2024,
+      "week": 13,
+      "home_team": "DEN",
+      "away_team": "CLE",
+      "spread_line": 6.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "DET",
+      "away_team": "GB",
+      "spread_line": 3.0,
+      "total_line": 53.0
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "MIA",
+      "away_team": "NYJ",
+      "spread_line": 6.5,
+      "total_line": 45.0
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "MIN",
+      "away_team": "ATL",
+      "spread_line": 6.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "NYG",
+      "away_team": "NO",
+      "spread_line": -5.5,
+      "total_line": 41.0
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "PHI",
+      "away_team": "CAR",
+      "spread_line": 14.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "PIT",
+      "away_team": "CLE",
+      "spread_line": 6.0,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "TB",
+      "away_team": "LV",
+      "spread_line": 7.0,
+      "total_line": 47.0
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "TEN",
+      "away_team": "JAX",
+      "spread_line": 3.0,
+      "total_line": 40.0
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "ARI",
+      "away_team": "SEA",
+      "spread_line": 3.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "LA",
+      "away_team": "BUF",
+      "spread_line": -3.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "SF",
+      "away_team": "CHI",
+      "spread_line": 3.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "KC",
+      "away_team": "LAC",
+      "spread_line": 5.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 14,
+      "home_team": "DAL",
+      "away_team": "CIN",
+      "spread_line": -5.0,
+      "total_line": 51.0
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "SF",
+      "away_team": "LA",
+      "spread_line": 3.0,
+      "total_line": 48.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "CAR",
+      "away_team": "DAL",
+      "spread_line": 2.5,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "CLE",
+      "away_team": "KC",
+      "spread_line": -4.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "HOU",
+      "away_team": "MIA",
+      "spread_line": 2.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "JAX",
+      "away_team": "NYJ",
+      "spread_line": -3.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "NO",
+      "away_team": "WAS",
+      "spread_line": -7.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "NYG",
+      "away_team": "BAL",
+      "spread_line": -16.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "TEN",
+      "away_team": "CIN",
+      "spread_line": -6.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "ARI",
+      "away_team": "NE",
+      "spread_line": 6.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "DEN",
+      "away_team": "IND",
+      "spread_line": 4.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "DET",
+      "away_team": "BUF",
+      "spread_line": 2.5,
+      "total_line": 55.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "LAC",
+      "away_team": "TB",
+      "spread_line": 3.0,
+      "total_line": 46.0
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "PHI",
+      "away_team": "PIT",
+      "spread_line": 5.5,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "SEA",
+      "away_team": "GB",
+      "spread_line": -3.0,
+      "total_line": 48.0
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "MIN",
+      "away_team": "CHI",
+      "spread_line": 7.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 15,
+      "home_team": "LV",
+      "away_team": "ATL",
+      "spread_line": -6.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "LAC",
+      "away_team": "DEN",
+      "spread_line": 3.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "KC",
+      "away_team": "HOU",
+      "spread_line": 3.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "BAL",
+      "away_team": "PIT",
+      "spread_line": 7.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "ATL",
+      "away_team": "NYG",
+      "spread_line": 9.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "CAR",
+      "away_team": "ARI",
+      "spread_line": -5.5,
+      "total_line": 47.0
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "CHI",
+      "away_team": "DET",
+      "spread_line": -7.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "CIN",
+      "away_team": "CLE",
+      "spread_line": 10.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "IND",
+      "away_team": "TEN",
+      "spread_line": 4.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "NYJ",
+      "away_team": "LA",
+      "spread_line": -3.0,
+      "total_line": 47.0
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "WAS",
+      "away_team": "PHI",
+      "spread_line": -4.0,
+      "total_line": 47.0
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "SEA",
+      "away_team": "MIN",
+      "spread_line": -2.5,
+      "total_line": 43.0
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "BUF",
+      "away_team": "NE",
+      "spread_line": 14.0,
+      "total_line": 48.0
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "LV",
+      "away_team": "JAX",
+      "spread_line": 2.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "MIA",
+      "away_team": "SF",
+      "spread_line": -2.0,
+      "total_line": 44.0
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "DAL",
+      "away_team": "TB",
+      "spread_line": -4.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 16,
+      "home_team": "GB",
+      "away_team": "NO",
+      "spread_line": 14.0,
+      "total_line": 44.0
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "PIT",
+      "away_team": "KC",
+      "spread_line": -3.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "HOU",
+      "away_team": "BAL",
+      "spread_line": -5.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "CHI",
+      "away_team": "SEA",
+      "spread_line": -3.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "NE",
+      "away_team": "LAC",
+      "spread_line": -6.0,
+      "total_line": 42.0
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "CIN",
+      "away_team": "DEN",
+      "spread_line": 3.5,
+      "total_line": 50.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "LA",
+      "away_team": "ARI",
+      "spread_line": 6.5,
+      "total_line": 48.0
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "BUF",
+      "away_team": "NYJ",
+      "spread_line": 10.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "JAX",
+      "away_team": "TEN",
+      "spread_line": -1.0,
+      "total_line": 38.0
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "NO",
+      "away_team": "LV",
+      "spread_line": -2.0,
+      "total_line": 37.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "NYG",
+      "away_team": "IND",
+      "spread_line": -7.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "PHI",
+      "away_team": "DAL",
+      "spread_line": 7.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "TB",
+      "away_team": "CAR",
+      "spread_line": 9.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "CLE",
+      "away_team": "MIA",
+      "spread_line": -3.0,
+      "total_line": 32.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "MIN",
+      "away_team": "GB",
+      "spread_line": -1.0,
+      "total_line": 49.0
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "WAS",
+      "away_team": "ATL",
+      "spread_line": 3.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 17,
+      "home_team": "SF",
+      "away_team": "DET",
+      "spread_line": -4.0,
+      "total_line": 50.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "BAL",
+      "away_team": "CLE",
+      "spread_line": 19.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "PIT",
+      "away_team": "CIN",
+      "spread_line": -2.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "ATL",
+      "away_team": "CAR",
+      "spread_line": 7.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "DAL",
+      "away_team": "WAS",
+      "spread_line": -7.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "GB",
+      "away_team": "CHI",
+      "spread_line": 10.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "IND",
+      "away_team": "JAX",
+      "spread_line": 3.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "NE",
+      "away_team": "BUF",
+      "spread_line": -3.0,
+      "total_line": 36.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "PHI",
+      "away_team": "NYG",
+      "spread_line": 3.0,
+      "total_line": 36.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "TB",
+      "away_team": "NO",
+      "spread_line": 14.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "TEN",
+      "away_team": "HOU",
+      "spread_line": 2.5,
+      "total_line": 36.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "ARI",
+      "away_team": "SF",
+      "spread_line": 4.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "DEN",
+      "away_team": "KC",
+      "spread_line": 10.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "LA",
+      "away_team": "SEA",
+      "spread_line": -7.5,
+      "total_line": 38.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "LV",
+      "away_team": "LAC",
+      "spread_line": -7.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "NYJ",
+      "away_team": "MIA",
+      "spread_line": 1.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2024,
+      "week": 18,
+      "home_team": "DET",
+      "away_team": "MIN",
+      "spread_line": 3.0,
+      "total_line": 56.5
+    },
+    {
+      "season": 2024,
+      "week": 19,
+      "home_team": "HOU",
+      "away_team": "LAC",
+      "spread_line": -3.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 19,
+      "home_team": "BAL",
+      "away_team": "PIT",
+      "spread_line": 9.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2024,
+      "week": 19,
+      "home_team": "BUF",
+      "away_team": "DEN",
+      "spread_line": 7.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2024,
+      "week": 19,
+      "home_team": "PHI",
+      "away_team": "GB",
+      "spread_line": 5.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2024,
+      "week": 19,
+      "home_team": "TB",
+      "away_team": "WAS",
+      "spread_line": 3.0,
+      "total_line": 51.5
+    },
+    {
+      "season": 2024,
+      "week": 19,
+      "home_team": "LA",
+      "away_team": "MIN",
+      "spread_line": -2.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2024,
+      "week": 20,
+      "home_team": "KC",
+      "away_team": "HOU",
+      "spread_line": 9.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2024,
+      "week": 20,
+      "home_team": "DET",
+      "away_team": "WAS",
+      "spread_line": 8.5,
+      "total_line": 55.5
+    },
+    {
+      "season": 2024,
+      "week": 20,
+      "home_team": "PHI",
+      "away_team": "LA",
+      "spread_line": 7.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2024,
+      "week": 20,
+      "home_team": "BUF",
+      "away_team": "BAL",
+      "spread_line": -1.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2024,
+      "week": 21,
+      "home_team": "PHI",
+      "away_team": "WAS",
+      "spread_line": 6.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2024,
+      "week": 21,
+      "home_team": "KC",
+      "away_team": "BUF",
+      "spread_line": 1.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2024,
+      "week": 22,
+      "home_team": "PHI",
+      "away_team": "KC",
+      "spread_line": -1.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "PHI",
+      "away_team": "DAL",
+      "spread_line": 8.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "LAC",
+      "away_team": "KC",
+      "spread_line": -3.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "ATL",
+      "away_team": "TB",
+      "spread_line": -1.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "CLE",
+      "away_team": "CIN",
+      "spread_line": -5.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "IND",
+      "away_team": "MIA",
+      "spread_line": 1.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "JAX",
+      "away_team": "CAR",
+      "spread_line": 4.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "NE",
+      "away_team": "LV",
+      "spread_line": 2.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "NO",
+      "away_team": "ARI",
+      "spread_line": -6.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "NYJ",
+      "away_team": "PIT",
+      "spread_line": -3.0,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "WAS",
+      "away_team": "NYG",
+      "spread_line": 6.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "DEN",
+      "away_team": "TEN",
+      "spread_line": 8.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "SEA",
+      "away_team": "SF",
+      "spread_line": -2.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "GB",
+      "away_team": "DET",
+      "spread_line": 1.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "LA",
+      "away_team": "HOU",
+      "spread_line": 3.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "BUF",
+      "away_team": "BAL",
+      "spread_line": -1.5,
+      "total_line": 50.5
+    },
+    {
+      "season": 2025,
+      "week": 1,
+      "home_team": "CHI",
+      "away_team": "MIN",
+      "spread_line": -1.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "GB",
+      "away_team": "WAS",
+      "spread_line": 3.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "BAL",
+      "away_team": "CLE",
+      "spread_line": 12.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "CIN",
+      "away_team": "JAX",
+      "spread_line": 3.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "DAL",
+      "away_team": "NYG",
+      "spread_line": 4.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "DET",
+      "away_team": "CHI",
+      "spread_line": 6.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "MIA",
+      "away_team": "NE",
+      "spread_line": 1.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "NO",
+      "away_team": "SF",
+      "spread_line": -3.0,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "NYJ",
+      "away_team": "BUF",
+      "spread_line": -6.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "PIT",
+      "away_team": "SEA",
+      "spread_line": 3.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "TEN",
+      "away_team": "LA",
+      "spread_line": -5.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "ARI",
+      "away_team": "CAR",
+      "spread_line": 7.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "IND",
+      "away_team": "DEN",
+      "spread_line": -2.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "KC",
+      "away_team": "PHI",
+      "spread_line": -1.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "MIN",
+      "away_team": "ATL",
+      "spread_line": 3.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "HOU",
+      "away_team": "TB",
+      "spread_line": 2.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 2,
+      "home_team": "LV",
+      "away_team": "LAC",
+      "spread_line": -3.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "BUF",
+      "away_team": "MIA",
+      "spread_line": 12.5,
+      "total_line": 50.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "CAR",
+      "away_team": "ATL",
+      "spread_line": -5.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "CLE",
+      "away_team": "GB",
+      "spread_line": -8.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "JAX",
+      "away_team": "HOU",
+      "spread_line": 1.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "MIN",
+      "away_team": "CIN",
+      "spread_line": 3.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "NE",
+      "away_team": "PIT",
+      "spread_line": -1.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "PHI",
+      "away_team": "LA",
+      "spread_line": 3.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "TB",
+      "away_team": "NYJ",
+      "spread_line": 6.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "TEN",
+      "away_team": "IND",
+      "spread_line": -6.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "WAS",
+      "away_team": "LV",
+      "spread_line": 2.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "LAC",
+      "away_team": "DEN",
+      "spread_line": 2.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "SEA",
+      "away_team": "NO",
+      "spread_line": 7.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "CHI",
+      "away_team": "DAL",
+      "spread_line": -1.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "SF",
+      "away_team": "ARI",
+      "spread_line": 1.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "NYG",
+      "away_team": "KC",
+      "spread_line": -6.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 3,
+      "home_team": "BAL",
+      "away_team": "DET",
+      "spread_line": 4.5,
+      "total_line": 53.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "ARI",
+      "away_team": "SEA",
+      "spread_line": -1.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "PIT",
+      "away_team": "MIN",
+      "spread_line": -2.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "ATL",
+      "away_team": "WAS",
+      "spread_line": 2.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "BUF",
+      "away_team": "NO",
+      "spread_line": 15.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "DET",
+      "away_team": "CLE",
+      "spread_line": 10.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "HOU",
+      "away_team": "TEN",
+      "spread_line": 7.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "NE",
+      "away_team": "CAR",
+      "spread_line": 5.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "NYG",
+      "away_team": "LAC",
+      "spread_line": -6.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "TB",
+      "away_team": "PHI",
+      "spread_line": -3.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "LA",
+      "away_team": "IND",
+      "spread_line": 3.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "SF",
+      "away_team": "JAX",
+      "spread_line": 3.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "KC",
+      "away_team": "BAL",
+      "spread_line": -2.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "LV",
+      "away_team": "CHI",
+      "spread_line": 1.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "DAL",
+      "away_team": "GB",
+      "spread_line": -7.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "MIA",
+      "away_team": "NYJ",
+      "spread_line": 2.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 4,
+      "home_team": "DEN",
+      "away_team": "CIN",
+      "spread_line": 7.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "LA",
+      "away_team": "SF",
+      "spread_line": 8.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "CLE",
+      "away_team": "MIN",
+      "spread_line": -3.5,
+      "total_line": 35.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "BAL",
+      "away_team": "HOU",
+      "spread_line": -2.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "CAR",
+      "away_team": "MIA",
+      "spread_line": -1.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "IND",
+      "away_team": "LV",
+      "spread_line": 7.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "NO",
+      "away_team": "NYG",
+      "spread_line": 1.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "NYJ",
+      "away_team": "DAL",
+      "spread_line": 1.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "PHI",
+      "away_team": "DEN",
+      "spread_line": 3.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "ARI",
+      "away_team": "TEN",
+      "spread_line": 7.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "SEA",
+      "away_team": "TB",
+      "spread_line": 3.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "CIN",
+      "away_team": "DET",
+      "spread_line": -10.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "LAC",
+      "away_team": "WAS",
+      "spread_line": 2.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "BUF",
+      "away_team": "NE",
+      "spread_line": 7.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 5,
+      "home_team": "JAX",
+      "away_team": "KC",
+      "spread_line": -3.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "NYG",
+      "away_team": "PHI",
+      "spread_line": -7.0,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "NYJ",
+      "away_team": "DEN",
+      "spread_line": -7.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "BAL",
+      "away_team": "LA",
+      "spread_line": -7.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "CAR",
+      "away_team": "DAL",
+      "spread_line": -3.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "IND",
+      "away_team": "ARI",
+      "spread_line": 8.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "JAX",
+      "away_team": "SEA",
+      "spread_line": -1.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "MIA",
+      "away_team": "LAC",
+      "spread_line": -3.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "NO",
+      "away_team": "NE",
+      "spread_line": -3.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "PIT",
+      "away_team": "CLE",
+      "spread_line": 5.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "LV",
+      "away_team": "TEN",
+      "spread_line": 3.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "GB",
+      "away_team": "CIN",
+      "spread_line": 14.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "TB",
+      "away_team": "SF",
+      "spread_line": 3.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "KC",
+      "away_team": "DET",
+      "spread_line": 2.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "ATL",
+      "away_team": "BUF",
+      "spread_line": -3.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 6,
+      "home_team": "WAS",
+      "away_team": "CHI",
+      "spread_line": 5.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "CIN",
+      "away_team": "PIT",
+      "spread_line": -5.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "JAX",
+      "away_team": "LA",
+      "spread_line": -3.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "CHI",
+      "away_team": "NO",
+      "spread_line": 4.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "CLE",
+      "away_team": "MIA",
+      "spread_line": 2.5,
+      "total_line": 34.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "KC",
+      "away_team": "LV",
+      "spread_line": 13.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "MIN",
+      "away_team": "PHI",
+      "spread_line": -2.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "NYJ",
+      "away_team": "CAR",
+      "spread_line": 1.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "TEN",
+      "away_team": "NE",
+      "spread_line": -6.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "DEN",
+      "away_team": "NYG",
+      "spread_line": 7.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "LAC",
+      "away_team": "IND",
+      "spread_line": 2.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "ARI",
+      "away_team": "GB",
+      "spread_line": -7.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "DAL",
+      "away_team": "WAS",
+      "spread_line": 1.5,
+      "total_line": 54.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "SF",
+      "away_team": "ATL",
+      "spread_line": 1.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "DET",
+      "away_team": "TB",
+      "spread_line": 6.0,
+      "total_line": 54.5
+    },
+    {
+      "season": 2025,
+      "week": 7,
+      "home_team": "SEA",
+      "away_team": "HOU",
+      "spread_line": 3.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "LAC",
+      "away_team": "MIN",
+      "spread_line": 3.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "ATL",
+      "away_team": "MIA",
+      "spread_line": 7.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "BAL",
+      "away_team": "CHI",
+      "spread_line": 2.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "CAR",
+      "away_team": "BUF",
+      "spread_line": -7.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "CIN",
+      "away_team": "NYJ",
+      "spread_line": 5.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "HOU",
+      "away_team": "SF",
+      "spread_line": 2.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "NE",
+      "away_team": "CLE",
+      "spread_line": 7.0,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "PHI",
+      "away_team": "NYG",
+      "spread_line": 7.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "NO",
+      "away_team": "TB",
+      "spread_line": -4.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "DEN",
+      "away_team": "DAL",
+      "spread_line": 3.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "IND",
+      "away_team": "TEN",
+      "spread_line": 15.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "PIT",
+      "away_team": "GB",
+      "spread_line": -3.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 8,
+      "home_team": "KC",
+      "away_team": "WAS",
+      "spread_line": 10.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "MIA",
+      "away_team": "BAL",
+      "spread_line": -7.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "CIN",
+      "away_team": "CHI",
+      "spread_line": -3.0,
+      "total_line": 51.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "DET",
+      "away_team": "MIN",
+      "spread_line": 9.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "GB",
+      "away_team": "CAR",
+      "spread_line": 12.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "HOU",
+      "away_team": "DEN",
+      "spread_line": 1.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "NE",
+      "away_team": "ATL",
+      "spread_line": 5.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "NYG",
+      "away_team": "SF",
+      "spread_line": -2.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "PIT",
+      "away_team": "IND",
+      "spread_line": -3.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "TEN",
+      "away_team": "LAC",
+      "spread_line": -10.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "LA",
+      "away_team": "NO",
+      "spread_line": 14.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "LV",
+      "away_team": "JAX",
+      "spread_line": -2.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "BUF",
+      "away_team": "KC",
+      "spread_line": -2.5,
+      "total_line": 53.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "WAS",
+      "away_team": "SEA",
+      "spread_line": -2.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 9,
+      "home_team": "DAL",
+      "away_team": "ARI",
+      "spread_line": 3.5,
+      "total_line": 53.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "DEN",
+      "away_team": "LV",
+      "spread_line": 9.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "IND",
+      "away_team": "ATL",
+      "spread_line": 6.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "CAR",
+      "away_team": "NO",
+      "spread_line": 5.5,
+      "total_line": 38.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "CHI",
+      "away_team": "NYG",
+      "spread_line": 4.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "HOU",
+      "away_team": "JAX",
+      "spread_line": -1.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "MIA",
+      "away_team": "BUF",
+      "spread_line": -8.5,
+      "total_line": 50.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "MIN",
+      "away_team": "BAL",
+      "spread_line": -4.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "NYJ",
+      "away_team": "CLE",
+      "spread_line": -1.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "TB",
+      "away_team": "NE",
+      "spread_line": 2.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "SEA",
+      "away_team": "ARI",
+      "spread_line": 7.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "SF",
+      "away_team": "LA",
+      "spread_line": -5.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "WAS",
+      "away_team": "DET",
+      "spread_line": -8.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "LAC",
+      "away_team": "PIT",
+      "spread_line": 3.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 10,
+      "home_team": "GB",
+      "away_team": "PHI",
+      "spread_line": 1.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "NE",
+      "away_team": "NYJ",
+      "spread_line": 12.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "MIA",
+      "away_team": "WAS",
+      "spread_line": 2.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "ATL",
+      "away_team": "CAR",
+      "spread_line": 4.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "BUF",
+      "away_team": "TB",
+      "spread_line": 6.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "JAX",
+      "away_team": "LAC",
+      "spread_line": -3.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "MIN",
+      "away_team": "CHI",
+      "spread_line": 3.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "NYG",
+      "away_team": "GB",
+      "spread_line": -7.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "PIT",
+      "away_team": "CIN",
+      "spread_line": 5.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "TEN",
+      "away_team": "HOU",
+      "spread_line": -5.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "ARI",
+      "away_team": "SF",
+      "spread_line": -3.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "LA",
+      "away_team": "SEA",
+      "spread_line": 3.0,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "CLE",
+      "away_team": "BAL",
+      "spread_line": -7.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "DEN",
+      "away_team": "KC",
+      "spread_line": -3.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "PHI",
+      "away_team": "DET",
+      "spread_line": 2.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 11,
+      "home_team": "LV",
+      "away_team": "DAL",
+      "spread_line": -3.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "HOU",
+      "away_team": "BUF",
+      "spread_line": -5.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "BAL",
+      "away_team": "NYJ",
+      "spread_line": 14.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "CHI",
+      "away_team": "PIT",
+      "spread_line": 3.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "CIN",
+      "away_team": "NE",
+      "spread_line": -7.5,
+      "total_line": 50.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "DET",
+      "away_team": "NYG",
+      "spread_line": 14.0,
+      "total_line": 50.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "GB",
+      "away_team": "MIN",
+      "spread_line": 6.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "KC",
+      "away_team": "IND",
+      "spread_line": 3.5,
+      "total_line": 50.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "TEN",
+      "away_team": "SEA",
+      "spread_line": -12.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "ARI",
+      "away_team": "JAX",
+      "spread_line": -2.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "LV",
+      "away_team": "CLE",
+      "spread_line": 3.0,
+      "total_line": 35.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "DAL",
+      "away_team": "PHI",
+      "spread_line": -3.0,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "NO",
+      "away_team": "ATL",
+      "spread_line": 1.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "LA",
+      "away_team": "TB",
+      "spread_line": 7.0,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 12,
+      "home_team": "SF",
+      "away_team": "CAR",
+      "spread_line": 7.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "DET",
+      "away_team": "GB",
+      "spread_line": 2.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "DAL",
+      "away_team": "KC",
+      "spread_line": -3.5,
+      "total_line": 53.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "BAL",
+      "away_team": "CIN",
+      "spread_line": 7.0,
+      "total_line": 52.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "PHI",
+      "away_team": "CHI",
+      "spread_line": 7.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "CAR",
+      "away_team": "LA",
+      "spread_line": -10.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "CLE",
+      "away_team": "SF",
+      "spread_line": -5.5,
+      "total_line": 35.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "IND",
+      "away_team": "HOU",
+      "spread_line": 3.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "MIA",
+      "away_team": "NO",
+      "spread_line": 5.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "NYJ",
+      "away_team": "ATL",
+      "spread_line": -3.0,
+      "total_line": 38.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "TB",
+      "away_team": "ARI",
+      "spread_line": 4.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "TEN",
+      "away_team": "JAX",
+      "spread_line": -6.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "SEA",
+      "away_team": "MIN",
+      "spread_line": 12.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "LAC",
+      "away_team": "LV",
+      "spread_line": 10.0,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "PIT",
+      "away_team": "BUF",
+      "spread_line": -3.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "WAS",
+      "away_team": "DEN",
+      "spread_line": -6.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 13,
+      "home_team": "NE",
+      "away_team": "NYG",
+      "spread_line": 7.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "DET",
+      "away_team": "DAL",
+      "spread_line": 3.5,
+      "total_line": 55.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "ATL",
+      "away_team": "SEA",
+      "spread_line": -7.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "BAL",
+      "away_team": "PIT",
+      "spread_line": 5.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "CLE",
+      "away_team": "TEN",
+      "spread_line": 4.5,
+      "total_line": 33.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "GB",
+      "away_team": "CHI",
+      "spread_line": 6.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "JAX",
+      "away_team": "IND",
+      "spread_line": -2.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "MIN",
+      "away_team": "WAS",
+      "spread_line": -1.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "NYJ",
+      "away_team": "MIA",
+      "spread_line": -2.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "TB",
+      "away_team": "NO",
+      "spread_line": 7.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "LV",
+      "away_team": "DEN",
+      "spread_line": -8.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "ARI",
+      "away_team": "LA",
+      "spread_line": -9.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "BUF",
+      "away_team": "CIN",
+      "spread_line": 6.0,
+      "total_line": 54.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "KC",
+      "away_team": "HOU",
+      "spread_line": 4.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 14,
+      "home_team": "LAC",
+      "away_team": "PHI",
+      "spread_line": -1.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "TB",
+      "away_team": "ATL",
+      "spread_line": 6.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "CHI",
+      "away_team": "CLE",
+      "spread_line": 7.5,
+      "total_line": 38.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "CIN",
+      "away_team": "BAL",
+      "spread_line": -2.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "HOU",
+      "away_team": "ARI",
+      "spread_line": 10.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "JAX",
+      "away_team": "NYJ",
+      "spread_line": 13.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "KC",
+      "away_team": "LAC",
+      "spread_line": 5.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "NE",
+      "away_team": "BUF",
+      "spread_line": -2.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "NYG",
+      "away_team": "WAS",
+      "spread_line": 2.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "PHI",
+      "away_team": "LV",
+      "spread_line": 12.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "DEN",
+      "away_team": "GB",
+      "spread_line": -1.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "LA",
+      "away_team": "DET",
+      "spread_line": 5.5,
+      "total_line": 54.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "NO",
+      "away_team": "CAR",
+      "spread_line": -2.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "SEA",
+      "away_team": "IND",
+      "spread_line": 13.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "SF",
+      "away_team": "TEN",
+      "spread_line": 12.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "DAL",
+      "away_team": "MIN",
+      "spread_line": 5.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 15,
+      "home_team": "PIT",
+      "away_team": "MIA",
+      "spread_line": 3.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "SEA",
+      "away_team": "LA",
+      "spread_line": 1.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "CHI",
+      "away_team": "GB",
+      "spread_line": 1.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "WAS",
+      "away_team": "PHI",
+      "spread_line": -7.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "BAL",
+      "away_team": "NE",
+      "spread_line": 3.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "CAR",
+      "away_team": "TB",
+      "spread_line": -3.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "CLE",
+      "away_team": "BUF",
+      "spread_line": -10.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "DAL",
+      "away_team": "LAC",
+      "spread_line": 1.5,
+      "total_line": 50.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "NO",
+      "away_team": "NYJ",
+      "spread_line": 6.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "NYG",
+      "away_team": "MIN",
+      "spread_line": -2.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "TEN",
+      "away_team": "KC",
+      "spread_line": -3.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "ARI",
+      "away_team": "ATL",
+      "spread_line": -2.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "DEN",
+      "away_team": "JAX",
+      "spread_line": 3.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "DET",
+      "away_team": "PIT",
+      "spread_line": 7.5,
+      "total_line": 52.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "HOU",
+      "away_team": "LV",
+      "spread_line": 14.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "MIA",
+      "away_team": "CIN",
+      "spread_line": -3.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 16,
+      "home_team": "IND",
+      "away_team": "SF",
+      "spread_line": -4.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "WAS",
+      "away_team": "DAL",
+      "spread_line": -8.5,
+      "total_line": 50.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "MIN",
+      "away_team": "DET",
+      "spread_line": -7.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "KC",
+      "away_team": "DEN",
+      "spread_line": -13.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "CAR",
+      "away_team": "SEA",
+      "spread_line": -6.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "CIN",
+      "away_team": "ARI",
+      "spread_line": 7.0,
+      "total_line": 52.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "CLE",
+      "away_team": "PIT",
+      "spread_line": -4.5,
+      "total_line": 35.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "GB",
+      "away_team": "BAL",
+      "spread_line": 2.5,
+      "total_line": 38.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "IND",
+      "away_team": "JAX",
+      "spread_line": -3.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "LAC",
+      "away_team": "HOU",
+      "spread_line": 1.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "LV",
+      "away_team": "NYG",
+      "spread_line": -3.0,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "MIA",
+      "away_team": "TB",
+      "spread_line": -5.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "NYJ",
+      "away_team": "NE",
+      "spread_line": -12.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "TEN",
+      "away_team": "NO",
+      "spread_line": -1.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "BUF",
+      "away_team": "PHI",
+      "spread_line": 3.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "SF",
+      "away_team": "CHI",
+      "spread_line": 3.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2025,
+      "week": 17,
+      "home_team": "ATL",
+      "away_team": "LA",
+      "spread_line": -7.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "ATL",
+      "away_team": "NO",
+      "spread_line": 4.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "BUF",
+      "away_team": "NYJ",
+      "spread_line": 12.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "CHI",
+      "away_team": "DET",
+      "spread_line": 3.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "CIN",
+      "away_team": "CLE",
+      "spread_line": 9.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "DEN",
+      "away_team": "LAC",
+      "spread_line": 14.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "HOU",
+      "away_team": "IND",
+      "spread_line": 9.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "JAX",
+      "away_team": "TEN",
+      "spread_line": 12.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "LA",
+      "away_team": "ARI",
+      "spread_line": 14.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "LV",
+      "away_team": "KC",
+      "spread_line": -3.5,
+      "total_line": 36.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "MIN",
+      "away_team": "GB",
+      "spread_line": 12.5,
+      "total_line": 37.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "NE",
+      "away_team": "MIA",
+      "spread_line": 14.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "NYG",
+      "away_team": "DAL",
+      "spread_line": -3.0,
+      "total_line": 50.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "PHI",
+      "away_team": "WAS",
+      "spread_line": 3.0,
+      "total_line": 38.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "PIT",
+      "away_team": "BAL",
+      "spread_line": -4.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "SF",
+      "away_team": "SEA",
+      "spread_line": -2.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2025,
+      "week": 18,
+      "home_team": "TB",
+      "away_team": "CAR",
+      "spread_line": 3.0,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 19,
+      "home_team": "CHI",
+      "away_team": "GB",
+      "spread_line": -2.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 19,
+      "home_team": "JAX",
+      "away_team": "BUF",
+      "spread_line": 1.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2025,
+      "week": 19,
+      "home_team": "PHI",
+      "away_team": "SF",
+      "spread_line": 6.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 19,
+      "home_team": "NE",
+      "away_team": "LAC",
+      "spread_line": 3.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 19,
+      "home_team": "PIT",
+      "away_team": "HOU",
+      "spread_line": -3.0,
+      "total_line": 38.5
+    },
+    {
+      "season": 2025,
+      "week": 19,
+      "home_team": "CAR",
+      "away_team": "LA",
+      "spread_line": -10.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 20,
+      "home_team": "DEN",
+      "away_team": "BUF",
+      "spread_line": 1.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 20,
+      "home_team": "SEA",
+      "away_team": "SF",
+      "spread_line": 6.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2025,
+      "week": 20,
+      "home_team": "CHI",
+      "away_team": "LA",
+      "spread_line": -3.5,
+      "total_line": 49.5
+    },
+    {
+      "season": 2025,
+      "week": 20,
+      "home_team": "NE",
+      "away_team": "HOU",
+      "spread_line": 3.0,
+      "total_line": 40.5
+    },
+    {
+      "season": 2025,
+      "week": 21,
+      "home_team": "DEN",
+      "away_team": "NE",
+      "spread_line": -3.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2025,
+      "week": 21,
+      "home_team": "SEA",
+      "away_team": "LA",
+      "spread_line": 2.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2025,
+      "week": 22,
+      "home_team": "NE",
+      "away_team": "SEA",
+      "spread_line": -4.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "SEA",
+      "away_team": "NE",
+      "spread_line": 3.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "LA",
+      "away_team": "SF",
+      "spread_line": 3.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "CAR",
+      "away_team": "CHI",
+      "spread_line": -2.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "CIN",
+      "away_team": "TB",
+      "spread_line": 3.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "DET",
+      "away_team": "NO",
+      "spread_line": 7.0,
+      "total_line": 48.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "HOU",
+      "away_team": "BUF",
+      "spread_line": -1.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "IND",
+      "away_team": "BAL",
+      "spread_line": -3.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "JAX",
+      "away_team": "CLE",
+      "spread_line": 7.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "PIT",
+      "away_team": "ATL",
+      "spread_line": 3.0,
+      "total_line": 41.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "TEN",
+      "away_team": "NYJ",
+      "spread_line": 3.0,
+      "total_line": 38.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "LAC",
+      "away_team": "ARI",
+      "spread_line": 11.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "LV",
+      "away_team": "MIA",
+      "spread_line": 3.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "MIN",
+      "away_team": "GB",
+      "spread_line": -1.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "PHI",
+      "away_team": "WAS",
+      "spread_line": 4.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "NYG",
+      "away_team": "DAL",
+      "spread_line": -2.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "home_team": "KC",
+      "away_team": "DEN",
+      "spread_line": 3.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "BUF",
+      "away_team": "DET",
+      "spread_line": 3.0,
+      "total_line": 52.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "ATL",
+      "away_team": "CAR",
+      "spread_line": 1.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "BAL",
+      "away_team": "NO",
+      "spread_line": 7.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "CHI",
+      "away_team": "MIN",
+      "spread_line": 3.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "HOU",
+      "away_team": "CIN",
+      "spread_line": 2.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "NE",
+      "away_team": "PIT",
+      "spread_line": 4.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "NYJ",
+      "away_team": "GB",
+      "spread_line": -6.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "TB",
+      "away_team": "CLE",
+      "spread_line": 6.0,
+      "total_line": 42.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "TEN",
+      "away_team": "PHI",
+      "spread_line": -4.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "DEN",
+      "away_team": "JAX",
+      "spread_line": 2.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "LAC",
+      "away_team": "LV",
+      "spread_line": 8.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "ARI",
+      "away_team": "SEA",
+      "spread_line": -10.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "DAL",
+      "away_team": "WAS",
+      "spread_line": 4.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "SF",
+      "away_team": "MIA",
+      "spread_line": 10.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "KC",
+      "away_team": "IND",
+      "spread_line": 6.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "home_team": "LA",
+      "away_team": "NYG",
+      "spread_line": 8.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "GB",
+      "away_team": "ATL",
+      "spread_line": 7.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "BUF",
+      "away_team": "LAC",
+      "spread_line": 3.0,
+      "total_line": 48.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "CLE",
+      "away_team": "CAR",
+      "spread_line": -1.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "DET",
+      "away_team": "NYJ",
+      "spread_line": 9.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "IND",
+      "away_team": "HOU",
+      "spread_line": -1.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "JAX",
+      "away_team": "NE",
+      "spread_line": 1.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "MIA",
+      "away_team": "KC",
+      "spread_line": -7.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "NYG",
+      "away_team": "TEN",
+      "spread_line": 3.0,
+      "total_line": 44.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "PIT",
+      "away_team": "CIN",
+      "spread_line": -1.5,
+      "total_line": 47.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "WAS",
+      "away_team": "SEA",
+      "spread_line": -3.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "SF",
+      "away_team": "ARI",
+      "spread_line": 11.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "TB",
+      "away_team": "MIN",
+      "spread_line": 1.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "DAL",
+      "away_team": "BAL",
+      "spread_line": -2.5,
+      "total_line": 51.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "NO",
+      "away_team": "LV",
+      "spread_line": 3.5,
+      "total_line": 42.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "DEN",
+      "away_team": "LA",
+      "spread_line": -3.0,
+      "total_line": 45.5
+    },
+    {
+      "season": 2026,
+      "week": 3,
+      "home_team": "CHI",
+      "away_team": "PHI",
+      "spread_line": 1.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "home_team": "CLE",
+      "away_team": "PIT",
+      "spread_line": -2.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "home_team": "WAS",
+      "away_team": "IND",
+      "spread_line": 1.5,
+      "total_line": 50.5
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "home_team": "CHI",
+      "away_team": "NYJ",
+      "spread_line": 8.5,
+      "total_line": 45.5
+    }
+  ]
 }
