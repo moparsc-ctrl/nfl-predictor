@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFL Predictor</title>
+<style>
+  body {
+    background: #0e1117;
+    color: #f0f0f0;
+    font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 16px;
+  }
+  h1 { font-size: 26px; margin-bottom: 4px; }
+  p.sub { color: #969aa5; margin-top: 0; margin-bottom: 32px; text-align: center; }
+  .card {
+    background: #161a22;
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    max-width: 420px;
+  }
+  label { display: block; font-size: 13px; color: #969aa5; margin-bottom: 6px; margin-top: 16px; }
+  select, input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #2a2f3a;
+    background: #0e1117;
+    color: #f0f0f0;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  .fila-dos { display: flex; gap: 12px; }
+  .fila-dos > div { flex: 1; }
+  p.nota { color: #6b6f79; font-size: 12px; margin-top: 6px; margin-bottom: 0; }
+  button {
+    width: 100%;
+    margin-top: 24px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #00c878;
+    color: #05130c;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  button:disabled { opacity: 0.5; cursor: default; }
+  #resultado { margin-top: 28px; max-width: 900px; width: 100%; text-align: center; }
+  #resultado img { width: 100%; border-radius: 12px; }
+  #estado { color: #969aa5; margin-top: 16px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<h1>NFL Predictor</h1>
+<p class="sub">Elige el partido y genera la proyección</p>
+
+<div class="card">
+  <label for="home">Equipo local</label>
+  <select id="home"></select>
+
+  <label for="away">Equipo visitante</label>
+  <select id="away"></select>
+
+  <label>Momios de tu casa (opcional)</label>
+  <div class="fila-dos">
+    <div>
+      <input id="ml_home" type="text" placeholder="Local, ej. -110">
+    </div>
+    <div>
+      <input id="ml_away" type="text" placeholder="Visitante, ej. +100">
+    </div>
+  </div>
+  <p class="nota">Formato americano. Si los llenas, la ficha calcula el valor esperado real.</p>
+
+  <button id="btn" onclick="generar()">Generar proyección</button>
+</div>
+
+<div id="resultado"></div>
+<div id="estado"></div>
+
+<script>
+const EQUIPOS = [
+  ["ARI","Arizona Cardinals"], ["ATL","Atlanta Falcons"], ["BAL","Baltimore Ravens"],
+  ["BUF","Buffalo Bills"], ["CAR","Carolina Panthers"], ["CHI","Chicago Bears"],
+  ["CIN","Cincinnati Bengals"], ["CLE","Cleveland Browns"], ["DAL","Dallas Cowboys"],
+  ["DEN","Denver Broncos"], ["DET","Detroit Lions"], ["GB","Green Bay Packers"],
+  ["HOU","Houston Texans"], ["IND","Indianapolis Colts"], ["JAX","Jacksonville Jaguars"],
+  ["KC","Kansas City Chiefs"], ["LA","Los Angeles Rams"], ["LAC","Los Angeles Chargers"],
+  ["LV","Las Vegas Raiders"], ["MIA","Miami Dolphins"], ["MIN","Minnesota Vikings"],
+  ["NE","New England Patriots"], ["NO","New Orleans Saints"], ["NYG","New York Giants"],
+  ["NYJ","New York Jets"], ["PHI","Philadelphia Eagles"], ["PIT","Pittsburgh Steelers"],
+  ["SEA","Seattle Seahawks"], ["SF","San Francisco 49ers"], ["TB","Tampa Bay Buccaneers"],
+  ["TEN","Tennessee Titans"], ["WAS","Washington Commanders"]
+];
+
+function llenarSelect(id, valorDefecto) {
+  const sel = document.getElementById(id);
+  EQUIPOS.forEach(([code, name]) => {
+    const opt = document.createElement("option");
+    opt.value = code;
+    opt.textContent = `${code} — ${name}`;
+    if (code === valorDefecto) opt.selected = true;
+    sel.appendChild(opt);
+  });
+}
+
+llenarSelect("home", "KC");
+llenarSelect("away", "BUF");
+
+async function generar() {
+  const home = document.getElementById("home").value;
+  const away = document.getElementById("away").value;
+  const btn = document.getElementById("btn");
+  const estado = document.getElementById("estado");
+  const resultado = document.getElementById("resultado");
+
+  if (home === away) {
+    estado.textContent = "El local y el visitante no pueden ser el mismo equipo.";
+    return;
+  }
+
+  btn.disabled = true;
+  estado.textContent = "Generando proyección...";
+  resultado.innerHTML = "";
+
+  try {
+    let url = `/api/predict?home=${home}&away=${away}&t=${Date.now()}`;
+    const mlHome = document.getElementById("ml_home").value.trim();
+    const mlAway = document.getElementById("ml_away").value.trim();
+    if (mlHome && mlAway) {
+      url += `&ml_home=${encodeURIComponent(mlHome)}&ml_away=${encodeURIComponent(mlAway)}`;
+    }
+    const res = await fetch(url);
+    if (!res.ok) {
+      const texto = await res.text();
+      throw new Error(texto || `Error ${res.status}`);
+    }
+    const blob = await res.blob();
+    const imgUrl = URL.createObjectURL(blob);
+    resultado.innerHTML = `<img src="${imgUrl}" alt="Proyección ${away} @ ${home}">`;
+    estado.textContent = "";
+  } catch (err) {
+    estado.textContent = "Error: " + err.message;
+  } finally {
+    btn.disabled = false;
+  }
+}
+</script>
+
+</body>
+</html>
