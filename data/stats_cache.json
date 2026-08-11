@@ -4926,7 +4926,7 @@
       "home_team": "PIT",
       "away_team": "ATL",
       "spread_line": 3.0,
-      "total_line": 41.5
+      "total_line": 42.5
     },
     {
       "season": 2026,
@@ -4941,7 +4941,7 @@
       "week": 1,
       "home_team": "LAC",
       "away_team": "ARI",
-      "spread_line": 11.5,
+      "spread_line": 10.5,
       "total_line": 46.5
     },
     {
@@ -5037,7 +5037,7 @@
       "week": 2,
       "home_team": "NYJ",
       "away_team": "GB",
-      "spread_line": -6.0,
+      "spread_line": -5.5,
       "total_line": 42.5
     },
     {
@@ -5045,7 +5045,7 @@
       "week": 2,
       "home_team": "TB",
       "away_team": "CLE",
-      "spread_line": 6.0,
+      "spread_line": 5.5,
       "total_line": 42.5
     },
     {
@@ -5263,6 +5263,14 @@
       "away_team": "NYJ",
       "spread_line": 8.5,
       "total_line": 45.5
+    },
+    {
+      "season": 2026,
+      "week": 4,
+      "home_team": "HOU",
+      "away_team": "DAL",
+      "spread_line": 2.5,
+      "total_line": 47.5
     }
   ]
 }
