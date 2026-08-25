@@ -4878,7 +4878,7 @@
       "home_team": "CAR",
       "away_team": "CHI",
       "spread_line": -2.5,
-      "total_line": 46.5
+      "total_line": 47.5
     },
     {
       "season": 2026,
@@ -4998,7 +4998,7 @@
       "home_team": "ATL",
       "away_team": "CAR",
       "spread_line": 1.5,
-      "total_line": 44.5
+      "total_line": 43.5
     },
     {
       "season": 2026,
@@ -5182,7 +5182,7 @@
       "home_team": "PIT",
       "away_team": "CIN",
       "spread_line": -1.5,
-      "total_line": 47.5
+      "total_line": 46.5
     },
     {
       "season": 2026,
@@ -5366,7 +5366,7 @@
       "home_team": "NO",
       "away_team": "ATL",
       "spread_line": 2.5,
-      "total_line": 45.5
+      "total_line": 46.5
     },
     {
       "season": 2026,
@@ -5437,7 +5437,7 @@
       "week": 5,
       "home_team": "WAS",
       "away_team": "NYG",
-      "spread_line": 1.5,
+      "spread_line": 2.5,
       "total_line": 48.5
     },
     {
@@ -5619,14 +5619,6 @@
     {
       "season": 2026,
       "week": 7,
-      "home_team": "ATL",
-      "away_team": "SF",
-      "spread_line": -4.5,
-      "total_line": 47.5
-    },
-    {
-      "season": 2026,
-      "week": 7,
       "home_team": "BAL",
       "away_team": "CIN",
       "spread_line": 3.5,
@@ -5643,10 +5635,10 @@
     {
       "season": 2026,
       "week": 7,
-      "home_team": "HOU",
-      "away_team": "NYG",
-      "spread_line": 5.5,
-      "total_line": 43.5
+      "home_team": "MIN",
+      "away_team": "IND",
+      "spread_line": 2.5,
+      "total_line": 46.5
     },
     {
       "season": 2026,
@@ -5655,6 +5647,14 @@
       "away_team": "MIA",
       "spread_line": 2.5,
       "total_line": 41.5
+    },
+    {
+      "season": 2026,
+      "week": 7,
+      "home_team": "TEN",
+      "away_team": "CLE",
+      "spread_line": 2.5,
+      "total_line": 40.5
     },
     {
       "season": 2026,
