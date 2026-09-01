@@ -4894,7 +4894,7 @@
       "home_team": "DET",
       "away_team": "NO",
       "spread_line": 7.0,
-      "total_line": 48.5
+      "total_line": 49.5
     },
     {
       "season": 2026,
@@ -4926,14 +4926,14 @@
       "home_team": "PIT",
       "away_team": "ATL",
       "spread_line": 3.0,
-      "total_line": 41.5
+      "total_line": 42.5
     },
     {
       "season": 2026,
       "week": 1,
       "home_team": "TEN",
       "away_team": "NYJ",
-      "spread_line": 3.0,
+      "spread_line": 1.5,
       "total_line": 38.5
     },
     {
@@ -4966,7 +4966,7 @@
       "home_team": "PHI",
       "away_team": "WAS",
       "spread_line": 4.5,
-      "total_line": 47.5
+      "total_line": 45.5
     },
     {
       "season": 2026,
@@ -5366,7 +5366,7 @@
       "home_team": "NO",
       "away_team": "ATL",
       "spread_line": 2.5,
-      "total_line": 46.5
+      "total_line": 45.5
     },
     {
       "season": 2026,
@@ -5413,7 +5413,7 @@
       "week": 5,
       "home_team": "NYJ",
       "away_team": "CLE",
-      "spread_line": 1.5,
+      "spread_line": 2.5,
       "total_line": 39.5
     },
     {
@@ -5493,7 +5493,7 @@
       "week": 6,
       "home_team": "DEN",
       "away_team": "SEA",
-      "spread_line": -1.5,
+      "spread_line": -2.5,
       "total_line": 43.5
     },
     {
@@ -5635,10 +5635,10 @@
     {
       "season": 2026,
       "week": 7,
-      "home_team": "MIN",
-      "away_team": "IND",
-      "spread_line": 2.5,
-      "total_line": 46.5
+      "home_team": "HOU",
+      "away_team": "NYG",
+      "spread_line": 5.5,
+      "total_line": 43.5
     },
     {
       "season": 2026,
@@ -5647,14 +5647,6 @@
       "away_team": "MIA",
       "spread_line": 2.5,
       "total_line": 41.5
-    },
-    {
-      "season": 2026,
-      "week": 7,
-      "home_team": "TEN",
-      "away_team": "CLE",
-      "spread_line": 2.5,
-      "total_line": 40.5
     },
     {
       "season": 2026,
@@ -5669,7 +5661,7 @@
       "week": 10,
       "home_team": "DET",
       "away_team": "NE",
-      "spread_line": 1.5,
+      "spread_line": -1.5,
       "total_line": 49.5
     },
     {
