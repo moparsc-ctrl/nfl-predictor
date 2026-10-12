@@ -18,6 +18,43 @@ YEARS = [2024, 2025, 2026]
 OUT_PATH = Path(__file__).resolve().parent.parent / "data" / "stats_cache.json"
 
 
+def build_last10(games):
+    """Arma, por equipo, la lista de sus ultimos 10 partidos jugados (de
+    cualquier rival), mas reciente primero. Cada entrada trae lo necesario
+    para pintar el historial y, en la ficha, detectar si ese partido fue
+    contra el rival actual (cruce directo)."""
+    import pandas as pd
+
+    records = []
+    for _, g in games.iterrows():
+        records.append({
+            "season": int(g["season"]), "week": int(g["week"]),
+            "team": g["home_team"], "opponent": g["away_team"],
+            "team_score": float(g["home_score"]), "opp_score": float(g["away_score"]),
+            "home_away": "local",
+        })
+        records.append({
+            "season": int(g["season"]), "week": int(g["week"]),
+            "team": g["away_team"], "opponent": g["home_team"],
+            "team_score": float(g["away_score"]), "opp_score": float(g["home_score"]),
+            "home_away": "visitante",
+        })
+    long_df = pd.DataFrame(records)
+    long_df["result"] = long_df.apply(
+        lambda r: "W" if r["team_score"] > r["opp_score"] else ("L" if r["team_score"] < r["opp_score"] else "E"),
+        axis=1,
+    )
+    long_df = long_df.sort_values(["team", "season", "week"])
+
+    last10 = {}
+    for team, grp in long_df.groupby("team"):
+        recientes = grp.tail(10).iloc[::-1]  # mas reciente primero
+        last10[team] = recientes[
+            ["season", "week", "opponent", "home_away", "team_score", "opp_score", "result"]
+        ].to_dict(orient="records")
+    return last10
+
+
 def main():
     print("Descargando calendario...")
     schedule = nfl.load_schedules(YEARS).to_pandas()
@@ -26,6 +63,9 @@ def main():
 
     print("Calculando ratings por puntos...")
     stats_df, league_avg_pts = build_points_ratings(games)
+
+    print("Calculando ultimos 10 partidos por equipo...")
+    last10_games = build_last10(games)
 
     print("Descargando play-by-play para EPA (puede tardar)...")
     pbp_frames = []
@@ -55,6 +95,7 @@ def main():
             for team, row in stats_df.to_dict(orient="index").items()
         },
         "market_lines": market_lines,
+        "last10_games": last10_games,
     }
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)

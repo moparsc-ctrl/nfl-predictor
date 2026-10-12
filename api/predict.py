@@ -27,9 +27,14 @@ BAR_AWAY = (90, 130, 240)
 NEG = (240, 100, 100)
 
 
-def compute_height(has_market_panel, has_odds_panel):
+ROW_H = 20
+
+
+def compute_height(has_market_panel, has_odds_panel, last10_rows=0):
     y = 140
     y += 130 + 20  # forma reciente
+    if last10_rows:
+        y += last10_panel_height(last10_rows) + 20
     y += 130 + 20  # probabilidad
     y += 110 + 20  # marcador esperado
     y += 90 + 20   # recomendacion
@@ -41,9 +46,32 @@ def compute_height(has_market_panel, has_odds_panel):
     return y
 
 
+def last10_panel_height(rows_n):
+    header_h = 52
+    avg_h = 30
+    pad_bottom = 16
+    return header_h + rows_n * ROW_H + avg_h + pad_bottom
+
+
 def load_cache():
     payload = json.loads(DATA_PATH.read_text())
-    return payload["teams"], payload["league_avg_pts"], payload.get("market_lines", [])
+    return (
+        payload["teams"],
+        payload["league_avg_pts"],
+        payload.get("market_lines", []),
+        payload.get("last10_games", {}),
+    )
+
+
+def promedio_ultimos(games_list):
+    """Promedio de puntos a favor/en contra sobre la lista de partidos dada
+    (los ultimos N que haya disponibles, hasta 10)."""
+    n = len(games_list)
+    if n == 0:
+        return None, None, 0
+    avg_for = sum(g["team_score"] for g in games_list) / n
+    avg_against = sum(g["opp_score"] for g in games_list) / n
+    return round(avg_for, 1), round(avg_against, 1), n
 
 
 def find_latest_market_line(market_lines, home, away):
@@ -121,10 +149,58 @@ def prob_bar(d, x, y, width, height, home_pct, home_label, away_label):
     d.text((x + width - away_w, y + height + 8), f"{away_label}", font=font(15, bold=True), fill=BAR_AWAY)
 
 
-def build_image(home, away, pred, rec, teams, season_week=None, momios=None):
+def draw_last10_panel(d, margin, y, content_w, home, away, home_games, away_games):
+    rows_n = min(10, max(len(home_games), len(away_games), 1))
+    p_h = last10_panel_height(rows_n)
+    panel(d, [margin, y, margin + content_w, y + p_h])
+    section_label(d, margin + 24, y + 16, "Ultimos 10 partidos")
+
+    col_w = content_w // 2
+    avg_home = promedio_ultimos(home_games)
+    avg_away = promedio_ultimos(away_games)
+
+    for i, (team, rival, games_list, avg) in enumerate((
+        (home, away, home_games, avg_home),
+        (away, home, away_games, avg_away),
+    )):
+        cx = margin + 24 + i * col_w
+        d.text((cx, y + 36), team, font=font(16, bold=True), fill=FG)
+
+        row_y = y + 36 + 26
+        for g in games_list[:10]:
+            es_cruce_directo = g["opponent"] == rival
+            vs_txt = f"vs {g['opponent']}" if g["home_away"] == "local" else f"@{g['opponent']}"
+            linea = (f"T{g['season']} S{g['week']}  {vs_txt}  "
+                     f"{g['result']} {g['team_score']:.0f}-{g['opp_score']:.0f}")
+            color = ACCENT if es_cruce_directo else FG
+            txt_font = font(13, bold=es_cruce_directo)
+            if es_cruce_directo:
+                # marca visual extra: pequeno indicador a la izquierda del texto
+                d.text((cx, row_y), "»", font=txt_font, fill=ACCENT)
+                d.text((cx + 14, row_y), linea, font=txt_font, fill=color)
+            else:
+                d.text((cx, row_y), linea, font=txt_font, fill=color)
+            row_y += ROW_H
+
+        avg_for, avg_against, n = avg
+        if n:
+            avg_txt = f"Prom. ({n}): {avg_for} a favor  ·  {avg_against} en contra"
+        else:
+            avg_txt = "Sin historial disponible"
+        d.text((cx, y + p_h - 26), avg_txt, font=font(12, bold=True), fill=MUTED)
+
+    return y + p_h + 20
+
+
+def build_image(home, away, pred, rec, teams, season_week=None, momios=None, last10=None):
+    last10 = last10 or {}
+    home_games = last10.get(home, [])
+    away_games = last10.get(away, [])
+    last10_rows = min(10, max(len(home_games), len(away_games)))
+
     has_market_panel = bool(pred.get("market_used") and pred.get("edge_home") is not None)
     has_odds_panel = momios is not None
-    H = compute_height(has_market_panel, has_odds_panel)
+    H = compute_height(has_market_panel, has_odds_panel, last10_rows)
 
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img)
@@ -164,6 +240,10 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None):
         d.text((cx, y + 96), stat_line, font=font(15), fill=FG)
 
     y += p1_h + 20
+
+    # ---- Panel: ultimos 10 partidos ----
+    if home_games or away_games:
+        y = draw_last10_panel(d, margin, y, content_w, home, away, home_games, away_games)
 
     # ---- Panel: probabilidad ----
     p2_h = 130
@@ -271,7 +351,7 @@ class handler(BaseHTTPRequestHandler):
             self.wfile.write(b"Usa ?home=XXX&away=YYY (siglas de equipo, ej KC, BUF)")
             return
 
-        teams, league_avg_pts, market_lines = load_cache()
+        teams, league_avg_pts, market_lines, last10_games = load_cache()
         if home not in teams or away not in teams:
             self.send_response(404)
             self.send_header("Content-Type", "text/plain")
@@ -295,7 +375,7 @@ class handler(BaseHTTPRequestHandler):
             except ValueError:
                 pass  # si vienen mal formados, simplemente se omite el panel
 
-        img = build_image(home, away, pred, rec, teams, season_week, momios)
+        img = build_image(home, away, pred, rec, teams, season_week, momios, last10_games)
         buf = BytesIO()
         img.save(buf, format="JPEG", quality=92)
 
