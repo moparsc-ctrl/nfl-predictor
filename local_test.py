@@ -19,17 +19,11 @@ sys.path.append(str(Path(__file__).resolve().parent))
 
 from api.predict import (
     load_cache,
-    stats_df_like,
-    find_latest_market_line,
-    analizar_momios,
-    analizar_spread_total,
+    build_image,
     parse_odds,
     parse_lineas_casa,
-    construir_comparacion,
-    build_image,
+    preparar_ficha,
 )
-from model.poisson_model import predict_match, recomendacion_apuesta
-from model.market import blend_prediction
 
 
 def main():
@@ -42,11 +36,12 @@ def main():
     away = sys.argv[2].upper()
     # argumentos posicionales: momio_local momio_visitante; opcionales clave=valor:
     # sp_home=-110 sp_away=-110 over=-110 under=-110 (cuotas del spread y del total)
+    # tambien ml_home=+120 ml_away=-143
     # sp_linea=-2.5 (linea del LOCAL en tu casa, formato casa) total_linea=41
     pos = [a for a in sys.argv[3:] if "=" not in a]
     extra = {a.split("=")[0]: [a.split("=")[1]] for a in sys.argv[3:] if "=" in a}
-    ml_home_raw = pos[0] if len(pos) > 0 else None
-    ml_away_raw = pos[1] if len(pos) > 1 else None
+    ml_home_raw = pos[0] if len(pos) > 0 else (extra.get("ml_home") or [None])[0]
+    ml_away_raw = pos[1] if len(pos) > 1 else (extra.get("ml_away") or [None])[0]
 
     teams, league_avg_pts, market_lines, last10_games = load_cache()
 
@@ -59,25 +54,17 @@ def main():
         print(", ".join(sorted(teams.keys())))
         sys.exit(1)
 
-    stats_df = stats_df_like(teams)
-    model_pred = predict_match(home, away, stats_df, league_avg_pts)
-
-    spread_line, total_line, season_week = find_latest_market_line(market_lines, home, away, last10_games)
-    pred = blend_prediction(model_pred, spread_line, total_line)
-    rec = recomendacion_apuesta(pred, home, away)
-    cobertura = analizar_spread_total(pred, parse_odds(extra))
-
-    momios = None
-    if ml_home_raw and ml_away_raw:
-        try:
-            momios = analizar_momios(pred, float(ml_home_raw), float(ml_away_raw))
-        except ValueError:
-            print("Momios invalidos, se omite ese panel.")
-
-    comparacion = construir_comparacion(spread_line, total_line, parse_odds(extra), momios,
-                                        parse_lineas_casa(extra))
-    img = build_image(home, away, pred, rec, teams, season_week, momios, last10_games, cobertura,
-                      comparacion)
+    ml_h = float(ml_home_raw) if ml_home_raw else None
+    ml_a = float(ml_away_raw) if ml_away_raw else None
+    kwargs, advertencias = preparar_ficha(home, away, (teams, league_avg_pts, market_lines, last10_games),
+                                          parse_odds(extra), parse_lineas_casa(extra), ml_h, ml_a)
+    for texto in advertencias:
+        print(f"ADVERTENCIA: {texto}")
+    if kwargs["jugado"]:
+        j = kwargs["jugado"]
+        print(f"Partido ya jugado (T{j['season']} S{j['week']}): {home} {j['home_score']:.0f} - "
+              f"{j['away_score']:.0f} {away}. Sin recomendacion ni VE.")
+    img = build_image(**kwargs)
     out_path = Path(__file__).resolve().parent / "ficha.jpg"
     img.save(out_path, quality=92)
     print(f"Listo. Ficha guardada en: {out_path}")

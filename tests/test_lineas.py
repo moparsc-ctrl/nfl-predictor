@@ -82,7 +82,9 @@ def test_ml_consistente_con_el_spread():
 def test_sin_cuotas_devuelve_none_y_solo_evalua_lo_capturado():
     assert comparar_casa(3.0, 44.0, {}) is None
     r = comparar_casa(3.0, 44.0, {"over": -110})
-    assert [x["clave"] for x in r["filas"]] == ["over"]
+    # solo capturaste el over: el par del total se evalua y 'under' va por defecto (-110)
+    assert [x["clave"] for x in r["filas"]] == ["over", "under"]
+    assert comparar_casa(3.0, 44.0, {"ml_home": 120})["filas"][0]["clave"] == "ml_home"
 
 
 def test_ev_y_momio_justo():

@@ -41,28 +41,32 @@ COMP_BASE_H = 150
 COMP_ROW_H = 24
 
 
-def comparacion_height(n_filas):
-    return COMP_BASE_H + n_filas * COMP_ROW_H
+PLAYED_H = 100
+
+
+def comparacion_height(n_filas, n_adv=0, hay_estandar=False):
+    return COMP_BASE_H + n_filas * COMP_ROW_H + n_adv * 22 + (18 if hay_estandar else 0)
 
 
 def marcador_panel_height(n):
     return 44 + n * MARC_ROW_H + 10
 
 
-def compute_height(has_market_panel, has_odds_panel, last10_rows=0, n_marcadores=1, rec_alerta=False, has_cover_panel=False, n_comparacion=0):
+def compute_height(has_market_panel, has_odds_panel, last10_rows=0, n_marcadores=1, rec_alerta=False, has_cover_panel=False, n_comparacion=0,
+                   n_adv=0, hay_estandar=False, partido_jugado=False):
     y = 140
     y += 130 + 20  # forma reciente
     if last10_rows:
         y += last10_panel_height(last10_rows) + 20
     y += 130 + 20  # probabilidad
     y += marcador_panel_height(n_marcadores) + 20  # marcador esperado
-    y += REC_H + (REC_ALERT_EXTRA if rec_alerta else 0) + 20   # recomendacion
+    y += (PLAYED_H if partido_jugado else REC_H + (REC_ALERT_EXTRA if rec_alerta else 0)) + 20   # recomendacion
     if has_market_panel:
         y += EDGE_H + 20
     if has_cover_panel:
         y += COVER_H + 20
     if n_comparacion:
-        y += comparacion_height(n_comparacion) + 20
+        y += comparacion_height(n_comparacion, n_adv, hay_estandar) + 20
     if has_odds_panel:
         y += ODDS_H + 20
     y += 60  # espacio para el pie de pagina
@@ -135,6 +139,27 @@ def find_latest_market_line(market_lines, home, away, last10=None):
         return None, None, None
     mejor = max(candidatos, key=lambda m: (m["season"], m["week"]))
     return mejor["spread_line"], mejor["total_line"], (mejor["season"], mejor["week"])
+
+
+def resolver_partido(market_lines, home, away, last10):
+    """Estado del partido `home` (local) vs `away` segun el cache.
+
+    - "pendiente": hay una linea de un partido aun no jugado (spread, total, semana).
+    - "jugado": no hay linea pendiente y el ultimo cruce con linea ya se jugo y su
+      resultado esta en los ultimos 10 del local -> trae season, week y marcador.
+    - "sin_linea": no hay linea para ese cruce (o su resultado ya salio del historial).
+    """
+    spread, total, sw = find_latest_market_line(market_lines, home, away, last10)
+    if sw is not None:
+        return {"estado": "pendiente", "spread_line": spread, "total_line": total, "season_week": sw}
+    cruces = [m for m in market_lines if m["home_team"] == home and m["away_team"] == away]
+    for m in sorted(cruces, key=lambda m: (m["season"], m["week"]), reverse=True):
+        for g in last10.get(home, []):
+            if (g["season"], g["week"]) == (m["season"], m["week"]) and g["opponent"] == away \
+                    and g["home_away"] == "local":
+                return {"estado": "jugado", "season": m["season"], "week": m["week"],
+                        "home_score": g["team_score"], "away_score": g["opp_score"]}
+    return {"estado": "sin_linea"}
 
 
 def stats_df_like(teams_dict):
@@ -260,8 +285,12 @@ def draw_last10_panel(d, margin, y, content_w, home, away, home_games, away_game
     return y + p_h + 20
 
 
-def build_image(home, away, pred, rec, teams, season_week=None, momios=None, last10=None, cobertura=None, comparacion=None):
+def build_image(home, away, pred, rec, teams, season_week=None, momios=None, last10=None, cobertura=None, comparacion=None,
+                jugado=None):
     last10 = last10 or {}
+    if jugado:  # partido ya jugado: ni recomendacion ni VE
+        rec = None
+        momios = cobertura = comparacion = None
     home_games = last10.get(home, [])
     away_games = last10.get(away, [])
     last10_rows = min(10, max(len(home_games), len(away_games)))
@@ -270,9 +299,12 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
     has_odds_panel = momios is not None
     has_cover_panel = bool(cobertura)
     n_comp = len(comparacion["filas"]) if comparacion else 0
+    n_adv = len(comparacion["advertencias"]) if comparacion else 0
+    hay_estandar = bool(comparacion and any(f["cuota_estandar"] for f in comparacion["filas"]))
     filas_marc = marcadores(pred)
     H = compute_height(has_market_panel, has_odds_panel, last10_rows,
-                       len(filas_marc), bool(rec.get("alerta_texto")), has_cover_panel, n_comp)
+                       len(filas_marc), bool(rec and rec.get("alerta_texto")), has_cover_panel, n_comp,
+                       n_adv, hay_estandar, bool(jugado))
 
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img)
@@ -287,7 +319,10 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
     at_w = text_w(d, "@", font(46))
     d.text((margin + away_w + 14 + at_w + 14, 34), f"{home}", font=font(46, bold=True), fill=FG)
 
-    if pred.get("market_used"):
+    if jugado:
+        subt = (f"PROYECCION NFL  ·  PARTIDO YA JUGADO (T{jugado['season']} S{jugado['week']})"
+                f"  ·  PROB: {pred.get('metodo', 'Poisson')}")
+    elif pred.get("market_used"):
         season, week = season_week
         subt = (f"PROYECCION NFL  ·  PUNTOS: POISSON + EPA  ·  PROB: {pred.get('metodo', 'Poisson')}"
                 f"  ·  LINEA T{season} S{week}")
@@ -360,20 +395,29 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
 
     y += p3_h + 20
 
-    # ---- Panel: recomendacion (favorito y valor por separado) ----
-    p4_h = REC_H + (REC_ALERT_EXTRA if rec.get("alerta_texto") else 0)
-    panel(d, [margin, y, margin + content_w, y + p4_h], fill=(13, 30, 25), outline=(0, 90, 60))
-    section_label(d, margin + 24, y + 16, "Recomendacion")
-    d.text((margin + 24, y + 40), rec["favorito_texto"], font=font(21, bold=True), fill=FG)
-    color_valor = WARN if rec.get("valor_lado") else MUTED
-    d.text((margin + 24, y + 72), rec["valor_texto"], font=font(21, bold=True), fill=color_valor)
-    if rec.get("alerta_texto"):
-        d.text((margin + 24, y + 104), rec["alerta_texto"], font=font(14, bold=True), fill=NEG)
-
-    y += p4_h + 20
+    # ---- Panel: recomendacion (favorito y valor por separado) / partido ya jugado ----
+    if jugado:
+        panel(d, [margin, y, margin + content_w, y + PLAYED_H], fill=(30, 26, 13), outline=(110, 90, 30))
+        section_label(d, margin + 24, y + 16, "Partido ya jugado")
+        res = (f"Partido ya jugado: resultado {home} {jugado['home_score']:.0f} - "
+               f"{jugado['away_score']:.0f} {away}")
+        d.text((margin + 24, y + 42), res, font=font(22, bold=True), fill=WARN)
+        d.text((margin + 24, y + 74), "Sin recomendacion ni VE para un partido que ya se jugo.",
+               font=font(12), fill=MUTED)
+        y += PLAYED_H + 20
+    else:
+        p4_h = REC_H + (REC_ALERT_EXTRA if rec.get("alerta_texto") else 0)
+        panel(d, [margin, y, margin + content_w, y + p4_h], fill=(13, 30, 25), outline=(0, 90, 60))
+        section_label(d, margin + 24, y + 16, "Recomendacion")
+        d.text((margin + 24, y + 40), rec["favorito_texto"], font=font(21, bold=True), fill=FG)
+        color_valor = WARN if rec.get("valor_lado") else MUTED
+        d.text((margin + 24, y + 72), rec["valor_texto"], font=font(21, bold=True), fill=color_valor)
+        if rec.get("alerta_texto"):
+            d.text((margin + 24, y + 104), rec["alerta_texto"], font=font(14, bold=True), fill=NEG)
+        y += p4_h + 20
 
     # ---- Panel: valor vs mercado (edge) ----
-    if pred.get("market_used") and pred.get("edge_home") is not None:
+    if not jugado and pred.get("market_used") and pred.get("edge_home") is not None:
         p5_h = EDGE_H
         panel(d, [margin, y, margin + content_w, y + p5_h])
         section_label(d, margin + 24, y + 16, "Diferencia modelo vs mercado (no validada)")
@@ -410,7 +454,7 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
     # ---- Panel: spread y total contra la linea de mercado (modelo puro) ----
     if cobertura:
         panel(d, [margin, y, margin + content_w, y + COVER_H])
-        section_label(d, margin + 24, y + 16, "Spread y total vs linea · MODELO PURO (no validado)")
+        section_label(d, margin + 24, y + 16, "Spread y total vs consenso · MODELO PURO (no validado)")
         x_left = margin + 24
         right = margin + content_w - 24
         cols = (right - 300, right - 150, right)
@@ -428,14 +472,17 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
                 (cols[2], f"{ev:+.2f}", ACCENT if ev > 0 else (NEG if ev < 0 else MUTED)),
             ):
                 d.text((cx - text_w(d, txt, font(16, bold=True)), ry), txt, font=font(16, bold=True), fill=color)
-        nota = ("* cuota estandar -110 (no capturada). En backtest 2018-2025 apostar por estas diferencias "
-                "no dio ROI positivo.")
+        hay_std = any(f["cuota_estandar"] for f in cobertura["filas"])
+        nota = (("* cuota estandar -110 (no capturada). " if hay_std else "")
+                + "Contra la linea de CONSENSO. En backtest 2018-2025 apostar por estas diferencias no dio ROI positivo.")
         d.text((x_left, y + COVER_H - 26), nota, font=font(11), fill=MUTED)
         y += COVER_H + 20
 
     # ---- Panel: comparacion de lineas (tu casa vs consenso) ----
     if comparacion:
-        p_h = comparacion_height(n_comp)
+        advs = comparacion["advertencias"]
+        p_h = comparacion_height(n_comp, len(advs), hay_estandar)
+        aw = 22 * len(advs)
         panel(d, [margin, y, margin + content_w, y + p_h])
         section_label(d, margin + 24, y + 16, "Comparacion de lineas · tu casa vs consenso")
         x_left = margin + 24
@@ -448,19 +495,21 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
         d.text((x_left, y + 40), cons + "     |     " + casa_txt, font=font(14, bold=True), fill=FG)
         d.text((x_left, y + 62), "El consenso del mercado se toma como probabilidad verdadera.",
                font=font(11), fill=MUTED)
+        for i, adv in enumerate(advs):
+            d.text((x_left, y + 84 + i * 22), "! " + adv["texto"], font=font(13, bold=True), fill=WARN)
         cols = (x_left + 420, x_left + 530, x_left + 620, x_left + 740, margin + content_w - 24)
         heads = ("CUOTA", "P GANA", "PUSH", "CUOTA JUSTA", "VE POR $100")
         for cx, head in zip(cols, heads):
-            d.text((cx - text_w(d, head, font(11, bold=True)), y + 86), head, font=font(11, bold=True), fill=MUTED)
+            d.text((cx - text_w(d, head, font(11, bold=True)), y + 86 + aw), head, font=font(11, bold=True), fill=MUTED)
         for i, f in enumerate(c["filas"]):
-            ry = y + 106 + i * COMP_ROW_H
+            ry = y + 106 + aw + i * COMP_ROW_H
             etq = f["etiqueta"].format(home=home, away=away)
             if f["linea"]:
                 etq = f"{etq} {f['linea']}"
             d.text((x_left, ry), etq, font=font(16, bold=True), fill=FG)
             justa = f["cuota_justa"]
             for cx, txt, color in (
-                (cols[0], f"{f['cuota']:+.0f}", MUTED),
+                (cols[0], f"{f['cuota']:+.0f}" + ("*" if f["cuota_estandar"] else ""), MUTED),
                 (cols[1], f"{f['p_gana']:.1f}%", FG),
                 (cols[2], f"{f['p_push']:.1f}%" if f["p_push"] >= 0.05 else "-", MUTED),
                 (cols[3], f"{justa:+.0f}" if justa else "-", MUTED),
@@ -473,6 +522,9 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
         nota = (f"Frecuencias nflverse 2015-2025 con linea cercana (n ~{c['n_ef_spread']} / ~{c['n_ef_total']})."
                 + (f"  Margen casa: {', '.join(partes)}." if partes else ""))
         d.text((x_left, y + p_h - 28), nota, font=font(11), fill=MUTED)
+        if hay_estandar:
+            d.text((x_left, y + p_h - 46), "* cuota por defecto -110 (no capturada); sin asterisco = la capturaste tu.",
+                   font=font(11), fill=MUTED)
         y += p_h + 20
 
     # ---- Panel: tus momios (valor real con vig removido) ----
@@ -538,7 +590,7 @@ def parse_lineas_casa(qs):
     return out
 
 
-def construir_comparacion(spread_line, total_line, odds, momios, lineas_casa):
+def construir_comparacion(spread_line, total_line, odds, momios, lineas_casa, equipo_local="LOCAL"):
     """Comparacion de tu casa contra el consenso, o None si no hay linea de consenso
     (partido sin linea pendiente) o no capturaste ninguna cuota."""
     if spread_line is None or total_line is None:
@@ -548,7 +600,8 @@ def construir_comparacion(spread_line, total_line, odds, momios, lineas_casa):
         cuotas["ml_home"], cuotas["ml_away"] = momios["ml_home"], momios["ml_away"]
     lineas_casa = lineas_casa or {}
     return comparar_casa(spread_line, total_line, cuotas,
-                         lineas_casa.get("sp_linea"), lineas_casa.get("total_linea"))
+                         lineas_casa.get("sp_linea"), lineas_casa.get("total_linea"),
+                         equipo_local=equipo_local)
 
 
 def parse_odds(qs):
@@ -562,6 +615,40 @@ def parse_odds(qs):
             except ValueError:
                 pass
     return odds
+
+
+def preparar_ficha(home, away, cache, odds=None, lineas_casa=None, ml_home=None, ml_away=None):
+    """Todo lo que necesita build_image, igual para la API y para local_test.py.
+    Devuelve (kwargs_para_build_image, advertencias_de_texto)."""
+    teams, league_avg_pts, market_lines, last10 = cache
+    estado = resolver_partido(market_lines, home, away, last10)
+    model_pred = predict_match(home, away, stats_df_like(teams), league_avg_pts)
+    if estado["estado"] == "pendiente":
+        spread_line, total_line, season_week = (estado["spread_line"], estado["total_line"],
+                                                estado["season_week"])
+    else:
+        spread_line = total_line = season_week = None
+    pred = blend_prediction(model_pred, spread_line, total_line)
+
+    jugado = estado if estado["estado"] == "jugado" else None
+    rec = cobertura = momios = comparacion = None
+    if not jugado:
+        rec = recomendacion_apuesta(pred, home, away)
+        cobertura = analizar_spread_total(pred, odds or {})
+        if ml_home is not None and ml_away is not None:
+            momios = analizar_momios(pred, ml_home, ml_away)
+        comparacion = construir_comparacion(spread_line, total_line, odds, momios, lineas_casa, home)
+    advertencias = [a["texto"] for a in comparacion["advertencias"]] if comparacion else []
+    return dict(home=home, away=away, pred=pred, rec=rec, teams=teams, season_week=season_week,
+                momios=momios, last10=last10, cobertura=cobertura, comparacion=comparacion,
+                jugado=jugado), advertencias
+
+
+def _float_o_none(raw):
+    try:
+        return float(raw) if raw else None
+    except ValueError:
+        return None
 
 
 class handler(BaseHTTPRequestHandler):
@@ -587,27 +674,12 @@ class handler(BaseHTTPRequestHandler):
             self.wfile.write(f"Equipo no encontrado: {home if home not in teams else away}".encode())
             return
 
-        stats_df = stats_df_like(teams)
-        model_pred = predict_match(home, away, stats_df, league_avg_pts)
-
-        spread_line, total_line, season_week = find_latest_market_line(market_lines, home, away, last10_games)
-        pred = blend_prediction(model_pred, spread_line, total_line)
-        rec = recomendacion_apuesta(pred, home, away)
-        cobertura = analizar_spread_total(pred, parse_odds(qs))
-
-        momios = None
-        if ml_home_raw and ml_away_raw:
-            try:
-                ml_home = float(ml_home_raw)
-                ml_away = float(ml_away_raw)
-                momios = analizar_momios(pred, ml_home, ml_away)
-            except ValueError:
-                pass  # si vienen mal formados, simplemente se omite el panel
-
-        comparacion = construir_comparacion(spread_line, total_line, parse_odds(qs), momios,
-                                            parse_lineas_casa(qs))
-        img = build_image(home, away, pred, rec, teams, season_week, momios, last10_games, cobertura,
-                          comparacion)
+        kwargs, advertencias = preparar_ficha(
+            home, away, (teams, league_avg_pts, market_lines, last10_games),
+            parse_odds(qs), parse_lineas_casa(qs), _float_o_none(ml_home_raw), _float_o_none(ml_away_raw))
+        for texto in advertencias:
+            print(f"ADVERTENCIA {home} vs {away}: {texto}", file=sys.stderr)
+        img = build_image(**kwargs)
         buf = BytesIO()
         img.save(buf, format="JPEG", quality=92)
 

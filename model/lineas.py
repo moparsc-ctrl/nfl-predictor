@@ -110,8 +110,33 @@ def ev_100(p_gana, p_push, o, stake=100.0):
     return round(p_gana * ganancia - (1.0 - p_gana - p_push) * stake, 2)
 
 
+CUOTA_DEFECTO = -110.0
+UMBRAL_INVERTIDA = 3.0   # pts de diferencia con signo opuesto => posible linea invertida
+VE_INUSUAL = 10.0        # VE por $100 por encima del cual se pide revisar los datos
+TEXTO_VE_ALTO = "VE inusualmente alto, revisa los datos de entrada"
+
+
+def advertencias_entrada(spread_consenso, spread_casa_local, filas, equipo_local="LOCAL"):
+    """Lista de advertencias {tipo, texto} sobre los datos capturados.
+
+    - linea_invertida: tu linea del local tiene signo OPUESTO al del consenso y difiere
+      en mas de 3 pts (ej. consenso DEN +2.5 contra tu casa DEN -3.0).
+    - ve_alto: algun VE de la comparacion supera +10 por $100.
+    """
+    adv = []
+    if spread_casa_local is not None:
+        cons = -spread_consenso  # linea del local en formato casa
+        if cons * spread_casa_local < 0 and abs(spread_casa_local - cons) > UMBRAL_INVERTIDA:
+            adv.append({"tipo": "linea_invertida", "texto": (
+                f"Posible linea invertida: consenso {equipo_local} {cons:+.1f} contra tu casa "
+                f"{equipo_local} {spread_casa_local:+.1f}. Revisa el signo.")})
+    if any(f["ev"] > VE_INUSUAL for f in filas):
+        adv.append({"tipo": "ve_alto", "texto": TEXTO_VE_ALTO})
+    return adv
+
+
 def comparar_casa(spread_consenso, total_consenso, cuotas: dict = None,
-                  spread_casa_local=None, total_casa=None, historico=None):
+                  spread_casa_local=None, total_casa=None, historico=None, equipo_local="LOCAL"):
     """Compara tu casa contra el consenso y calcula el VE por $100 de cada apuesta.
 
     spread_consenso / total_consenso: linea nflverse (spread_line > 0 = local favorito).
@@ -119,11 +144,21 @@ def comparar_casa(spread_consenso, total_consenso, cuotas: dict = None,
     spread_casa_local: linea del LOCAL en tu casa, formato casa (-2.5 = favorito por 2.5).
         Si falta, se asume la del consenso.
     total_casa: total de tu casa; si falta, el del consenso.
-    Devuelve None si no hay cuotas que evaluar.
+    Si capturas algo del spread (cuotas o linea), el par completo se evalua y la cuota que
+    falte se toma como -110 (marcada con cuota_estandar=True); igual para el total. Los
+    ganadores (ML) solo se evaluan si los capturas.
+    Devuelve None si no hay nada que evaluar.
     """
     cuotas = {k: v for k, v in (cuotas or {}).items() if v is not None}
-    if not cuotas:
+    capturadas = set(cuotas)
+    if not cuotas and spread_casa_local is None and total_casa is None:
         return None
+    if capturadas & {"sp_home", "sp_away"} or spread_casa_local is not None:
+        for k in ("sp_home", "sp_away"):
+            cuotas.setdefault(k, CUOTA_DEFECTO)
+    if capturadas & {"over", "under"} or total_casa is not None:
+        for k in ("over", "under"):
+            cuotas.setdefault(k, CUOTA_DEFECTO)
     hist = historico if historico is not None else cargar_historico()
 
     x_spread = spread_consenso if spread_casa_local is None else -spread_casa_local  # el local cubre si margen > x
@@ -141,7 +176,7 @@ def comparar_casa(spread_consenso, total_consenso, cuotas: dict = None,
         p_efect = p_gana / (1 - p_push) if p_push < 1 else p_gana
         filas.append({
             "clave": clave, "etiqueta": etiqueta, "tipo": tipo, "linea": linea_txt,
-            "cuota": o, "p_gana": p_gana * 100, "p_push": p_push * 100,
+            "cuota": o, "cuota_estandar": clave not in capturadas, "p_gana": p_gana * 100, "p_push": p_push * 100,
             "cuota_justa": momio_justo(p_efect), "ev": ev_100(p_gana, p_push, o), "n_ef": n_ef,
         })
 
@@ -170,6 +205,7 @@ def comparar_casa(spread_consenso, total_consenso, cuotas: dict = None,
         return None
 
     return {
+        "advertencias": advertencias_entrada(spread_consenso, spread_casa_local, filas, equipo_local),
         "consenso_spread": spread_consenso, "consenso_total": total_consenso,
         "casa_x_spread": x_spread, "casa_total": x_total,
         "casa_distinta_spread": spread_casa_local is not None and x_spread != spread_consenso,
