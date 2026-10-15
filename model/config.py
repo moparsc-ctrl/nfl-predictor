@@ -31,10 +31,10 @@ SIGMA_MARGEN_MERCADO = 13.86
 MARKET_WEIGHT = 1.0
 
 # --- Modelo de puntos ---------------------------------------------------------
-# El backtest muestra que el ajuste EPA actual (peso 0.08) EMPEORA el modelo
-# (Brier 0.2439 con EPA contra 0.2322 sin EPA). Se deja en True por compatibilidad;
-# ponlo en False para usar solo ratings por puntos.
-USAR_EPA = True
+# El backtest 2018-2025 muestra que el ajuste EPA (peso 0.08) EMPEORA el modelo
+# (Brier 0.2439 con EPA contra 0.2322 sin EPA) y que no aporta informacion que el
+# mercado no tenga. Por eso queda apagado; ponlo en True para usar los ratings EPA.
+USAR_EPA = False
 
 # --- Numeros clave (3, 6, 7, 10, 14) para probabilidad de cubrir spread --------
 # Backtest fuera de muestra: no mejora la calibracion, por eso esta desactivado.
