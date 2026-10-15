@@ -9,7 +9,9 @@ probabilidad del modelo contra la probabilidad implicita del mercado.
 import math
 from statistics import NormalDist
 
-SIGMA_MARGEN = 13.86
+from model import config as cfg
+
+SIGMA_MARGEN = cfg.SIGMA_MARGEN_MERCADO
 _ND = NormalDist()
 
 
@@ -26,10 +28,12 @@ def spread_to_home_prob(spread_line: float) -> float:
     return _norm_cdf(spread_line / SIGMA_MARGEN)
 
 
-def blend_prediction(model_pred: dict, spread_line, total_line, market_weight: float = 0.65) -> dict:
+def blend_prediction(model_pred: dict, spread_line, total_line, market_weight: float = None) -> dict:
+    market_weight = cfg.MARKET_WEIGHT if market_weight is None else market_weight
     if spread_line is None or total_line is None:
         out = dict(model_pred)
         out["market_used"] = False
+        out["market_weight"] = 0.0
         out["edge_home"] = None
         out["edge_away"] = None
         return out
@@ -67,7 +71,18 @@ def blend_prediction(model_pred: dict, spread_line, total_line, market_weight: f
         "total_modelo": model_pred["total_esperado_puntos"],
         "total_mercado": total_line,
         "market_weight": market_weight,
+        "margen_esperado": model_pred.get("margen_esperado", model_pred["lambda_home"] - model_pred["lambda_away"]),
+        "metodo": model_pred.get("metodo", "Poisson"),
+        "sigma_margen": model_pred.get("sigma_margen", cfg.SIGMA_MARGEN_MODELO),
+        "sigma_total": model_pred.get("sigma_total", cfg.SIGMA_TOTAL),
     }
+
+
+def mezcla_texto(w: float) -> str:
+    """'65% mercado + 35% modelo' (o '100% mercado' si el modelo no pesa)."""
+    if w >= 0.999:
+        return "100% mercado"
+    return f"{w * 100:.0f}% mercado + {(1 - w) * 100:.0f}% modelo"
 
 
 def marcadores(pred: dict) -> list:
@@ -96,8 +111,8 @@ def marcadores(pred: dict) -> list:
     })
 
     if pred.get("market_used"):
-        w = pred.get("market_weight", 0.65)
-        mezcla = f"{w * 100:.0f}% mercado + {(1 - w) * 100:.0f}% modelo"
+        w = pred.get("market_weight", cfg.MARKET_WEIGHT)
+        mezcla = mezcla_texto(w)
         total = float(pred["total_esperado_puntos"])
         p_home = float(pred["p_home_win"])
         p_clamp = min(max(p_home, 0.1), 99.9) / 100
@@ -106,8 +121,10 @@ def marcadores(pred: dict) -> list:
         a2 = round(max((total - margen) / 2, 0.0), 1)
         filas.append({
             "clave": "ajustado",
-            "etiqueta": f"AJUSTADO A LA MEZCLA ({mezcla})",
-            "total_etiqueta": f"TOTAL (OVER/UNDER) · MEZCLA {w * 100:.0f}/{(1 - w) * 100:.0f}",
+            "etiqueta": (f"AJUSTADO A LA MEZCLA ({mezcla})" if w < 0.999
+                         else "AJUSTADO AL MERCADO (peso 100%)"),
+            "total_etiqueta": (f"TOTAL (OVER/UNDER) · MEZCLA {w * 100:.0f}/{(1 - w) * 100:.0f}" if w < 0.999
+                               else "TOTAL (OVER/UNDER) · MERCADO"),
             "home": h2, "away": a2, "total": round(h2 + a2, 1),
             "p_home": p_home,
         })
@@ -134,3 +151,79 @@ def expected_value(prob_real_pct: float, moneyline: float, stake: float = 100) -
     else:
         ganancia_si_gana = stake * (100 / -moneyline)
     return round(p * ganancia_si_gana - (1 - p) * stake, 2)
+
+
+# ---------------------------------------------------------------------------
+# Cobertura de spread y over/under contra la linea de mercado (modelo puro)
+# ---------------------------------------------------------------------------
+def _pmf_margen(mu: float, sigma: float, boost: dict):
+    ks = range(-70, 71)
+    p = {k: _ND.cdf((k + 0.5 - mu) / sigma) - _ND.cdf((k - 0.5 - mu) / sigma) for k in ks}
+    if boost:
+        p = {k: v * boost.get(abs(k), 1.0) for k, v in p.items()}
+    tot = sum(p.values())
+    return {k: v / tot for k, v in p.items()}
+
+
+def prob_cubrir_spread(margen_esperado: float, spread_line: float, sigma: float = None,
+                       numeros_clave: bool = None):
+    """(P local cubre, P visitante cubre, P push), en 0-1.
+
+    Convencion nflverse: spread_line > 0 = local favorito por esa cantidad; el local
+    cubre si margen_real > spread_line. Con numeros_clave=True la distribucion del
+    margen (enteros) se pondera en 3, 6, 7, 10 y 14 (ver config.NUMEROS_CLAVE_BOOST).
+    """
+    sigma = cfg.SIGMA_MARGEN_MODELO if sigma is None else sigma
+    numeros_clave = cfg.NUMEROS_CLAVE if numeros_clave is None else numeros_clave
+    if numeros_clave:
+        pmf = _pmf_margen(margen_esperado, sigma, cfg.NUMEROS_CLAVE_BOOST)
+        home = sum(v for k, v in pmf.items() if k > spread_line)
+        away = sum(v for k, v in pmf.items() if k < spread_line)
+        push = 1.0 - home - away
+        return home, away, push
+    home = 1 - _ND.cdf((spread_line - margen_esperado) / sigma)
+    return home, 1 - home, 0.0
+
+
+def prob_over(total_esperado: float, total_line: float, sigma_total: float = None):
+    """(P over, P under), en 0-1: P(over) = 1 - Phi((linea - total_esperado) / sigma_total)."""
+    sigma_total = cfg.SIGMA_TOTAL if sigma_total is None else sigma_total
+    over = 1 - _ND.cdf((total_line - total_esperado) / sigma_total)
+    return over, 1 - over
+
+
+def ev_con_push(p_gana: float, p_push: float, american_odds: float, stake: float = 100) -> float:
+    """EV por $stake: gana (p_gana), devuelve stake (p_push) o pierde el resto."""
+    ganancia = stake * (american_odds / 100) if american_odds > 0 else stake * (100 / -american_odds)
+    return round(p_gana * ganancia - (1 - p_gana - p_push) * stake, 2)
+
+
+def analizar_spread_total(pred: dict, odds: dict = None):
+    """Probabilidades del MODELO PURO de cubrir el spread y de over/under contra la
+    linea de mercado, con EV por $100. `odds` (americanos, opcional): sp_home, sp_away,
+    over, under; los que falten usan -110 y se marcan como estandar.
+    Devuelve None si no hay linea de mercado."""
+    if not pred.get("market_used"):
+        return None
+    odds = odds or {}
+    spread, tline = pred["market_spread"], pred["market_total"]
+    mu = pred.get("margen_esperado", pred["lambda_home"] - pred["lambda_away"])
+    total_modelo = pred.get("total_modelo", pred["total_esperado_puntos"])
+    p_h, p_a, p_push = prob_cubrir_spread(mu, spread, pred.get("sigma_margen"))
+    p_o, p_u = prob_over(total_modelo, tline, pred.get("sigma_total"))
+
+    def fila(clave, etiqueta, p, push, key):
+        o = odds.get(key)
+        return {"clave": clave, "etiqueta": etiqueta, "prob": round(p * 100, 1),
+                "cuota": o if o is not None else -110.0, "cuota_estandar": o is None,
+                "ev": ev_con_push(p, push, o if o is not None else -110.0)}
+
+    return {
+        "spread_line": spread, "total_line": tline,
+        "filas": [
+            fila("home", f"{{home}} {-spread:+.1f}", p_h, p_push, "sp_home"),
+            fila("away", f"{{away}} {spread:+.1f}", p_a, p_push, "sp_away"),
+            fila("over", f"Over {tline:g}", p_o, 0.0, "over"),
+            fila("under", f"Under {tline:g}", p_u, 0.0, "under"),
+        ],
+    }

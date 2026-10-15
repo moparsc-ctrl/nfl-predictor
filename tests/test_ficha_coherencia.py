@@ -78,7 +78,7 @@ def test_c_valor_apunta_al_equipo_con_edge_positivo(k):
     rec = recomendacion_apuesta(pred, h, a)
     if rec["valor_lado"] is None:
         assert max(pred["edge_home"], pred["edge_away"]) < UMBRAL_VALOR
-        assert rec["valor_texto"] == "Sin valor claro"
+        assert rec["valor_texto"].startswith("Sin diferencia")
         return
     edge = pred["edge_home"] if rec["valor_lado"] == "home" else pred["edge_away"]
     assert edge >= UMBRAL_VALOR

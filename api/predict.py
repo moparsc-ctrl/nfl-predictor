@@ -9,7 +9,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from model.poisson_model import predict_match, recomendacion_apuesta, UMBRAL_VALOR
-from model.market import blend_prediction, marcadores, moneyline_to_implied_prob, remove_vig, expected_value
+from model.market import (blend_prediction, marcadores, mezcla_texto, analizar_spread_total,
+                          moneyline_to_implied_prob, remove_vig, expected_value)
 
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "stats_cache.json"
 FONTS_DIR = Path(__file__).resolve().parent.parent / "assets" / "fonts"
@@ -25,6 +26,7 @@ ACCENT_DIM = (0, 214, 143, 60)
 BAR_BG = (33, 38, 48)
 BAR_AWAY = (90, 130, 240)
 NEG = (240, 100, 100)
+WARN = (235, 185, 70)
 
 
 ROW_H = 20
@@ -33,13 +35,14 @@ ODDS_H = 166
 MARC_ROW_H = 58
 REC_H = 112
 REC_ALERT_EXTRA = 26
+COVER_H = 200
 
 
 def marcador_panel_height(n):
     return 44 + n * MARC_ROW_H + 10
 
 
-def compute_height(has_market_panel, has_odds_panel, last10_rows=0, n_marcadores=1, rec_alerta=False):
+def compute_height(has_market_panel, has_odds_panel, last10_rows=0, n_marcadores=1, rec_alerta=False, has_cover_panel=False):
     y = 140
     y += 130 + 20  # forma reciente
     if last10_rows:
@@ -49,6 +52,8 @@ def compute_height(has_market_panel, has_odds_panel, last10_rows=0, n_marcadores
     y += REC_H + (REC_ALERT_EXTRA if rec_alerta else 0) + 20   # recomendacion
     if has_market_panel:
         y += EDGE_H + 20
+    if has_cover_panel:
+        y += COVER_H + 20
     if has_odds_panel:
         y += ODDS_H + 20
     y += 60  # espacio para el pie de pagina
@@ -216,7 +221,7 @@ def draw_last10_panel(d, margin, y, content_w, home, away, home_games, away_game
     return y + p_h + 20
 
 
-def build_image(home, away, pred, rec, teams, season_week=None, momios=None, last10=None):
+def build_image(home, away, pred, rec, teams, season_week=None, momios=None, last10=None, cobertura=None):
     last10 = last10 or {}
     home_games = last10.get(home, [])
     away_games = last10.get(away, [])
@@ -224,9 +229,10 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
 
     has_market_panel = bool(pred.get("market_used") and pred.get("edge_home") is not None)
     has_odds_panel = momios is not None
+    has_cover_panel = bool(cobertura)
     filas_marc = marcadores(pred)
     H = compute_height(has_market_panel, has_odds_panel, last10_rows,
-                       len(filas_marc), bool(rec.get("alerta_texto")))
+                       len(filas_marc), bool(rec.get("alerta_texto")), has_cover_panel)
 
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img)
@@ -243,9 +249,11 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
 
     if pred.get("market_used"):
         season, week = season_week
-        subt = f"PROYECCION NFL  ·  MODELO POISSON + EPA  ·  AJUSTADO CON LINEA DE MERCADO (T{season} S{week})"
+        subt = (f"PROYECCION NFL  ·  PUNTOS: POISSON + EPA  ·  PROB: {pred.get('metodo', 'Poisson')}"
+                f"  ·  LINEA T{season} S{week}")
     else:
-        subt = "PROYECCION NFL  ·  MODELO POISSON + EPA  ·  SIN LINEA DE MERCADO DISPONIBLE"
+        subt = (f"PROYECCION NFL  ·  PUNTOS: POISSON + EPA  ·  PROB: {pred.get('metodo', 'Poisson')}"
+                f"  ·  SIN LINEA DE MERCADO")
     d.text((margin, 96), subt, font=font(13, bold=True), fill=MUTED)
 
     y = 140
@@ -275,7 +283,9 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
     p2_h = 130
     panel(d, [margin, y, margin + content_w, y + p2_h])
     if pred.get("market_used"):
-        titulo_prob = "Probabilidad de resultado · MEZCLA (65% mercado + 35% modelo)"
+        w = pred.get("market_weight", 0.0)
+        titulo_prob = ("Probabilidad de resultado · MERCADO (peso 100%)" if w >= 0.999
+                       else f"Probabilidad de resultado · MEZCLA ({mezcla_texto(w)})")
     else:
         titulo_prob = "Probabilidad de resultado · MODELO PURO (sin linea de mercado)"
     section_label(d, margin + 24, y + 18, titulo_prob)
@@ -315,7 +325,7 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
     panel(d, [margin, y, margin + content_w, y + p4_h], fill=(13, 30, 25), outline=(0, 90, 60))
     section_label(d, margin + 24, y + 16, "Recomendacion")
     d.text((margin + 24, y + 40), rec["favorito_texto"], font=font(21, bold=True), fill=FG)
-    color_valor = ACCENT if rec.get("valor_lado") else MUTED
+    color_valor = WARN if rec.get("valor_lado") else MUTED
     d.text((margin + 24, y + 72), rec["valor_texto"], font=font(21, bold=True), fill=color_valor)
     if rec.get("alerta_texto"):
         d.text((margin + 24, y + 104), rec["alerta_texto"], font=font(14, bold=True), fill=NEG)
@@ -326,10 +336,10 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
     if pred.get("market_used") and pred.get("edge_home") is not None:
         p5_h = EDGE_H
         panel(d, [margin, y, margin + content_w, y + p5_h])
-        section_label(d, margin + 24, y + 16, "Valor vs mercado (edge)")
+        section_label(d, margin + 24, y + 16, "Diferencia modelo vs mercado (no validada)")
 
         edge_home, edge_away = pred["edge_home"], pred["edge_away"]
-        edge_color = ACCENT if rec.get("valor_lado") else MUTED
+        edge_color = WARN if rec.get("valor_lado") else MUTED
 
         # tabla: equipo | MODELO PURO | MERCADO (spread) | DIFERENCIA (modelo - mercado)
         x_left = margin + 24
@@ -357,6 +367,32 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
 
         y += p5_h + 20
 
+    # ---- Panel: spread y total contra la linea de mercado (modelo puro) ----
+    if cobertura:
+        panel(d, [margin, y, margin + content_w, y + COVER_H])
+        section_label(d, margin + 24, y + 16, "Spread y total vs linea · MODELO PURO (no validado)")
+        x_left = margin + 24
+        right = margin + content_w - 24
+        cols = (right - 300, right - 150, right)
+        for cx, head in zip(cols, ("PROB. MODELO", "CUOTA", "EV POR $100")):
+            d.text((cx - text_w(d, head, font(11, bold=True)), y + 42), head, font=font(11, bold=True), fill=MUTED)
+        for i, fila in enumerate(cobertura["filas"]):
+            ry = y + 62 + i * 24 + (8 if i >= 2 else 0)
+            etiqueta = fila["etiqueta"].format(home=home, away=away)
+            d.text((x_left, ry), etiqueta, font=font(16, bold=True), fill=FG)
+            cuota_txt = f"{fila['cuota']:+.0f}" + ("*" if fila["cuota_estandar"] else "")
+            ev = fila["ev"]
+            for cx, txt, color in (
+                (cols[0], f"{fila['prob']}%", FG),
+                (cols[1], cuota_txt, MUTED),
+                (cols[2], f"{ev:+.2f}", ACCENT if ev > 0 else (NEG if ev < 0 else MUTED)),
+            ):
+                d.text((cx - text_w(d, txt, font(16, bold=True)), ry), txt, font=font(16, bold=True), fill=color)
+        nota = ("* cuota estandar -110 (no capturada). En backtest 2018-2025 apostar por estas diferencias "
+                "no dio ROI positivo.")
+        d.text((x_left, y + COVER_H - 26), nota, font=font(11), fill=MUTED)
+        y += COVER_H + 20
+
     # ---- Panel: tus momios (valor real con vig removido) ----
     if momios:
         p6_h = ODDS_H
@@ -375,7 +411,7 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
         if momios.get("has_blend"):
             columnas = (
                 (right - 250, "CON MODELO PURO", "ev_home_modelo", "ev_away_modelo"),
-                (right, "CON MEZCLA 65/35 (BARRA)", "ev_home", "ev_away"),
+                (right, f"CON BARRA ({mezcla_texto(pred.get('market_weight', 0.0)).upper()})", "ev_home", "ev_away"),
             )
         else:
             columnas = ((right, "CON MODELO PURO (SIN LINEA DE MERCADO)", "ev_home_modelo", "ev_away_modelo"),)
@@ -395,7 +431,7 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
 
         if momios.get("has_blend"):
             d.text((x_left, y + 146),
-                   "La mezcla ya incluye al mercado: su EV es circular. El EV del modelo puro es la señal independiente.",
+                   "La barra ya incluye al mercado: su EV es circular. El EV del modelo puro es la señal independiente (no validada).",
                    font=font(11), fill=MUTED)
 
         y += p6_h + 20
@@ -404,6 +440,19 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
            font=font(12), fill=MUTED)
 
     return img
+
+
+def parse_odds(qs):
+    """Cuotas americanas opcionales del spread y del total: sp_home, sp_away, over, under."""
+    odds = {}
+    for k in ("sp_home", "sp_away", "over", "under"):
+        raw = (qs.get(k) or [""])[0].strip()
+        if raw:
+            try:
+                odds[k] = float(raw)
+            except ValueError:
+                pass
+    return odds
 
 
 class handler(BaseHTTPRequestHandler):
@@ -435,6 +484,7 @@ class handler(BaseHTTPRequestHandler):
         spread_line, total_line, season_week = find_latest_market_line(market_lines, home, away)
         pred = blend_prediction(model_pred, spread_line, total_line)
         rec = recomendacion_apuesta(pred, home, away)
+        cobertura = analizar_spread_total(pred, parse_odds(qs))
 
         momios = None
         if ml_home_raw and ml_away_raw:
@@ -445,7 +495,7 @@ class handler(BaseHTTPRequestHandler):
             except ValueError:
                 pass  # si vienen mal formados, simplemente se omite el panel
 
-        img = build_image(home, away, pred, rec, teams, season_week, momios, last10_games)
+        img = build_image(home, away, pred, rec, teams, season_week, momios, last10_games, cobertura)
         buf = BytesIO()
         img.save(buf, format="JPEG", quality=92)
 
