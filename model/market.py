@@ -16,7 +16,12 @@ def _norm_cdf(x):
 
 
 def spread_to_home_prob(spread_line: float) -> float:
-    return _norm_cdf(-spread_line / SIGMA_MARGEN)
+    """Probabilidad (0-1) de que gane el LOCAL segun el spread.
+
+    Convencion nflverse: spread_line > 0 significa que el LOCAL es favorito
+    (verificado contra margenes reales; ver tests/test_market.py).
+    """
+    return _norm_cdf(spread_line / SIGMA_MARGEN)
 
 
 def blend_prediction(model_pred: dict, spread_line, total_line, market_weight: float = 0.65) -> dict:

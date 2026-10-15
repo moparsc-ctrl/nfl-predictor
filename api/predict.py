@@ -28,6 +28,8 @@ NEG = (240, 100, 100)
 
 
 ROW_H = 20
+EDGE_H = 136
+ODDS_H = 166
 
 
 def compute_height(has_market_panel, has_odds_panel, last10_rows=0):
@@ -39,9 +41,9 @@ def compute_height(has_market_panel, has_odds_panel, last10_rows=0):
     y += 110 + 20  # marcador esperado
     y += 90 + 20   # recomendacion
     if has_market_panel:
-        y += 100 + 20
+        y += EDGE_H + 20
     if has_odds_panel:
-        y += 120 + 20
+        y += ODDS_H + 20
     y += 60  # espacio para el pie de pagina
     return y
 
@@ -92,14 +94,26 @@ def stats_df_like(teams_dict):
 def analizar_momios(pred, ml_home, ml_away):
     """Dado un par de momios americanos capturados por el usuario, calcula
     la probabilidad implicita sin margen de casa y el valor esperado (EV)
-    de apostar $100 a cada lado, usando la probabilidad del modelo (ya
-    mezclada con mercado si aplica) como la probabilidad 'real'."""
+    de apostar $100 a cada lado, con DOS probabilidades 'reales':
+
+    - modelo puro (independiente del mercado): ev_*_modelo
+    - mezcla 65% mercado + 35% modelo (la de la barra): ev_*
+
+    La mezcla ya contiene al mercado, asi que su EV tiende a ser circular;
+    por eso se muestran ambos, etiquetados.
+    """
     implied_home = moneyline_to_implied_prob(ml_home)
     implied_away = moneyline_to_implied_prob(ml_away)
     real_home, real_away = remove_vig(implied_home, implied_away)
 
     ev_home = expected_value(pred["p_home_win"], ml_home)
     ev_away = expected_value(pred["p_away_win"], ml_away)
+
+    # sin linea de mercado, pred ya ES el modelo puro
+    p_home_modelo = pred.get("model_home_prob", pred["p_home_win"])
+    p_away_modelo = pred.get("model_away_prob", pred["p_away_win"])
+    ev_home_modelo = expected_value(p_home_modelo, ml_home)
+    ev_away_modelo = expected_value(p_away_modelo, ml_away)
 
     return {
         "ml_home": ml_home,
@@ -108,6 +122,9 @@ def analizar_momios(pred, ml_home, ml_away):
         "implied_away": real_away,
         "ev_home": ev_home,
         "ev_away": ev_away,
+        "ev_home_modelo": ev_home_modelo,
+        "ev_away_modelo": ev_away_modelo,
+        "has_blend": bool(pred.get("market_used")),
     }
 
 
@@ -248,13 +265,21 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
     # ---- Panel: probabilidad ----
     p2_h = 130
     panel(d, [margin, y, margin + content_w, y + p2_h])
-    section_label(d, margin + 24, y + 18, "Probabilidad de resultado")
+    if pred.get("market_used"):
+        titulo_prob = "Probabilidad de resultado · MEZCLA (65% mercado + 35% modelo)"
+    else:
+        titulo_prob = "Probabilidad de resultado · MODELO PURO (sin linea de mercado)"
+    section_label(d, margin + 24, y + 18, titulo_prob)
     prob_bar(
         d, margin + 24, y + 50, content_w - 48, 22,
         pred["p_home_win"],
         f"{home} {pred['p_home_win']}%",
         f"{pred['p_away_win']}% {away}",
     )
+    if pred.get("market_used"):
+        ref = (f"Modelo puro: {home} {pred['model_home_prob']}% / {away} {pred['model_away_prob']}%   ·   "
+               f"Mercado (spread): {home} {pred['market_home_prob']}% / {away} {pred['market_away_prob']}%")
+        d.text((margin + 24, y + 104), ref, font=font(12), fill=MUTED)
 
     y += p2_h + 20
 
@@ -285,7 +310,7 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
 
     # ---- Panel: valor vs mercado (edge) ----
     if pred.get("market_used") and pred.get("edge_home") is not None:
-        p5_h = 100
+        p5_h = EDGE_H
         panel(d, [margin, y, margin + content_w, y + p5_h])
         section_label(d, margin + 24, y + 16, "Valor vs mercado (edge)")
 
@@ -294,39 +319,75 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
         equipo_valor = home if edge_home >= edge_away else away
         edge_color = ACCENT if mejor_edge >= 5 else MUTED
 
-        linea = (f"Modelo {home}: {pred['model_home_prob']}%  vs  mercado: {pred['market_home_prob']}%   "
-                 f"|   Modelo {away}: {pred['model_away_prob']}%  vs  mercado: {pred['market_away_prob']}%")
-        d.text((margin + 24, y + 44), linea, font=font(15), fill=FG)
+        # tabla: equipo | MODELO PURO | MERCADO (spread) | DIFERENCIA (modelo - mercado)
+        x_left = margin + 24
+        cols = (margin + 24 + 400, margin + 24 + 620, margin + content_w - 24)
+        for cx, head in zip(cols, ("MODELO PURO", "MERCADO (SPREAD)", "DIFERENCIA")):
+            d.text((cx - text_w(d, head, font(11, bold=True)), y + 40), head, font=font(11, bold=True), fill=MUTED)
+
+        filas = (
+            (home, pred["model_home_prob"], pred["market_home_prob"], edge_home),
+            (away, pred["model_away_prob"], pred["market_away_prob"], edge_away),
+        )
+        for i, (team, p_mod, p_mkt, diff) in enumerate(filas):
+            ry = y + 60 + i * 24
+            d.text((x_left, ry), team, font=font(16, bold=True), fill=FG)
+            for cx, txt, color in (
+                (cols[0], f"{p_mod}%", FG),
+                (cols[1], f"{p_mkt}%", FG),
+                (cols[2], f"{diff:+.1f} pts",
+                 ACCENT if diff >= 5 else (NEG if diff <= -5 else MUTED)),
+            ):
+                d.text((cx - text_w(d, txt, font(16, bold=True)), ry), txt, font=font(16, bold=True), fill=color)
 
         if mejor_edge >= 5:
             veredicto = f"Posible valor en {equipo_valor}: +{mejor_edge} pts vs mercado"
         else:
             veredicto = "Sin valor claro — el modelo coincide con el mercado"
-        d.text((margin + 24, y + 68), veredicto, font=font(15, bold=True), fill=edge_color)
+        d.text((x_left, y + 112), veredicto, font=font(15, bold=True), fill=edge_color)
 
         y += p5_h + 20
 
     # ---- Panel: tus momios (valor real con vig removido) ----
     if momios:
-        p6_h = 120
+        p6_h = ODDS_H
         panel(d, [margin, y, margin + content_w, y + p6_h])
         section_label(d, margin + 24, y + 16, "Tus momios (valor real)")
 
         linea1 = (f"Momio {home}: {momios['ml_home']:+.0f}  (implicito sin margen: {momios['implied_home']}%)   "
                   f"|   Momio {away}: {momios['ml_away']:+.0f}  (implicito sin margen: {momios['implied_away']}%)")
-        d.text((margin + 24, y + 44), linea1, font=font(15), fill=FG)
+        d.text((margin + 24, y + 40), linea1, font=font(15), fill=FG)
 
-        ev_home, ev_away = momios["ev_home"], momios["ev_away"]
-        color_home = ACCENT if ev_home > 0 else (NEG if ev_home < 0 else MUTED)
-        color_away = ACCENT if ev_away > 0 else (NEG if ev_away < 0 else MUTED)
+        x_left = margin + 24
+        right = margin + content_w - 24
+        d.text((x_left, y + 74), "VALOR ESPERADO APOSTANDO $100", font=font(11, bold=True), fill=MUTED)
 
-        linea2_label = "VALOR ESPERADO APOSTANDO $100:"
-        d.text((margin + 24, y + 72), linea2_label, font=font(12, bold=True), fill=MUTED)
-        ev_home_txt = f"{home}: {ev_home:+.2f}"
-        ev_away_txt = f"{away}: {ev_away:+.2f}"
-        d.text((margin + 24, y + 92), ev_home_txt, font=font(17, bold=True), fill=color_home)
-        ev_away_w = text_w(d, ev_away_txt, font(17, bold=True))
-        d.text((margin + content_w - 24 - ev_away_w, y + 92), ev_away_txt, font=font(17, bold=True), fill=color_away)
+        # columnas de EV: (borde derecho, encabezado, clave home, clave away)
+        if momios.get("has_blend"):
+            columnas = (
+                (right - 250, "CON MODELO PURO", "ev_home_modelo", "ev_away_modelo"),
+                (right, "CON MEZCLA 65/35 (BARRA)", "ev_home", "ev_away"),
+            )
+        else:
+            columnas = ((right, "CON MODELO PURO (SIN LINEA DE MERCADO)", "ev_home_modelo", "ev_away_modelo"),)
+
+        for cx, head, _, _ in columnas:
+            d.text((cx - text_w(d, head, font(11, bold=True)), y + 74), head, font=font(11, bold=True), fill=MUTED)
+
+        for i, (team, ml, k_idx) in enumerate(((home, momios["ml_home"], 2), (away, momios["ml_away"], 3))):
+            ry = y + 94 + i * 24
+            d.text((x_left, ry), f"{team} ({ml:+.0f})", font=font(16, bold=True), fill=FG)
+            for col in columnas:
+                cx, key = col[0], col[k_idx]
+                val = momios[key]
+                color = ACCENT if val > 0 else (NEG if val < 0 else MUTED)
+                txt = f"{val:+.2f}"
+                d.text((cx - text_w(d, txt, font(17, bold=True)), ry), txt, font=font(17, bold=True), fill=color)
+
+        if momios.get("has_blend"):
+            d.text((x_left, y + 146),
+                   "La mezcla ya incluye al mercado: su EV es circular. El EV del modelo puro es la señal independiente.",
+                   font=font(11), fill=MUTED)
 
         y += p6_h + 20
 
