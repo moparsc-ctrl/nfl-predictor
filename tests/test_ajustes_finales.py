@@ -153,3 +153,22 @@ def test_titulos_y_dibujo_con_y_sin_datos_de_casa():
     kw, _ = preparar_ficha("DEN", "SEA", cache, {}, {}, None, None)
     assert not kw["cobertura"]["usa_casa"]
     build_image(**kw)
+
+
+# ------------------------------------------------------------------ subtitulo refleja la config real
+def test_subtitulo_refleja_usar_epa():
+    import pandas as pd
+    from api.predict import subtitulo
+    from model import config as cfg
+    from model.poisson_model import predict_match
+    row = {"off_strength": 1.0, "def_strength": 1.0, "off_strength_epa": 1.1, "def_strength_epa": 0.9}
+    df = pd.DataFrame({"AAA": row, "BBB": row}).T
+    sin = blend_prediction(predict_match("AAA", "BBB", df, 22.0, use_epa=False), -3.0, 44.0)
+    con = blend_prediction(predict_match("AAA", "BBB", df, 22.0, use_epa=True), -3.0, 44.0)
+    assert "SIN EPA" in subtitulo(sin, (2026, 6)) and "+ EPA" not in subtitulo(sin, (2026, 6))
+    assert "POISSON + EPA" in subtitulo(con, (2026, 6))
+    # por defecto sigue config.USAR_EPA (False): la ficha real no debe decir EPA
+    por_defecto = blend_prediction(predict_match("AAA", "BBB", df, 22.0), -3.0, 44.0)
+    assert ("POISSON + EPA" in subtitulo(por_defecto, (2026, 6))) == cfg.USAR_EPA
+    kw, _ = preparar_ficha("DEN", "SEA", load_cache(), {}, {}, None, None)
+    assert ("EPA" in subtitulo(kw["pred"], kw["season_week"]).replace("SIN EPA", "")) == cfg.USAR_EPA

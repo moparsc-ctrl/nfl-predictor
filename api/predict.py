@@ -316,6 +316,17 @@ def draw_last10_panel(d, margin, y, content_w, home, away, home_games, away_game
     return y + p_h + 20
 
 
+def subtitulo(pred, season_week=None, jugado=None):
+    """Subtitulo de la ficha; refleja la configuracion REAL (EPA, metodo, linea)."""
+    puntos = "POISSON + EPA" if pred.get("usa_epa") else "POISSON (SIN EPA)"
+    base = f"PROYECCION NFL  ·  PUNTOS: {puntos}  ·  PROB: {pred.get('metodo', 'Poisson')}"
+    if jugado:
+        return f"PROYECCION NFL  ·  PARTIDO YA JUGADO (T{jugado['season']} S{jugado['week']})  ·  PUNTOS: {puntos}  ·  PROB: {pred.get('metodo', 'Poisson')}"
+    if pred.get("market_used") and season_week:
+        return f"{base}  ·  LINEA T{season_week[0]} S{season_week[1]}"
+    return f"{base}  ·  SIN LINEA DE MERCADO"
+
+
 def build_image(home, away, pred, rec, teams, season_week=None, momios=None, last10=None, cobertura=None, comparacion=None,
                 jugado=None):
     last10 = last10 or {}
@@ -352,16 +363,7 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
     at_w = text_w(d, "@", font(46))
     d.text((margin + away_w + 14 + at_w + 14, 34), f"{home}", font=font(46, bold=True), fill=FG)
 
-    if jugado:
-        subt = (f"PROYECCION NFL  ·  PARTIDO YA JUGADO (T{jugado['season']} S{jugado['week']})"
-                f"  ·  PROB: {pred.get('metodo', 'Poisson')}")
-    elif pred.get("market_used"):
-        season, week = season_week
-        subt = (f"PROYECCION NFL  ·  PUNTOS: POISSON + EPA  ·  PROB: {pred.get('metodo', 'Poisson')}"
-                f"  ·  LINEA T{season} S{week}")
-    else:
-        subt = (f"PROYECCION NFL  ·  PUNTOS: POISSON + EPA  ·  PROB: {pred.get('metodo', 'Poisson')}"
-                f"  ·  SIN LINEA DE MERCADO")
+    subt = subtitulo(pred, season_week, jugado)
     d.text((margin, 96), subt, font=font(13, bold=True), fill=MUTED)
 
     y = 140

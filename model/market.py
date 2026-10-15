@@ -73,6 +73,7 @@ def blend_prediction(model_pred: dict, spread_line, total_line, market_weight: f
         "market_weight": market_weight,
         "margen_esperado": model_pred.get("margen_esperado", model_pred["lambda_home"] - model_pred["lambda_away"]),
         "metodo": model_pred.get("metodo", "Poisson"),
+        "usa_epa": model_pred.get("usa_epa", False),
         "sigma_margen": model_pred.get("sigma_margen", cfg.SIGMA_MARGEN_MODELO),
         "sigma_total": model_pred.get("sigma_total", cfg.SIGMA_TOTAL),
     }

@@ -56,6 +56,7 @@ def predict_match(home_team, away_team, stats_df, league_avg_pts,
         "total_esperado_puntos": round(total_esperado, 1),
         "margen_esperado": round(margen, 2),
         "metodo": metodo_txt,
+        "usa_epa": off_col == "off_strength_epa",
         "sigma_margen": sigma_margen,
         "sigma_total": sigma_total,
     }
