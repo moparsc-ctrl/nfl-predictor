@@ -55,7 +55,7 @@ def main():
 
     spread_line, total_line, season_week = find_latest_market_line(market_lines, home, away)
     pred = blend_prediction(model_pred, spread_line, total_line)
-    rec = recomendacion_apuesta(pred)
+    rec = recomendacion_apuesta(pred, home, away)
 
     momios = None
     if ml_home_raw and ml_away_raw:

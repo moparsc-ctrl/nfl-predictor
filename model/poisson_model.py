@@ -48,16 +48,56 @@ def predict_match(home_team, away_team, stats_df, league_avg_pts,
     }
 
 
-def recomendacion_apuesta(pred: dict, umbral_favorito: float = 62.0):
-    """Lógica simple de recomendación tipo doble oportunidad, adaptable."""
+# Edge minimo (puntos de probabilidad, modelo puro - mercado) para hablar de "valor".
+# Lo usan la recomendacion y el panel de edge, para que nunca se contradigan.
+UMBRAL_VALOR = 3.0
+# Edge a partir del cual es mas probable que el modelo exagere que que haya valor real.
+EDGE_ALTO = 15.0
+
+
+def recomendacion_apuesta(pred: dict, home: str, away: str,
+                          umbral_favorito: float = 62.0,
+                          umbral_valor: float = UMBRAL_VALOR,
+                          edge_alto: float = EDGE_ALTO) -> dict:
+    """Separa dos preguntas distintas:
+
+    - FAVORITO: quien gana segun la probabilidad mostrada (la mezcla con el
+      mercado si hay linea; casi siempre coincide con el favorito de la casa).
+    - VALOR: donde el modelo puro ve mas probabilidad que el mercado (edge).
+      Es lo que interesa para apostar y puede apuntar al otro equipo.
+    """
     p_home, p_away = pred["p_home_win"], pred["p_away_win"]
-    favorito, prob = ("local", p_home) if p_home >= p_away else ("visitante", p_away)
+    lado_fav = "home" if p_home >= p_away else "away"
+    equipo_fav = home if lado_fav == "home" else away
+    prob = max(p_home, p_away)
 
     if prob >= umbral_favorito:
-        return f"Gana {favorito} ({prob:.1f}%)"
+        favorito_texto = f"Favorito: {equipo_fav} ({prob:.1f}%)"
+    elif abs(p_home - p_away) < 8:
+        favorito_texto = f"Partido parejo — favorito marginal: {equipo_fav} ({prob:.1f}%)"
     else:
-        # partido parejo: no hay pick claro de ganador directo
-        margen = abs(p_home - p_away)
-        if margen < 8:
-            return "Partido parejo — evitar apuesta a ganador directo"
-        return f"Leve favorito: {favorito} ({prob:.1f}%) — apuesta con cautela"
+        favorito_texto = f"Favorito: {equipo_fav} ({prob:.1f}%) — apuesta con cautela"
+
+    edge_h, edge_a = pred.get("edge_home"), pred.get("edge_away")
+    valor_lado, valor_edge, alerta_texto = None, None, None
+    if edge_h is None or edge_a is None:
+        valor_texto = "Valor: sin linea de mercado para comparar"
+    else:
+        lado, edge = ("home", edge_h) if edge_h >= edge_a else ("away", edge_a)
+        if edge >= umbral_valor:
+            valor_lado, valor_edge = lado, edge
+            equipo_valor = home if lado == "home" else away
+            valor_texto = f"Valor segun el modelo: {equipo_valor} (+{edge:.1f} pts vs mercado)"
+            if edge >= edge_alto:
+                alerta_texto = "Edge muy grande: revisar, el modelo puro suele exagerar"
+        else:
+            valor_texto = "Sin valor claro"
+
+    return {
+        "favorito_lado": lado_fav,
+        "favorito_texto": favorito_texto,
+        "valor_lado": valor_lado,
+        "valor_edge": valor_edge,
+        "valor_texto": valor_texto,
+        "alerta_texto": alerta_texto,
+    }

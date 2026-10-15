@@ -8,8 +8,8 @@ from urllib.parse import urlparse, parse_qs
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from model.poisson_model import predict_match, recomendacion_apuesta
-from model.market import blend_prediction, moneyline_to_implied_prob, remove_vig, expected_value
+from model.poisson_model import predict_match, recomendacion_apuesta, UMBRAL_VALOR
+from model.market import blend_prediction, marcadores, moneyline_to_implied_prob, remove_vig, expected_value
 
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "stats_cache.json"
 FONTS_DIR = Path(__file__).resolve().parent.parent / "assets" / "fonts"
@@ -30,16 +30,23 @@ NEG = (240, 100, 100)
 ROW_H = 20
 EDGE_H = 136
 ODDS_H = 166
+MARC_ROW_H = 58
+REC_H = 112
+REC_ALERT_EXTRA = 26
 
 
-def compute_height(has_market_panel, has_odds_panel, last10_rows=0):
+def marcador_panel_height(n):
+    return 44 + n * MARC_ROW_H + 10
+
+
+def compute_height(has_market_panel, has_odds_panel, last10_rows=0, n_marcadores=1, rec_alerta=False):
     y = 140
     y += 130 + 20  # forma reciente
     if last10_rows:
         y += last10_panel_height(last10_rows) + 20
     y += 130 + 20  # probabilidad
-    y += 110 + 20  # marcador esperado
-    y += 90 + 20   # recomendacion
+    y += marcador_panel_height(n_marcadores) + 20  # marcador esperado
+    y += REC_H + (REC_ALERT_EXTRA if rec_alerta else 0) + 20   # recomendacion
     if has_market_panel:
         y += EDGE_H + 20
     if has_odds_panel:
@@ -217,7 +224,9 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
 
     has_market_panel = bool(pred.get("market_used") and pred.get("edge_home") is not None)
     has_odds_panel = momios is not None
-    H = compute_height(has_market_panel, has_odds_panel, last10_rows)
+    filas_marc = marcadores(pred)
+    H = compute_height(has_market_panel, has_odds_panel, last10_rows,
+                       len(filas_marc), bool(rec.get("alerta_texto")))
 
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img)
@@ -283,28 +292,33 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
 
     y += p2_h + 20
 
-    # ---- Panel: marcador esperado + total ----
-    p3_h = 110
+    # ---- Panel: marcador esperado + total (cada fila etiquetada; total = suma de lo mostrado) ----
+    p3_h = marcador_panel_height(len(filas_marc))
     panel(d, [margin, y, margin + content_w, y + p3_h])
-    section_label(d, margin + 24, y + 18, "Marcador esperado")
-    marcador = f"{home}  {pred['lambda_home']}   -   {pred['lambda_away']}  {away}"
-    d.text((margin + 24, y + 46), marcador, font=font(30, bold=True), fill=FG)
-
-    total_label = "TOTAL COMBINADO (OVER/UNDER)"
-    total_val = f"{pred['total_esperado_puntos']} pts"
-    tw = text_w(d, total_label, font(12, bold=True))
-    vw = text_w(d, total_val, font(22, bold=True))
+    section_label(d, margin + 24, y + 16, "Marcador esperado")
     right_x = margin + content_w - 24
-    d.text((right_x - tw, y + 46), total_label, font=font(12, bold=True), fill=MUTED)
-    d.text((right_x - vw, y + 66), total_val, font=font(22, bold=True), fill=FG)
+    for k, fila in enumerate(filas_marc):
+        ry = y + 40 + k * MARC_ROW_H
+        d.text((margin + 24, ry), fila["etiqueta"], font=font(11, bold=True), fill=MUTED)
+        marcador = f"{home}  {fila['home']}   -   {fila['away']}  {away}"
+        d.text((margin + 24, ry + 16), marcador, font=font(26, bold=True), fill=FG)
+        tw = text_w(d, fila["total_etiqueta"], font(11, bold=True))
+        total_val = f"{fila['total']} pts"
+        vw = text_w(d, total_val, font(22, bold=True))
+        d.text((right_x - tw, ry), fila["total_etiqueta"], font=font(11, bold=True), fill=MUTED)
+        d.text((right_x - vw, ry + 18), total_val, font=font(22, bold=True), fill=FG)
 
     y += p3_h + 20
 
-    # ---- Panel: recomendacion ----
-    p4_h = 90
+    # ---- Panel: recomendacion (favorito y valor por separado) ----
+    p4_h = REC_H + (REC_ALERT_EXTRA if rec.get("alerta_texto") else 0)
     panel(d, [margin, y, margin + content_w, y + p4_h], fill=(13, 30, 25), outline=(0, 90, 60))
     section_label(d, margin + 24, y + 16, "Recomendacion")
-    d.text((margin + 24, y + 42), rec, font=font(22, bold=True), fill=ACCENT)
+    d.text((margin + 24, y + 40), rec["favorito_texto"], font=font(21, bold=True), fill=FG)
+    color_valor = ACCENT if rec.get("valor_lado") else MUTED
+    d.text((margin + 24, y + 72), rec["valor_texto"], font=font(21, bold=True), fill=color_valor)
+    if rec.get("alerta_texto"):
+        d.text((margin + 24, y + 104), rec["alerta_texto"], font=font(14, bold=True), fill=NEG)
 
     y += p4_h + 20
 
@@ -315,9 +329,7 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
         section_label(d, margin + 24, y + 16, "Valor vs mercado (edge)")
 
         edge_home, edge_away = pred["edge_home"], pred["edge_away"]
-        mejor_edge = max(edge_home, edge_away)
-        equipo_valor = home if edge_home >= edge_away else away
-        edge_color = ACCENT if mejor_edge >= 5 else MUTED
+        edge_color = ACCENT if rec.get("valor_lado") else MUTED
 
         # tabla: equipo | MODELO PURO | MERCADO (spread) | DIFERENCIA (modelo - mercado)
         x_left = margin + 24
@@ -336,14 +348,11 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
                 (cols[0], f"{p_mod}%", FG),
                 (cols[1], f"{p_mkt}%", FG),
                 (cols[2], f"{diff:+.1f} pts",
-                 ACCENT if diff >= 5 else (NEG if diff <= -5 else MUTED)),
+                 ACCENT if diff >= UMBRAL_VALOR else (NEG if diff <= -UMBRAL_VALOR else MUTED)),
             ):
                 d.text((cx - text_w(d, txt, font(16, bold=True)), ry), txt, font=font(16, bold=True), fill=color)
 
-        if mejor_edge >= 5:
-            veredicto = f"Posible valor en {equipo_valor}: +{mejor_edge} pts vs mercado"
-        else:
-            veredicto = "Sin valor claro — el modelo coincide con el mercado"
+        veredicto = rec["valor_texto"]
         d.text((x_left, y + 112), veredicto, font=font(15, bold=True), fill=edge_color)
 
         y += p5_h + 20
@@ -425,7 +434,7 @@ class handler(BaseHTTPRequestHandler):
 
         spread_line, total_line, season_week = find_latest_market_line(market_lines, home, away)
         pred = blend_prediction(model_pred, spread_line, total_line)
-        rec = recomendacion_apuesta(pred)
+        rec = recomendacion_apuesta(pred, home, away)
 
         momios = None
         if ml_home_raw and ml_away_raw:

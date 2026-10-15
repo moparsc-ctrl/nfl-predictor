@@ -7,8 +7,10 @@ Tambien incluye utilidades para detectar "valor" (edge) comparando la
 probabilidad del modelo contra la probabilidad implicita del mercado.
 """
 import math
+from statistics import NormalDist
 
 SIGMA_MARGEN = 13.86
+_ND = NormalDist()
 
 
 def _norm_cdf(x):
@@ -61,7 +63,56 @@ def blend_prediction(model_pred: dict, spread_line, total_line, market_weight: f
         "edge_away": edge_away,
         "model_home_prob": model_pred["p_home_win"],
         "model_away_prob": model_pred["p_away_win"],
+        # totales por separado: total_esperado_puntos es la MEZCLA
+        "total_modelo": model_pred["total_esperado_puntos"],
+        "total_mercado": total_line,
+        "market_weight": market_weight,
     }
+
+
+def marcadores(pred: dict) -> list:
+    """Filas de marcador esperado que muestra la ficha, cada una con su etiqueta.
+
+    - "puro": puntos del Poisson (modelo puro). Su ganador coincide con la
+      probabilidad del modelo puro.
+    - "ajustado" (solo si hay linea de mercado): total mezclado + margen que
+      implica la probabilidad mezclada de la barra (margen = sigma * Phi^-1(p_local)).
+      Suma el total mezclado y su ganador coincide con la barra.
+
+    En cada fila el total es la suma de los puntos mostrados (ya redondeados),
+    para que siempre cuadre a la vista.
+    """
+    filas = []
+
+    h = round(float(pred["lambda_home"]), 1)
+    a = round(float(pred["lambda_away"]), 1)
+    p_puro = pred.get("model_home_prob", pred["p_home_win"])
+    filas.append({
+        "clave": "puro",
+        "etiqueta": "MODELO PURO",
+        "total_etiqueta": "TOTAL (OVER/UNDER) · MODELO PURO",
+        "home": h, "away": a, "total": round(h + a, 1),
+        "p_home": float(p_puro),
+    })
+
+    if pred.get("market_used"):
+        w = pred.get("market_weight", 0.65)
+        mezcla = f"{w * 100:.0f}% mercado + {(1 - w) * 100:.0f}% modelo"
+        total = float(pred["total_esperado_puntos"])
+        p_home = float(pred["p_home_win"])
+        p_clamp = min(max(p_home, 0.1), 99.9) / 100
+        margen = SIGMA_MARGEN * _ND.inv_cdf(p_clamp)
+        h2 = round(max((total + margen) / 2, 0.0), 1)
+        a2 = round(max((total - margen) / 2, 0.0), 1)
+        filas.append({
+            "clave": "ajustado",
+            "etiqueta": f"AJUSTADO A LA MEZCLA ({mezcla})",
+            "total_etiqueta": f"TOTAL (OVER/UNDER) · MEZCLA {w * 100:.0f}/{(1 - w) * 100:.0f}",
+            "home": h2, "away": a2, "total": round(h2 + a2, 1),
+            "p_home": p_home,
+        })
+
+    return filas
 
 
 def remove_vig(prob_a_pct: float, prob_b_pct: float):
