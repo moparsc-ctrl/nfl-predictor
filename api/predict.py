@@ -9,7 +9,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from model.poisson_model import predict_match, recomendacion_apuesta, UMBRAL_VALOR
-from model.lineas import comparar_casa
+from model.lineas import (comparar_casa, margen_de_casa, texto_margen_negativo,
+                          TEXTO_VE_ALTO, VE_INUSUAL)
 from model.market import (blend_prediction, marcadores, mezcla_texto, analizar_spread_total,
                           moneyline_to_implied_prob, remove_vig, expected_value)
 
@@ -36,7 +37,27 @@ ODDS_H = 166
 MARC_ROW_H = 58
 REC_H = 112
 REC_ALERT_EXTRA = 26
-COVER_H = 200
+COVER_BASE_H = 180
+COVER_NOTE_H = 16
+ODDS_ADV_H = 22
+
+
+def cobertura_notas(cobertura):
+    """Lineas de nota al pie del panel de spread/total (todas dependen de las fuentes usadas)."""
+    notas = []
+    if any(f["cuota_estandar"] for f in cobertura["filas"]):
+        notas.append("* cuota por defecto -110 (no capturada); sin asterisco = la capturaste tu.")
+    if cobertura["usa_casa"]:
+        notas.append("Tus lineas y tus cuotas; empate en numeros clave segun factores historicos 2015-2020.")
+    if not cobertura["usa_casa"] or cobertura["mixto"]:
+        notas.append("Filas del CONSENSO usan cuotas -110: no se mezclan con cuotas de tu casa.")
+    notas += cobertura["notas"]
+    notas.append("En backtest 2018-2025 apostar por estas diferencias no dio ROI positivo.")
+    return notas
+
+
+def cobertura_height(n_notas):
+    return COVER_BASE_H + COVER_NOTE_H * n_notas
 COMP_BASE_H = 150
 COMP_ROW_H = 24
 
@@ -53,7 +74,7 @@ def marcador_panel_height(n):
 
 
 def compute_height(has_market_panel, has_odds_panel, last10_rows=0, n_marcadores=1, rec_alerta=False, has_cover_panel=False, n_comparacion=0,
-                   n_adv=0, hay_estandar=False, partido_jugado=False):
+                   n_adv=0, hay_estandar=False, partido_jugado=False, n_cover_notas=0, n_adv_momios=0):
     y = 140
     y += 130 + 20  # forma reciente
     if last10_rows:
@@ -64,11 +85,11 @@ def compute_height(has_market_panel, has_odds_panel, last10_rows=0, n_marcadores
     if has_market_panel:
         y += EDGE_H + 20
     if has_cover_panel:
-        y += COVER_H + 20
+        y += cobertura_height(n_cover_notas) + 20
     if n_comparacion:
         y += comparacion_height(n_comparacion, n_adv, hay_estandar) + 20
     if has_odds_panel:
-        y += ODDS_H + 20
+        y += ODDS_H + ODDS_ADV_H * n_adv_momios + 20
     y += 60  # espacio para el pie de pagina
     return y
 
@@ -191,7 +212,17 @@ def analizar_momios(pred, ml_home, ml_away):
     ev_home_modelo = expected_value(p_home_modelo, ml_home)
     ev_away_modelo = expected_value(p_away_modelo, ml_away)
 
+    # advertencias sobre los datos capturados
+    margen = margen_de_casa(ml_home, ml_away)
+    advertencias = []
+    if margen < 0:
+        advertencias.append(texto_margen_negativo("ganador"))
+    if max(ev_home, ev_away, ev_home_modelo, ev_away_modelo) > VE_INUSUAL:
+        advertencias.append(TEXTO_VE_ALTO)
+
     return {
+        "advertencias": advertencias,
+        "margen": margen,
         "ml_home": ml_home,
         "ml_away": ml_away,
         "implied_home": real_home,
@@ -298,13 +329,15 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
     has_market_panel = bool(pred.get("market_used") and pred.get("edge_home") is not None)
     has_odds_panel = momios is not None
     has_cover_panel = bool(cobertura)
+    cover_notas = cobertura_notas(cobertura) if cobertura else []
+    n_adv_momios = len(momios["advertencias"]) if momios else 0
     n_comp = len(comparacion["filas"]) if comparacion else 0
     n_adv = len(comparacion["advertencias"]) if comparacion else 0
     hay_estandar = bool(comparacion and any(f["cuota_estandar"] for f in comparacion["filas"]))
     filas_marc = marcadores(pred)
     H = compute_height(has_market_panel, has_odds_panel, last10_rows,
                        len(filas_marc), bool(rec and rec.get("alerta_texto")), has_cover_panel, n_comp,
-                       n_adv, hay_estandar, bool(jugado))
+                       n_adv, hay_estandar, bool(jugado), len(cover_notas), n_adv_momios)
 
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img)
@@ -451,32 +484,36 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
 
         y += p5_h + 20
 
-    # ---- Panel: spread y total contra la linea de mercado (modelo puro) ----
+    # ---- Panel: spread y total (tu casa o consenso, nunca mezclados) · modelo puro ----
     if cobertura:
-        panel(d, [margin, y, margin + content_w, y + COVER_H])
-        section_label(d, margin + 24, y + 16, "Spread y total vs consenso · MODELO PURO (no validado)")
+        c_h = cobertura_height(len(cover_notas))
+        panel(d, [margin, y, margin + content_w, y + c_h])
+        titulo = ("Spread y total vs tu casa · MODELO PURO (no validado)" if cobertura["usa_casa"]
+                  else "Spread y total vs consenso · MODELO PURO (no validado)")
+        section_label(d, margin + 24, y + 16, titulo)
         x_left = margin + 24
         right = margin + content_w - 24
-        cols = (right - 300, right - 150, right)
-        for cx, head in zip(cols, ("PROB. MODELO", "CUOTA", "EV POR $100")):
+        cols = (right - 380, right - 270, right - 150, right)
+        for cx, head in zip(cols, ("PROB. MODELO", "PUSH", "CUOTA", "EV POR $100")):
             d.text((cx - text_w(d, head, font(11, bold=True)), y + 42), head, font=font(11, bold=True), fill=MUTED)
         for i, fila in enumerate(cobertura["filas"]):
             ry = y + 62 + i * 24 + (8 if i >= 2 else 0)
             etiqueta = fila["etiqueta"].format(home=home, away=away)
+            if cobertura["mixto"]:
+                etiqueta += "  (tu casa)" if fila["fuente"] == "casa" else "  (consenso)"
             d.text((x_left, ry), etiqueta, font=font(16, bold=True), fill=FG)
             cuota_txt = f"{fila['cuota']:+.0f}" + ("*" if fila["cuota_estandar"] else "")
             ev = fila["ev"]
             for cx, txt, color in (
                 (cols[0], f"{fila['prob']}%", FG),
-                (cols[1], cuota_txt, MUTED),
-                (cols[2], f"{ev:+.2f}", ACCENT if ev > 0 else (NEG if ev < 0 else MUTED)),
+                (cols[1], f"{fila['p_push']}%" if fila["p_push"] >= 0.05 else "-", MUTED),
+                (cols[2], cuota_txt, MUTED),
+                (cols[3], f"{ev:+.2f}", ACCENT if ev > 0 else (NEG if ev < 0 else MUTED)),
             ):
                 d.text((cx - text_w(d, txt, font(16, bold=True)), ry), txt, font=font(16, bold=True), fill=color)
-        hay_std = any(f["cuota_estandar"] for f in cobertura["filas"])
-        nota = (("* cuota estandar -110 (no capturada). " if hay_std else "")
-                + "Contra la linea de CONSENSO. En backtest 2018-2025 apostar por estas diferencias no dio ROI positivo.")
-        d.text((x_left, y + COVER_H - 26), nota, font=font(11), fill=MUTED)
-        y += COVER_H + 20
+        for i, nota in enumerate(cover_notas):
+            d.text((x_left, y + 170 + i * COVER_NOTE_H), nota, font=font(11), fill=MUTED)
+        y += c_h + 20
 
     # ---- Panel: comparacion de lineas (tu casa vs consenso) ----
     if comparacion:
@@ -529,7 +566,7 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
 
     # ---- Panel: tus momios (valor real con vig removido) ----
     if momios:
-        p6_h = ODDS_H
+        p6_h = ODDS_H + ODDS_ADV_H * len(momios["advertencias"])
         panel(d, [margin, y, margin + content_w, y + p6_h])
         section_label(d, margin + 24, y + 16, "Tus momios (valor real)")
 
@@ -567,6 +604,9 @@ def build_image(home, away, pred, rec, teams, season_week=None, momios=None, las
             d.text((x_left, y + 146),
                    "La barra ya incluye al mercado: su EV es circular. El EV del modelo puro es la señal independiente (no validada).",
                    font=font(11), fill=MUTED)
+
+        for i, adv in enumerate(momios["advertencias"]):
+            d.text((x_left, y + ODDS_H + 4 + i * ODDS_ADV_H), "! " + adv, font=font(13, bold=True), fill=WARN)
 
         y += p6_h + 20
 
@@ -634,11 +674,13 @@ def preparar_ficha(home, away, cache, odds=None, lineas_casa=None, ml_home=None,
     rec = cobertura = momios = comparacion = None
     if not jugado:
         rec = recomendacion_apuesta(pred, home, away)
-        cobertura = analizar_spread_total(pred, odds or {})
+        cobertura = analizar_spread_total(pred, odds or {}, lineas_casa or {})
         if ml_home is not None and ml_away is not None:
             momios = analizar_momios(pred, ml_home, ml_away)
         comparacion = construir_comparacion(spread_line, total_line, odds, momios, lineas_casa, home)
     advertencias = [a["texto"] for a in comparacion["advertencias"]] if comparacion else []
+    if momios:
+        advertencias += [a for a in momios["advertencias"] if a not in advertencias]
     return dict(home=home, away=away, pred=pred, rec=rec, teams=teams, season_week=season_week,
                 momios=momios, last10=last10, cobertura=cobertura, comparacion=comparacion,
                 jugado=jugado), advertencias

@@ -118,11 +118,11 @@ def test_numeros_clave_opcional_suma_1():
 def test_analisis_spread_total_en_ficha():
     m = _pred(3.0)
     pred = blend_prediction(dict(m), 2.5, 44.5)
-    r = analizar_spread_total(pred, {"over": -105})
-    assert [f["clave"] for f in r["filas"]] == ["home", "away", "over", "under"]
+    r = analizar_spread_total(pred, {"over": -105}, {"total_linea": 44.5})
+    assert [f["clave"] for f in r["filas"]] == ["sp_home", "sp_away", "over", "under"]
     f = {x["clave"]: x for x in r["filas"]}
-    assert f["home"]["prob"] + f["away"]["prob"] == pytest.approx(100.0, abs=0.2)
-    assert f["over"]["prob"] + f["under"]["prob"] == pytest.approx(100.0, abs=0.2)
-    assert f["over"]["cuota"] == -105 and not f["over"]["cuota_estandar"]
+    assert f["sp_home"]["prob"] + f["sp_away"]["prob"] + f["sp_home"]["p_push"] == pytest.approx(100.0, abs=0.2)
+    assert f["over"]["prob"] + f["under"]["prob"] + f["over"]["p_push"] == pytest.approx(100.0, abs=0.2)
+    assert f["over"]["cuota"] == -105 and not f["over"]["cuota_estandar"]   # tu cuota sobre TU total
     assert f["under"]["cuota"] == -110 and f["under"]["cuota_estandar"]
     assert analizar_spread_total(blend_prediction(dict(m), None, None)) is None

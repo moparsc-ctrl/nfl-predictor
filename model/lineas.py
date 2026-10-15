@@ -116,12 +116,24 @@ VE_INUSUAL = 10.0        # VE por $100 por encima del cual se pide revisar los d
 TEXTO_VE_ALTO = "VE inusualmente alto, revisa los datos de entrada"
 
 
-def advertencias_entrada(spread_consenso, spread_casa_local, filas, equipo_local="LOCAL"):
+def texto_margen_negativo(mercado):
+    return f"Margen negativo en {mercado}: revisa las cuotas capturadas"
+
+
+def margen_de_casa(cuota_a, cuota_b):
+    """Margen (overround, en %) de un par de momios americanos: suma de implicitas - 100.
+    Una casa real nunca tiene margen negativo."""
+    return round((moneyline_a_prob(cuota_a) + moneyline_a_prob(cuota_b) - 1) * 100, 1)
+
+
+def advertencias_entrada(spread_consenso, spread_casa_local, filas, equipo_local="LOCAL", margenes=None):
     """Lista de advertencias {tipo, texto} sobre los datos capturados.
 
     - linea_invertida: tu linea del local tiene signo OPUESTO al del consenso y difiere
       en mas de 3 pts (ej. consenso DEN +2.5 contra tu casa DEN -3.0).
     - ve_alto: algun VE de la comparacion supera +10 por $100.
+    - margen_negativo: el margen de tu casa en spread, total o ganador es negativo
+      (dato mal capturado).
     """
     adv = []
     if spread_casa_local is not None:
@@ -130,6 +142,10 @@ def advertencias_entrada(spread_consenso, spread_casa_local, filas, equipo_local
             adv.append({"tipo": "linea_invertida", "texto": (
                 f"Posible linea invertida: consenso {equipo_local} {cons:+.1f} contra tu casa "
                 f"{equipo_local} {spread_casa_local:+.1f}. Revisa el signo.")})
+    for mercado in ("spread", "total", "ganador"):
+        m = (margenes or {}).get(mercado)
+        if m is not None and m < 0:
+            adv.append({"tipo": "margen_negativo", "mercado": mercado, "texto": texto_margen_negativo(mercado)})
     if any(f["ev"] > VE_INUSUAL for f in filas):
         adv.append({"tipo": "ve_alto", "texto": TEXTO_VE_ALTO})
     return adv
@@ -200,19 +216,22 @@ def comparar_casa(spread_consenso, total_consenso, cuotas: dict = None,
         fila("ml_away", "{away} ML", "ganador", cuotas["ml_away"], prob_menor(pmf_m, 0), push_ml, n_m, "")
 
     def overround(a, b):
-        if a in cuotas and b in cuotas:
-            return round((moneyline_a_prob(cuotas[a]) + moneyline_a_prob(cuotas[b]) - 1) * 100, 1)
+        # solo con las dos cuotas CAPTURADAS: un -110 por defecto no es un margen de tu casa
+        if a in capturadas and b in capturadas:
+            return margen_de_casa(cuotas[a], cuotas[b])
         return None
 
+    margenes = {"spread": overround("sp_home", "sp_away"), "total": overround("over", "under"),
+                "ganador": overround("ml_home", "ml_away")}
+
     return {
-        "advertencias": advertencias_entrada(spread_consenso, spread_casa_local, filas, equipo_local),
+        "advertencias": advertencias_entrada(spread_consenso, spread_casa_local, filas, equipo_local, margenes),
         "consenso_spread": spread_consenso, "consenso_total": total_consenso,
         "casa_x_spread": x_spread, "casa_total": x_total,
         "casa_distinta_spread": spread_casa_local is not None and x_spread != spread_consenso,
         "casa_distinta_total": total_casa is not None and x_total != total_consenso,
         "n_ef_spread": round(n_m), "ventana_spread": h_m, "n_ef_total": round(n_t), "ventana_total": h_t,
         "push_spread": push_s * 100, "push_total": push_t * 100,
-        "margen_casa": {"spread": overround("sp_home", "sp_away"), "total": overround("over", "under"),
-                        "ganador": overround("ml_home", "ml_away")},
+        "margen_casa": margenes,
         "filas": filas,
     }

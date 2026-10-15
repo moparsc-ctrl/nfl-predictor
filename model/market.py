@@ -198,32 +198,75 @@ def ev_con_push(p_gana: float, p_push: float, american_odds: float, stake: float
     return round(p_gana * ganancia - (1 - p_gana - p_push) * stake, 2)
 
 
-def analizar_spread_total(pred: dict, odds: dict = None):
-    """Probabilidades del MODELO PURO de cubrir el spread y de over/under contra la
-    linea de mercado, con EV por $100. `odds` (americanos, opcional): sp_home, sp_away,
-    over, under; los que falten usan -110 y se marcan como estandar.
-    Devuelve None si no hay linea de mercado."""
-    if not pred.get("market_used"):
+def prob_total(total_esperado: float, total_line: float, sigma_total: float = None):
+    """(P over, P under, P push), 0-1. Linea de medio punto: sin push. Linea entera: el
+    push es la masa de la normal sobre ese total entero (correccion de continuidad)."""
+    sigma_total = cfg.SIGMA_TOTAL if sigma_total is None else sigma_total
+    if float(total_line).is_integer():
+        sup = _ND.cdf((total_line + 0.5 - total_esperado) / sigma_total)
+        inf = _ND.cdf((total_line - 0.5 - total_esperado) / sigma_total)
+        return 1 - sup, inf, sup - inf
+    over = 1 - _ND.cdf((total_line - total_esperado) / sigma_total)
+    return over, 1 - over, 0.0
+
+
+def analizar_spread_total(pred: dict, odds: dict = None, lineas_casa: dict = None):
+    """Probabilidad del MODELO PURO de cubrir el spread y de over/under, con EV por $100.
+
+    Cada mercado usa UNA sola fuente, nunca mezcla la linea de una con las cuotas de otra:
+      - sp_linea / total_linea capturadas (formato casa; sp_linea = linea del LOCAL):
+        se evalua MI linea con MIS cuotas (sp_home, sp_away / over, under); la cuota que
+        falte va a -110 marcada como estandar.
+      - sin linea capturada: linea del CONSENSO con cuotas -110 estandar (si capturaste
+        cuotas de ese mercado sin su linea NO se aplican al consenso; queda una nota).
+    El push en lineas enteras usa los numeros clave (3, 6, 7, 10, 14) del spread y la
+    normal discretizada en el total.
+    Devuelve None si no hay con que evaluar (sin consenso y sin lineas tuyas).
+    """
+    odds = {k: v for k, v in (odds or {}).items() if v is not None}
+    lineas = lineas_casa or {}
+    consenso = bool(pred.get("market_used"))
+    sp_linea, tot_linea = lineas.get("sp_linea"), lineas.get("total_linea")
+    if not consenso and sp_linea is None and tot_linea is None:
         return None
-    odds = odds or {}
-    spread, tline = pred["market_spread"], pred["market_total"]
+
     mu = pred.get("margen_esperado", pred["lambda_home"] - pred["lambda_away"])
     total_modelo = pred.get("total_modelo", pred["total_esperado_puntos"])
-    p_h, p_a, p_push = prob_cubrir_spread(mu, spread, pred.get("sigma_margen"))
-    p_o, p_u = prob_over(total_modelo, tline, pred.get("sigma_total"))
+    filas, notas = [], []
 
-    def fila(clave, etiqueta, p, push, key):
-        o = odds.get(key)
-        return {"clave": clave, "etiqueta": etiqueta, "prob": round(p * 100, 1),
-                "cuota": o if o is not None else -110.0, "cuota_estandar": o is None,
-                "ev": ev_con_push(p, push, o if o is not None else -110.0)}
+    def fila(clave, etiqueta, mercado, fuente, linea, p, push, key):
+        o = odds.get(key) if fuente == "casa" else None   # cuotas tuyas solo sobre tu linea
+        cuota = o if o is not None else -110.0
+        filas.append({"clave": clave, "etiqueta": etiqueta, "mercado": mercado, "fuente": fuente,
+                      "linea": linea, "prob": round(p * 100, 1), "p_push": round(push * 100, 1),
+                      "cuota": cuota, "cuota_estandar": o is None, "ev": ev_con_push(p, push, cuota)})
 
-    return {
-        "spread_line": spread, "total_line": tline,
-        "filas": [
-            fila("home", f"{{home}} {-spread:+.1f}", p_h, p_push, "sp_home"),
-            fila("away", f"{{away}} {spread:+.1f}", p_a, p_push, "sp_away"),
-            fila("over", f"Over {tline:g}", p_o, 0.0, "over"),
-            fila("under", f"Under {tline:g}", p_u, 0.0, "under"),
-        ],
-    }
+    # ---- spread
+    if sp_linea is not None or consenso:
+        if sp_linea is not None:
+            fuente, x = "casa", -sp_linea                      # el local cubre si margen > x
+            linea_local = sp_linea
+        else:
+            fuente, x = "consenso", pred["market_spread"]
+            linea_local = -x
+            if {"sp_home", "sp_away"} & set(odds):
+                notas.append("Cuotas del spread sin sp_linea: no se aplican a la linea del consenso.")
+        p_h, p_a, p_push = prob_cubrir_spread(mu, x, pred.get("sigma_margen"), numeros_clave=True)
+        fila("sp_home", f"{{home}} {linea_local:+.1f}", "spread", fuente, linea_local, p_h, p_push, "sp_home")
+        fila("sp_away", f"{{away}} {-linea_local:+.1f}", "spread", fuente, -linea_local, p_a, p_push, "sp_away")
+
+    # ---- total
+    if tot_linea is not None or consenso:
+        if tot_linea is not None:
+            fuente, tl = "casa", tot_linea
+        else:
+            fuente, tl = "consenso", pred["market_total"]
+            if {"over", "under"} & set(odds):
+                notas.append("Cuotas del total sin total_linea: no se aplican a la linea del consenso.")
+        p_o, p_u, p_pt = prob_total(total_modelo, tl, pred.get("sigma_total"))
+        fila("over", f"Over {tl:g}", "total", fuente, tl, p_o, p_pt, "over")
+        fila("under", f"Under {tl:g}", "total", fuente, tl, p_u, p_pt, "under")
+
+    return {"filas": filas, "notas": notas,
+            "usa_casa": any(f["fuente"] == "casa" for f in filas),
+            "mixto": len({f["fuente"] for f in filas}) > 1}
