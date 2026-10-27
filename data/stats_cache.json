@@ -1,5 +1,5 @@
 {
-  "league_avg_pts": 23.006787330316744,
+  "league_avg_pts": 22.99778434268833,
   "updated_years": [
     2024,
     2025,
@@ -7,292 +7,292 @@
   ],
   "teams": {
     "KC": {
-      "pts_for_avg": 22.95918174962293,
-      "pts_against_avg": 19.95918174962293,
-      "n_partidos": 42.0,
-      "off_strength": 0.9979308027665782,
-      "def_strength": 0.8675345002786246,
-      "off_strength_epa": 1.0587077834141867,
-      "def_strength_epa": 0.8386820717385169
+      "pts_for_avg": 22.550749103186327,
+      "pts_against_avg": 19.95891236849245,
+      "n_partidos": 43.0,
+      "off_strength": 0.9805618127015732,
+      "def_strength": 0.8678624023552065,
+      "off_strength_epa": 1.0366459823828276,
+      "def_strength_epa": 0.8432732452089068
     },
     "BAL": {
-      "pts_for_avg": 26.85501508295626,
-      "pts_against_avg": 22.29251508295626,
-      "n_partidos": 42.0,
-      "off_strength": 1.16726489002524,
-      "def_strength": 0.968953846658144,
-      "off_strength_epa": 1.3127373968179537,
-      "def_strength_epa": 0.9384318422942596
+      "pts_for_avg": 26.571157266451635,
+      "pts_against_avg": 22.550749103186327,
+      "n_partidos": 43.0,
+      "off_strength": 1.1553790082782207,
+      "def_strength": 0.9805618127015732,
+      "off_strength_epa": 1.293801028071485,
+      "def_strength_epa": 0.9571540672521203
     },
     "PHI": {
-      "pts_for_avg": 24.51060243101766,
-      "pts_against_avg": 19.667465176115694,
-      "n_partidos": 45.0,
-      "off_strength": 1.0653639762523164,
-      "def_strength": 0.8548549127586917,
-      "off_strength_epa": 1.104893513968974,
-      "def_strength_epa": 0.7742600929367551
+      "pts_for_avg": 24.44205203954096,
+      "pts_against_avg": 20.01897511646404,
+      "n_partidos": 46.0,
+      "off_strength": 1.0628002974256867,
+      "def_strength": 0.8704740777703944,
+      "off_strength_epa": 1.1000388841025714,
+      "def_strength_epa": 0.7981043469997041
     },
     "GB": {
-      "pts_for_avg": 24.02168174962293,
-      "pts_against_avg": 21.125848416289593,
-      "n_partidos": 42.0,
-      "off_strength": 1.044112826564395,
-      "def_strength": 0.9182441734683843,
-      "off_strength_epa": 1.1239038389531313,
-      "def_strength_epa": 0.8813156222415502
+      "pts_for_avg": 23.877279715431225,
+      "pts_against_avg": 21.101769511349595,
+      "n_partidos": 43.0,
+      "off_strength": 1.0382426132725482,
+      "def_strength": 0.9175566305394313,
+      "off_strength_epa": 1.1166128079361803,
+      "def_strength_epa": 0.8772778515029422
     },
     "ATL": {
-      "pts_for_avg": 22.218276608302183,
-      "pts_against_avg": 24.240015738736968,
-      "n_partidos": 40.0,
-      "off_strength": 0.9657270391257315,
-      "def_strength": 1.0536028081937003,
-      "off_strength_epa": 0.9568353011796709,
-      "def_strength_epa": 1.0740475533040288
+      "pts_for_avg": 22.361419277790002,
+      "pts_against_avg": 24.148653320343193,
+      "n_partidos": 41.0,
+      "off_strength": 0.9723292880994143,
+      "def_strength": 1.0500426023875102,
+      "off_strength_epa": 0.9630095456999457,
+      "def_strength_epa": 1.0683361121846509
     },
     "PIT": {
-      "pts_for_avg": 22.33418174962293,
-      "pts_against_avg": 22.04251508295626,
-      "n_partidos": 42.0,
-      "off_strength": 0.9707649064149212,
-      "def_strength": 0.9580874881174812,
-      "off_strength_epa": 0.9479524584027577,
-      "def_strength_epa": 0.937644479930701
+      "pts_for_avg": 22.203810327676123,
+      "pts_against_avg": 21.79564706237,
+      "n_partidos": 43.0,
+      "off_strength": 0.9654760648599335,
+      "def_strength": 0.9477281262227105,
+      "off_strength_epa": 0.9443614276323671,
+      "def_strength_epa": 0.9276539633381015
     },
     "BUF": {
-      "pts_for_avg": 29.11844556827256,
-      "pts_against_avg": 22.804720078076482,
+      "pts_for_avg": 29.11738639325745,
+      "pts_against_avg": 22.803660903061374,
       "n_partidos": 45.0,
-      "off_strength": 1.2656458787664933,
-      "def_strength": 0.9912170591513231,
-      "off_strength_epa": 1.4760070699567338,
-      "def_strength_epa": 0.9980912793511012
+      "off_strength": 1.266095288110427,
+      "def_strength": 0.9915590373083626,
+      "off_strength_epa": 1.4795035593557164,
+      "def_strength_epa": 0.9967101258048748
     },
     "ARI": {
-      "pts_for_avg": 22.153059216997836,
-      "pts_against_avg": 25.718276608302187,
-      "n_partidos": 40.0,
-      "off_strength": 0.9628923368977326,
-      "def_strength": 1.1178560586950108,
-      "off_strength_epa": 0.9729983152514602,
-      "def_strength_epa": 1.2213561630351788
+      "pts_for_avg": 22.020993745875106,
+      "pts_against_avg": 25.8082277884283,
+      "n_partidos": 41.0,
+      "off_strength": 0.9575267520445389,
+      "def_strength": 1.1222049656550281,
+      "off_strength_epa": 0.9625933075104994,
+      "def_strength_epa": 1.2295331674027434
     },
     "CHI": {
-      "pts_for_avg": 22.64668174962293,
-      "pts_against_avg": 22.688348416289596,
-      "n_partidos": 42.0,
-      "off_strength": 0.9843478545907497,
-      "def_strength": 0.9861589143475269,
-      "off_strength_epa": 0.98209896531137,
-      "def_strength_epa": 0.9855548436667748
+      "pts_for_avg": 22.79564706237,
+      "pts_against_avg": 22.714014409308778,
+      "n_partidos": 43.0,
+      "off_strength": 0.991210575883907,
+      "def_strength": 0.9876609881564625,
+      "off_strength_epa": 0.9923444077275715,
+      "def_strength_epa": 0.9903385453157321
     },
     "TEN": {
-      "pts_for_avg": 17.76175486917175,
-      "pts_against_avg": 26.196537477867402,
-      "n_partidos": 40.0,
-      "off_strength": 0.7720223868791339,
-      "def_strength": 1.13864387503367,
-      "off_strength_epa": 0.6558981590379722,
-      "def_strength_epa": 1.225807477929477
+      "pts_for_avg": 17.893334171407016,
+      "pts_against_avg": 26.212483107577235,
+      "n_partidos": 41.0,
+      "off_strength": 0.778046002379174,
+      "def_strength": 1.1397829772201926,
+      "off_strength_epa": 0.6588820308439957,
+      "def_strength_epa": 1.2295336419907412
     },
     "CIN": {
-      "pts_for_avg": 25.600904977375567,
-      "pts_against_avg": 26.067571644042236,
-      "n_partidos": 39.0,
-      "off_strength": 1.112754449798407,
-      "def_strength": 1.133038319074311,
-      "off_strength_epa": 1.157240541242815,
-      "def_strength_epa": 1.2308246878331002
+      "pts_for_avg": 25.804058827307177,
+      "pts_against_avg": 25.782319696872392,
+      "n_partidos": 40.0,
+      "off_strength": 1.1220236890129394,
+      "def_strength": 1.1210784183681306,
+      "off_strength_epa": 1.173255188363911,
+      "def_strength_epa": 1.210113330699865
     },
     "NE": {
-      "pts_for_avg": 22.400814479638008,
-      "pts_against_avg": 20.860814479638005,
-      "n_partidos": 44.0,
-      "off_strength": 0.9736611269544694,
-      "def_strength": 0.9067243583439863,
-      "off_strength_epa": 1.0054089848754892,
-      "def_strength_epa": 0.910754476902232
+      "pts_for_avg": 22.431111883453532,
+      "pts_against_avg": 21.038955020708432,
+      "n_partidos": 45.0,
+      "off_strength": 0.9753596933169364,
+      "def_strength": 0.9148253026121332,
+      "off_strength_epa": 1.0094654125443414,
+      "def_strength_epa": 0.923646825602675
     },
     "IND": {
-      "pts_for_avg": 24.457407043084796,
-      "pts_against_avg": 24.805233130041316,
-      "n_partidos": 40.0,
-      "off_strength": 1.0630518156203637,
-      "def_strength": 1.078170227503025,
-      "off_strength_epa": 1.051252246443598,
-      "def_strength_epa": 1.08735177227638
+      "pts_for_avg": 24.148653320343193,
+      "pts_against_avg": 24.616738426726172,
+      "n_partidos": 41.0,
+      "off_strength": 1.0500426023875102,
+      "def_strength": 1.070396089462964,
+      "off_strength_epa": 1.0337641613093629,
+      "def_strength_epa": 1.0747359524281355
     },
     "HOU": {
-      "pts_for_avg": 23.00081447963801,
-      "pts_against_avg": 20.34081447963801,
-      "n_partidos": 44.0,
-      "off_strength": 0.9997403874520602,
-      "def_strength": 0.884122332579408,
-      "off_strength_epa": 0.9694224383351374,
-      "def_strength_epa": 0.7738726722774361
+      "pts_for_avg": 22.960523648159413,
+      "pts_against_avg": 20.470327569728042,
+      "n_partidos": 45.0,
+      "off_strength": 0.9983798137258051,
+      "def_strength": 0.8900999880989039,
+      "off_strength_epa": 0.9650539537391932,
+      "def_strength_epa": 0.7869893580993373
     },
     "MIA": {
-      "pts_for_avg": 20.00090497737557,
-      "pts_against_avg": 23.51201608848668,
-      "n_partidos": 39.0,
-      "off_strength": 0.8693480184875603,
-      "def_strength": 1.0219599873253133,
-      "off_strength_epa": 0.8284628223346889,
-      "def_strength_epa": 1.070229603345118
+      "pts_for_avg": 20.173624044698478,
+      "pts_against_avg": 23.543189262089783,
+      "n_partidos": 40.0,
+      "off_strength": 0.8771985920075064,
+      "def_strength": 1.0237155419528425,
+      "off_strength_epa": 0.8415820160874814,
+      "def_strength_epa": 1.0781909239513954
     },
     "JAX": {
-      "pts_for_avg": 23.617887744295757,
-      "pts_against_avg": 22.128526042168097,
+      "pts_for_avg": 23.616738426726172,
+      "pts_against_avg": 22.127376724598513,
       "n_partidos": 41.0,
-      "off_strength": 1.0265617448105737,
-      "def_strength": 0.9618259918023698,
-      "off_strength_epa": 1.0498402498334014,
-      "def_strength_epa": 0.9645706951005929
+      "off_strength": 1.0269136398017675,
+      "def_strength": 0.9621525445616875,
+      "off_strength_epa": 1.0492347784136231,
+      "def_strength_epa": 0.9631844658182955
     },
     "NO": {
-      "pts_for_avg": 20.305233130041312,
-      "pts_against_avg": 23.848711390910882,
-      "n_partidos": 40.0,
-      "off_strength": 0.8825757737710944,
-      "def_strength": 1.0365945948257065,
-      "off_strength_epa": 0.813575521942799,
-      "def_strength_epa": 1.0343277039583356
+      "pts_for_avg": 20.08482353310915,
+      "pts_against_avg": 23.680568213960214,
+      "n_partidos": 41.0,
+      "off_strength": 0.8733373282324349,
+      "def_strength": 1.0296891153120566,
+      "off_strength_epa": 0.8049054806767747,
+      "def_strength_epa": 1.0296112739213374
     },
     "CAR": {
-      "pts_for_avg": 21.02262443438914,
-      "pts_against_avg": 26.283493999606534,
-      "n_partidos": 40.0,
-      "off_strength": 0.9137574982790834,
-      "def_strength": 1.1424234780043354,
-      "off_strength_epa": 0.8862734036714252,
-      "def_strength_epa": 1.2905484014157425
+      "pts_for_avg": 20.85078097991766,
+      "pts_against_avg": 26.638015022470853,
+      "n_partidos": 41.0,
+      "off_strength": 0.9066430343559045,
+      "def_strength": 1.1582861472887869,
+      "off_strength_epa": 0.872086061369554,
+      "def_strength_epa": 1.3120876058512307
     },
     "NYG": {
-      "pts_for_avg": 20.174798347432617,
-      "pts_against_avg": 24.609580956128273,
-      "n_partidos": 40.0,
-      "off_strength": 0.8769063693150965,
-      "def_strength": 1.069666120819028,
-      "off_strength_epa": 0.8318569401133757,
-      "def_strength_epa": 1.1602377612733061
+      "pts_for_avg": 20.318866086300638,
+      "pts_against_avg": 24.531632043747447,
+      "n_partidos": 41.0,
+      "off_strength": 0.8835140717701616,
+      "def_strength": 1.0666954554492452,
+      "off_strength_epa": 0.8424304533361836,
+      "def_strength_epa": 1.1516569485411894
     },
     "MIN": {
-      "pts_for_avg": 22.43566791265001,
-      "pts_against_avg": 19.43566791265001,
-      "n_partidos": 40.0,
-      "off_strength": 0.975176046552395,
-      "def_strength": 0.8447797440644413,
-      "off_strength_epa": 0.9146144071445569,
-      "def_strength_epa": 0.7112975818572242
+      "pts_for_avg": 22.297589490555957,
+      "pts_against_avg": 19.233759703321915,
+      "n_partidos": 41.0,
+      "off_strength": 0.9695538125891251,
+      "def_strength": 0.8363309880952463,
+      "off_strength_epa": 0.9059030060339478,
+      "def_strength_epa": 0.70118432934884
     },
     "LAC": {
-      "pts_for_avg": 21.10501508295626,
-      "pts_against_avg": 20.375848416289593,
+      "pts_for_avg": 21.103889709502706,
+      "pts_against_avg": 20.37472304283604,
       "n_partidos": 42.0,
-      "off_strength": 0.9173386435899957,
-      "def_strength": 0.8856450978463958,
-      "off_strength_epa": 0.8843889701914533,
-      "def_strength_epa": 0.7955652339469799
+      "off_strength": 0.9176488219488957,
+      "def_strength": 0.88594286907094,
+      "off_strength_epa": 0.8825937396973874,
+      "def_strength_epa": 0.793325687720074
     },
     "LV": {
-      "pts_for_avg": 18.479146173519574,
-      "pts_against_avg": 25.348711390910882,
-      "n_partidos": 40.0,
-      "off_strength": 0.8032041113871228,
-      "def_strength": 1.1017927460696832,
-      "off_strength_epa": 0.6767875316662447,
-      "def_strength_epa": 1.1287692679065808
+      "pts_for_avg": 18.531632043747447,
+      "pts_against_avg": 25.552908639492127,
+      "n_partidos": 41.0,
+      "off_strength": 0.8058007574820657,
+      "def_strength": 1.1111030636138715,
+      "off_strength_epa": 0.6745084478594684,
+      "def_strength_epa": 1.1426229179950067
     },
     "SEA": {
-      "pts_for_avg": 25.408994366977563,
-      "pts_against_avg": 19.715116815957153,
-      "n_partidos": 43.0,
-      "off_strength": 1.1044129717970383,
-      "def_strength": 0.856926111972963,
-      "off_strength_epa": 1.0844863419672535,
-      "def_strength_epa": 0.7600994365712123
+      "pts_for_avg": 25.2997341211226,
+      "pts_against_avg": 19.3797341211226,
+      "n_partidos": 44.0,
+      "off_strength": 1.1000944153633707,
+      "def_strength": 0.8426783133690869,
+      "off_strength_epa": 1.0836313232818258,
+      "def_strength_epa": 0.7442601101383876
     },
     "DEN": {
-      "pts_for_avg": 22.960014775140827,
-      "pts_against_avg": 19.511035183304088,
-      "n_partidos": 43.0,
-      "off_strength": 0.9979670105823822,
-      "def_strength": 0.8480556152050749,
-      "off_strength_epa": 1.011185485219979,
-      "def_strength_epa": 0.7305115171204967
+      "pts_for_avg": 23.0997341211226,
+      "pts_against_avg": 19.439734121122598,
+      "n_partidos": 44.0,
+      "off_strength": 1.0044330261087384,
+      "def_strength": 0.8452872603487587,
+      "off_strength_epa": 1.0207393817724764,
+      "def_strength_epa": 0.724725343652381
     },
     "CLE": {
-      "pts_for_avg": 16.979146173519574,
-      "pts_against_avg": 23.348711390910882,
-      "n_partidos": 40.0,
-      "off_strength": 0.7380059601431459,
-      "def_strength": 1.014861877744381,
-      "off_strength_epa": 0.6013977720472433,
-      "def_strength_epa": 0.9516916163599474
+      "pts_for_avg": 17.19120651183255,
+      "pts_against_avg": 23.361419277790002,
+      "n_partidos": 41.0,
+      "off_strength": 0.7475157717659936,
+      "def_strength": 1.0158117377606108,
+      "off_strength_epa": 0.6113779240527792,
+      "def_strength_epa": 0.9493160612799084
     },
     "DAL": {
-      "pts_for_avg": 24.131320086563054,
-      "pts_against_avg": 27.740015738736968,
-      "n_partidos": 40.0,
-      "off_strength": 1.0488783044803687,
-      "def_strength": 1.2057318277629796,
-      "off_strength_epa": 1.0492921571537346,
-      "def_strength_epa": 1.4147565929443022
+      "pts_for_avg": 24.425249065024044,
+      "pts_against_avg": 27.595461830981492,
+      "n_partidos": 41.0,
+      "off_strength": 1.0620696629320967,
+      "def_strength": 1.199918279943124,
+      "off_strength_epa": 1.0696567561079382,
+      "def_strength_epa": 1.4017798078328718
     },
     "TB": {
-      "pts_for_avg": 24.660440935785118,
-      "pts_against_avg": 23.298738808125538,
-      "n_partidos": 41.0,
-      "off_strength": 1.0718767719163165,
-      "def_strength": 1.0126897977373868,
-      "off_strength_epa": 1.1010758856690233,
-      "def_strength_epa": 1.0024520492018807
+      "pts_for_avg": 25.04138970950271,
+      "pts_against_avg": 23.083056376169377,
+      "n_partidos": 42.0,
+      "off_strength": 1.0888609674898575,
+      "def_strength": 1.0037078369033474,
+      "off_strength_epa": 1.1222377792523168,
+      "def_strength_epa": 0.9833055876231223
     },
     "WAS": {
-      "pts_for_avg": 24.5314433465694,
-      "pts_against_avg": 25.674300489426543,
+      "pts_for_avg": 24.53034093992102,
+      "pts_against_avg": 25.673198082778164,
       "n_partidos": 43.0,
-      "off_strength": 1.06626983569512,
-      "def_strength": 1.1159446175952927,
-      "off_strength_epa": 1.1279412085597464,
-      "def_strength_epa": 1.2251686333590124
+      "off_strength": 1.0666393150921052,
+      "def_strength": 1.11633354327633,
+      "off_strength_epa": 1.1281884600119843,
+      "def_strength_epa": 1.2246711211340198
     },
     "DET": {
-      "pts_for_avg": 29.957407043084796,
-      "pts_against_avg": 23.609580956128273,
-      "n_partidos": 40.0,
-      "off_strength": 1.3021117035149452,
-      "def_strength": 1.0262006866563769,
-      "off_strength_epa": 1.4736281553810546,
-      "def_strength_epa": 1.005172142005848
+      "pts_for_avg": 29.744398001194256,
+      "pts_against_avg": 23.467802256513405,
+      "n_partidos": 41.0,
+      "off_strength": 1.293359288789525,
+      "def_strength": 1.0204375302777595,
+      "off_strength_epa": 1.4588655645460469,
+      "def_strength_epa": 0.9991659748617119
     },
     "LA": {
-      "pts_for_avg": 25.255700470233343,
-      "pts_against_avg": 22.04001419572354,
-      "n_partidos": 45.0,
-      "off_strength": 1.0977499860205662,
-      "def_strength": 0.9579787859681191,
-      "off_strength_epa": 1.174055611251498,
-      "def_strength_epa": 0.93160358381182
+      "pts_for_avg": 25.44205203954096,
+      "pts_against_avg": 22.01897511646404,
+      "n_partidos": 46.0,
+      "off_strength": 1.1062827470868835,
+      "def_strength": 0.9574389770927876,
+      "off_strength_epa": 1.1863091378927961,
+      "def_strength_epa": 0.9238565988284778
     },
     "SF": {
-      "pts_for_avg": 24.375848416289596,
-      "pts_against_avg": 23.23001508295626,
-      "n_partidos": 42.0,
-      "off_strength": 1.0595068344970007,
-      "def_strength": 1.0097026911856295,
-      "off_strength_epa": 1.1582940513167845,
-      "def_strength_epa": 1.0540126192294317
+      "pts_for_avg": 24.285442980737347,
+      "pts_against_avg": 23.346667470533266,
+      "n_partidos": 43.0,
+      "off_strength": 1.0559905519097712,
+      "def_strength": 1.0151702930441582,
+      "off_strength_epa": 1.1526718956883313,
+      "def_strength_epa": 1.0587323950416048
     },
     "NYJ": {
-      "pts_for_avg": 19.305233130041312,
-      "pts_against_avg": 25.370450521345663,
-      "n_partidos": 40.0,
-      "off_strength": 0.8391103396084433,
-      "def_strength": 1.1027376468123495,
-      "off_strength_epa": 0.778562965607527,
-      "def_strength_epa": 1.1920820346293755
+      "pts_for_avg": 19.42524906502404,
+      "pts_against_avg": 25.425249065024044,
+      "n_partidos": 41.0,
+      "off_strength": 0.8446574146261135,
+      "def_strength": 1.1055521125932932,
+      "off_strength_epa": 0.7876150670305848,
+      "def_strength_epa": 1.2022886464743805
     }
   },
   "market_lines": [
@@ -5613,31 +5613,31 @@
       "week": 7,
       "home_team": "NO",
       "away_team": "PIT",
-      "spread_line": -3.5,
-      "total_line": 44.5
+      "spread_line": -3.0,
+      "total_line": 43.5
     },
     {
       "season": 2026,
       "week": 7,
       "home_team": "ATL",
       "away_team": "SF",
-      "spread_line": -3.0,
-      "total_line": 50.5
+      "spread_line": -2.5,
+      "total_line": 49.5
     },
     {
       "season": 2026,
       "week": 7,
       "home_team": "BAL",
       "away_team": "CIN",
-      "spread_line": 3.0,
-      "total_line": 51.5
+      "spread_line": -3.0,
+      "total_line": 46.5
     },
     {
       "season": 2026,
       "week": 7,
       "home_team": "CAR",
       "away_team": "TB",
-      "spread_line": 3.5,
+      "spread_line": 3.0,
       "total_line": 44.5
     },
     {
@@ -5661,8 +5661,8 @@
       "week": 7,
       "home_team": "NYJ",
       "away_team": "MIA",
-      "spread_line": 4.5,
-      "total_line": 38.5
+      "spread_line": 3.5,
+      "total_line": 39.5
     },
     {
       "season": 2026,
@@ -5670,7 +5670,7 @@
       "home_team": "TEN",
       "away_team": "CLE",
       "spread_line": -1.5,
-      "total_line": 38.5
+      "total_line": 36.5
     },
     {
       "season": 2026,
@@ -5678,31 +5678,31 @@
       "home_team": "ARI",
       "away_team": "DEN",
       "spread_line": -4.5,
-      "total_line": 43.5
+      "total_line": 44.5
     },
     {
       "season": 2026,
       "week": 7,
       "home_team": "DET",
       "away_team": "GB",
-      "spread_line": 3.0,
-      "total_line": 53.5
+      "spread_line": 3.5,
+      "total_line": 55.5
     },
     {
       "season": 2026,
       "week": 7,
       "home_team": "LV",
       "away_team": "LA",
-      "spread_line": -4.5,
-      "total_line": 47.5
+      "spread_line": -3.5,
+      "total_line": 49.5
     },
     {
       "season": 2026,
       "week": 7,
       "home_team": "SEA",
       "away_team": "KC",
-      "spread_line": 2.5,
-      "total_line": 42.5
+      "spread_line": 3.0,
+      "total_line": 43.5
     },
     {
       "season": 2026,
@@ -5710,11 +5710,132 @@
       "home_team": "PHI",
       "away_team": "DAL",
       "spread_line": -4.5,
+      "total_line": 43.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "GB",
+      "away_team": "CAR",
+      "spread_line": 3.5,
+      "total_line": 48.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "BUF",
+      "away_team": "BAL",
+      "spread_line": 3.5,
+      "total_line": 53.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "CIN",
+      "away_team": "TEN",
+      "spread_line": 10.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "DAL",
+      "away_team": "ARI",
+      "spread_line": 6.5,
+      "total_line": 54.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "DET",
+      "away_team": "MIN",
+      "spread_line": 3.0,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "JAX",
+      "away_team": "IND",
+      "spread_line": 7.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "NYJ",
+      "away_team": "LV",
+      "spread_line": -1.5,
+      "total_line": 45.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "PIT",
+      "away_team": "CLE",
+      "spread_line": 3.5,
+      "total_line": 39.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "TB",
+      "away_team": "ATL",
+      "spread_line": 2.5,
+      "total_line": 46.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "LA",
+      "away_team": "LAC",
+      "spread_line": 6.5,
       "total_line": 44.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "DEN",
+      "away_team": "KC",
+      "spread_line": -1.5,
+      "total_line": 41.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "MIA",
+      "away_team": "NE",
+      "spread_line": -7.5,
+      "total_line": 44.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "WAS",
+      "away_team": "PHI",
+      "spread_line": 4.5,
+      "total_line": 40.5
+    },
+    {
+      "season": 2026,
+      "week": 8,
+      "home_team": "SEA",
+      "away_team": "CHI",
+      "spread_line": 3.0,
+      "total_line": 46.5
     }
   ],
   "last10_games": {
     "ARI": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "DEN",
+        "home_away": "local",
+        "team_score": 16.0,
+        "opp_score": 30.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -5795,18 +5916,18 @@
         "team_score": 19.0,
         "opp_score": 26.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "HOU",
-        "home_away": "visitante",
-        "team_score": 20.0,
-        "opp_score": 40.0,
-        "result": "L"
       }
     ],
     "ATL": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "SF",
+        "home_away": "local",
+        "team_score": 29.0,
+        "opp_score": 20.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -5887,18 +6008,18 @@
         "team_score": 26.0,
         "opp_score": 19.0,
         "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "TB",
-        "home_away": "visitante",
-        "team_score": 29.0,
-        "opp_score": 28.0,
-        "result": "W"
       }
     ],
     "BAL": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "CIN",
+        "home_away": "local",
+        "team_score": 13.0,
+        "opp_score": 35.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -5979,15 +6100,6 @@
         "team_score": 24.0,
         "opp_score": 28.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "CIN",
-        "home_away": "visitante",
-        "team_score": 24.0,
-        "opp_score": 0.0,
-        "result": "W"
       }
     ],
     "BUF": [
@@ -6085,6 +6197,15 @@
     "CAR": [
       {
         "season": 2026,
+        "week": 7,
+        "opponent": "TB",
+        "home_away": "local",
+        "team_score": 13.0,
+        "opp_score": 43.0,
+        "result": "L"
+      },
+      {
+        "season": 2026,
         "week": 6,
         "opponent": "PHI",
         "home_away": "visitante",
@@ -6163,18 +6284,18 @@
         "team_score": 23.0,
         "opp_score": 20.0,
         "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "NO",
-        "home_away": "visitante",
-        "team_score": 17.0,
-        "opp_score": 20.0,
-        "result": "L"
       }
     ],
     "CHI": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "NE",
+        "home_away": "local",
+        "team_score": 30.0,
+        "opp_score": 24.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -6255,18 +6376,18 @@
         "team_score": 16.0,
         "opp_score": 19.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 17,
-        "opponent": "SF",
-        "home_away": "visitante",
-        "team_score": 38.0,
-        "opp_score": 42.0,
-        "result": "L"
       }
     ],
     "CIN": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "BAL",
+        "home_away": "visitante",
+        "team_score": 35.0,
+        "opp_score": 13.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 5,
@@ -6347,18 +6468,18 @@
         "team_score": 0.0,
         "opp_score": 24.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 14,
-        "opponent": "BUF",
-        "home_away": "visitante",
-        "team_score": 34.0,
-        "opp_score": 39.0,
-        "result": "L"
       }
     ],
     "CLE": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "TEN",
+        "home_away": "visitante",
+        "team_score": 27.0,
+        "opp_score": 24.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -6439,18 +6560,18 @@
         "team_score": 20.0,
         "opp_score": 23.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "CHI",
-        "home_away": "visitante",
-        "team_score": 3.0,
-        "opp_score": 31.0,
-        "result": "L"
       }
     ],
     "DAL": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "PHI",
+        "home_away": "visitante",
+        "team_score": 38.0,
+        "opp_score": 21.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -6531,18 +6652,18 @@
         "team_score": 17.0,
         "opp_score": 34.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "MIN",
-        "home_away": "local",
-        "team_score": 26.0,
-        "opp_score": 34.0,
-        "result": "L"
       }
     ],
     "DEN": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "ARI",
+        "home_away": "visitante",
+        "team_score": 30.0,
+        "opp_score": 16.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -6623,18 +6744,18 @@
         "team_score": 19.0,
         "opp_score": 3.0,
         "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 17,
-        "opponent": "KC",
-        "home_away": "visitante",
-        "team_score": 20.0,
-        "opp_score": 13.0,
-        "result": "W"
       }
     ],
     "DET": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "GB",
+        "home_away": "local",
+        "team_score": 20.0,
+        "opp_score": 17.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 5,
@@ -6715,18 +6836,18 @@
         "team_score": 34.0,
         "opp_score": 41.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 14,
-        "opponent": "DAL",
-        "home_away": "local",
-        "team_score": 44.0,
-        "opp_score": 30.0,
-        "result": "W"
       }
     ],
     "GB": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "DET",
+        "home_away": "visitante",
+        "team_score": 17.0,
+        "opp_score": 20.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -6807,18 +6928,18 @@
         "team_score": 24.0,
         "opp_score": 41.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 16,
-        "opponent": "CHI",
-        "home_away": "visitante",
-        "team_score": 16.0,
-        "opp_score": 22.0,
-        "result": "L"
       }
     ],
     "HOU": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "NYG",
+        "home_away": "local",
+        "team_score": 21.0,
+        "opp_score": 27.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -6899,18 +7020,18 @@
         "team_score": 38.0,
         "opp_score": 30.0,
         "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 17,
-        "opponent": "LAC",
-        "home_away": "visitante",
-        "team_score": 20.0,
-        "opp_score": 16.0,
-        "result": "W"
       }
     ],
     "IND": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "MIN",
+        "home_away": "visitante",
+        "team_score": 10.0,
+        "opp_score": 16.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -6990,15 +7111,6 @@
         "home_away": "local",
         "team_score": 27.0,
         "opp_score": 48.0,
-        "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "SEA",
-        "home_away": "visitante",
-        "team_score": 16.0,
-        "opp_score": 18.0,
         "result": "L"
       }
     ],
@@ -7097,6 +7209,15 @@
     "KC": [
       {
         "season": 2026,
+        "week": 7,
+        "opponent": "SEA",
+        "home_away": "visitante",
+        "team_score": 3.0,
+        "opp_score": 20.0,
+        "result": "L"
+      },
+      {
+        "season": 2026,
         "week": 6,
         "opponent": "LAC",
         "home_away": "local",
@@ -7175,18 +7296,18 @@
         "team_score": 13.0,
         "opp_score": 16.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 14,
-        "opponent": "HOU",
-        "home_away": "local",
-        "team_score": 10.0,
-        "opp_score": 20.0,
-        "result": "L"
       }
     ],
     "LA": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "LV",
+        "home_away": "visitante",
+        "team_score": 35.0,
+        "opp_score": 21.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -7266,15 +7387,6 @@
         "home_away": "visitante",
         "team_score": 34.0,
         "opp_score": 31.0,
-        "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 18,
-        "opponent": "ARI",
-        "home_away": "local",
-        "team_score": 37.0,
-        "opp_score": 20.0,
         "result": "W"
       }
     ],
@@ -7373,6 +7485,15 @@
     "LV": [
       {
         "season": 2026,
+        "week": 7,
+        "opponent": "LA",
+        "home_away": "local",
+        "team_score": 21.0,
+        "opp_score": 35.0,
+        "result": "L"
+      },
+      {
+        "season": 2026,
         "week": 6,
         "opponent": "BUF",
         "home_away": "local",
@@ -7451,18 +7572,18 @@
         "team_score": 21.0,
         "opp_score": 23.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "PHI",
-        "home_away": "visitante",
-        "team_score": 0.0,
-        "opp_score": 31.0,
-        "result": "L"
       }
     ],
     "MIA": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "NYJ",
+        "home_away": "visitante",
+        "team_score": 28.0,
+        "opp_score": 25.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 5,
@@ -7543,18 +7664,18 @@
         "team_score": 15.0,
         "opp_score": 28.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 14,
-        "opponent": "NYJ",
-        "home_away": "visitante",
-        "team_score": 34.0,
-        "opp_score": 10.0,
-        "result": "W"
       }
     ],
     "MIN": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "IND",
+        "home_away": "local",
+        "team_score": 16.0,
+        "opp_score": 10.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 5,
@@ -7635,18 +7756,18 @@
         "team_score": 34.0,
         "opp_score": 26.0,
         "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 14,
-        "opponent": "WAS",
-        "home_away": "local",
-        "team_score": 31.0,
-        "opp_score": 0.0,
-        "result": "W"
       }
     ],
     "NE": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "CHI",
+        "home_away": "visitante",
+        "team_score": 24.0,
+        "opp_score": 30.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -7727,18 +7848,18 @@
         "team_score": 28.0,
         "opp_score": 16.0,
         "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 19,
-        "opponent": "LAC",
-        "home_away": "local",
-        "team_score": 16.0,
-        "opp_score": 3.0,
-        "result": "W"
       }
     ],
     "NO": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "PIT",
+        "home_away": "local",
+        "team_score": 10.0,
+        "opp_score": 16.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -7819,18 +7940,18 @@
         "team_score": 29.0,
         "opp_score": 6.0,
         "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "CAR",
-        "home_away": "local",
-        "team_score": 20.0,
-        "opp_score": 17.0,
-        "result": "W"
       }
     ],
     "NYG": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "HOU",
+        "home_away": "visitante",
+        "team_score": 27.0,
+        "opp_score": 21.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -7911,18 +8032,18 @@
         "team_score": 13.0,
         "opp_score": 16.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "WAS",
-        "home_away": "local",
-        "team_score": 21.0,
-        "opp_score": 29.0,
-        "result": "L"
       }
     ],
     "NYJ": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "MIA",
+        "home_away": "local",
+        "team_score": 25.0,
+        "opp_score": 28.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -8003,18 +8124,18 @@
         "team_score": 6.0,
         "opp_score": 29.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "JAX",
-        "home_away": "visitante",
-        "team_score": 20.0,
-        "opp_score": 48.0,
-        "result": "L"
       }
     ],
     "PHI": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "DAL",
+        "home_away": "local",
+        "team_score": 21.0,
+        "opp_score": 38.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -8095,18 +8216,18 @@
         "team_score": 13.0,
         "opp_score": 12.0,
         "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 16,
-        "opponent": "WAS",
-        "home_away": "visitante",
-        "team_score": 29.0,
-        "opp_score": 18.0,
-        "result": "W"
       }
     ],
     "PIT": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "NO",
+        "home_away": "visitante",
+        "team_score": 16.0,
+        "opp_score": 10.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -8187,18 +8308,18 @@
         "team_score": 6.0,
         "opp_score": 13.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 16,
-        "opponent": "DET",
-        "home_away": "visitante",
-        "team_score": 29.0,
-        "opp_score": 24.0,
-        "result": "W"
       }
     ],
     "SEA": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "KC",
+        "home_away": "local",
+        "team_score": 20.0,
+        "opp_score": 3.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -8279,18 +8400,18 @@
         "team_score": 41.0,
         "opp_score": 6.0,
         "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 18,
-        "opponent": "SF",
-        "home_away": "visitante",
-        "team_score": 13.0,
-        "opp_score": 3.0,
-        "result": "W"
       }
     ],
     "SF": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "ATL",
+        "home_away": "visitante",
+        "team_score": 20.0,
+        "opp_score": 29.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -8371,18 +8492,18 @@
         "team_score": 3.0,
         "opp_score": 13.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 17,
-        "opponent": "CHI",
-        "home_away": "local",
-        "team_score": 42.0,
-        "opp_score": 38.0,
-        "result": "W"
       }
     ],
     "TB": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "CAR",
+        "home_away": "visitante",
+        "team_score": 43.0,
+        "opp_score": 13.0,
+        "result": "W"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -8463,18 +8584,18 @@
         "team_score": 20.0,
         "opp_score": 23.0,
         "result": "L"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "ATL",
-        "home_away": "local",
-        "team_score": 28.0,
-        "opp_score": 29.0,
-        "result": "L"
       }
     ],
     "TEN": [
+      {
+        "season": 2026,
+        "week": 7,
+        "opponent": "CLE",
+        "home_away": "local",
+        "team_score": 24.0,
+        "opp_score": 27.0,
+        "result": "L"
+      },
       {
         "season": 2026,
         "week": 6,
@@ -8555,15 +8676,6 @@
         "team_score": 26.0,
         "opp_score": 9.0,
         "result": "W"
-      },
-      {
-        "season": 2025,
-        "week": 15,
-        "opponent": "SF",
-        "home_away": "visitante",
-        "team_score": 24.0,
-        "opp_score": 37.0,
-        "result": "L"
       }
     ],
     "WAS": [
